@@ -1,11 +1,14 @@
-import Container from "react-bootstrap/Container";
+import React from "react";
+import ProductList from "../components/productListGenerator";
+import jsonData from "../data.json";
+import { Container } from "react-bootstrap";
 
-function products() {
+const Products = () => {
   return (
     <Container>
-      <h1 className="text-center">Products</h1>
+      <ProductList data={jsonData} />
     </Container>
   );
-}
+};
 
-export default products;
+export default Products;

@@ -1,0 +1,145 @@
+[
+    {
+      "product_Id": "1",
+      "name": "Smartphone Case",
+      "price": "$100",
+      "rating": 3,
+      "img": "https://images.pexels.com/photos/8473458/pexels-photo-8473458.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "used_type": "New",
+      "description": "This smartphone case is made of durable silicone material and is designed to fit snugly over your phone, providing a protective barrier against scratches, drops, and other types of damage. It has precise cutouts for easy access to ports and buttons.",
+      "category_id": 1,
+      "quality": 1
+    },
+    {
+      "product_Id": "2",
+      "name": "Yoga Mat",
+      "price": "$200",
+      "rating": 4,
+      "img": "https://images.pexels.com/photos/4325462/pexels-photo-4325462.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "used_type": "Used",
+      "description": "Yoga Mat: Our yoga mat is made of non-slip, eco-friendly material that provides a comfortable and supportive surface for your yoga practice. The mat is lightweight and easy to carry, making it perfect for use at home or on-the-go.",
+      "category_id": 2,
+      "quality": 1
+    },
+    {
+      "product_Id": "3",
+      "name": "Electric Kettle",
+      "price": "$300",
+      "rating": 5,
+      "img": "https://images.pexels.com/photos/11255397/pexels-photo-11255397.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "used_type": "New",
+      "description": "This electric kettle boils water quickly and efficiently, making it ideal for making tea, coffee, or instant noodles. It has a stylish, stainless steel design and a removable filter for easy cleaning.",
+      "category_id": 1,
+      "quality": 1
+    },
+    {
+      "product_Id": "4",
+      "name": "Portable Power Bank",
+      "price": "$100",
+      "rating": 3,
+      "img": "https://images.pexels.com/photos/10104285/pexels-photo-10104285.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "used_type": "New",
+      "description": "This portable power bank is a must-have for anyone who relies on their devices for work or entertainment. It can charge your phone, tablet, or other devices quickly and easily, and has a compact, lightweight design that makes it perfect for travel.z",
+      "category_id": 1,
+      "quality": 1
+    },
+    {
+      "product_Id": "5",
+      "name": "Hair Dryer",
+      "price": "$200",
+      "rating": 4,
+      "img": "https://images.pexels.com/photos/973406/pexels-photo-973406.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "used_type": "Used",
+      "description": "This hair dryer features multiple heat and speed settings to help you achieve the perfect look. It has a powerful motor and a compact design that makes it easy to use at home or on-the-go.",
+      "category_id": 1,
+      "quality": 1
+    },
+    {
+      "product_Id": "6",
+      "name": "Water Bottle",
+      "price": "$300",
+      "rating": 5,
+      "img": "https://images.pexels.com/photos/1188649/pexels-photo-1188649.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "used_type": "New",
+      "description": " Our water bottle is made of BPA-free, eco-friendly material and is designed to keep your beverages hot or cUsed for hours. It has a leak-proof cap and a sleek, stylish design that makes it perfect for use at the gym, office, or on-the-go.",
+      "category_id": 2,
+      "quality": 1
+    },
+    {
+      "product_Id": "7",
+      "name": "Wireless Headphones",
+      "price": "$100",
+      "rating": 3,
+      "img": "https://images.pexels.com/photos/5081399/pexels-photo-5081399.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "used_type": "New",
+      "description": "These wireless headphones provide high-quality sound and a comfortable fit, making them perfect for music, movies, or phone calls. They have a long battery life and a sleek, lightweight design that makes them easy to use on-the-go.",
+      "category_id": 1,
+      "quality": 1
+    },
+    {
+      "product_Id": "8",
+      "name": "Essential Oil Diffuser",
+      "price": "$200",
+      "rating": 4,
+      "img": "https://images.pexels.com/photos/7524980/pexels-photo-7524980.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "used_type": "Used",
+      "description": "This essential oil diffuser uses ultrasonic technology to create a relaxing, aromatic atmosphere in your home. It has a stylish, modern design and features multiple lighting options to help create the perfect ambiance.",
+      "category_id": 2,
+      "quality": 1
+    },
+    {
+      "product_Id": "9",
+      "name": "Cooking Utensils Set",
+      "price": "$300",
+      "rating": 5,
+      "img": "https://images.pexels.com/photos/6996092/pexels-photo-6996092.jpeg?auto=compress&cs=tinysrgb&w=1200f",
+      "used_type": "New",
+      "description": "Our cooking utensils set includes all the essentials you need to prepare and serve delicious meals. The set includes a variety of utensils, such as spoons, spatulas, and tongs, all made of high-quality, durable materials.",
+      "category_id": 3,
+      "quality": 1
+    },
+    {
+      "product_Id": "10",
+      "name": "Fitness Tracker",
+      "price": "$100",
+      "rating": 3,
+      "img": "https://images.pexels.com/photos/4498482/pexels-photo-4498482.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "used_type": "New",
+      "description": "This fitness tracker helps you keep track of your daily activity, including steps taken, calories burned, and distance traveled. It has a sleek, modern design and is compatible with both iOS and Android devices.",
+      "category_id": 1,
+      "quality": 1
+    },
+    {
+      "product_Id": "11",
+      "name": "Resistance Bands",
+      "price": "$200",
+      "rating": 4,
+      "img": "https://images.pexels.com/photos/6303487/pexels-photo-6303487.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      "used_type": "Used",
+      "description": "These resistance bands are perfect for anyone looking to tone and strengthen their muscles. The set includes multiple bands of varying resistance levels and comes with a convenient carrying bag for easy storage and transport.",
+      "category_id": 3,
+      "quality": 1
+    },
+    {
+      "product_Id": "12",
+      "name": "Desk Lamp",
+      "price": "$300",
+      "rating": 5,
+      "img": "https://images.pexels.com/photos/1112598/pexels-photo-1112598.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "used_type": "New",
+      "description": "This desk lamp provides bright, energy-efficient lighting for your workspace. It has an adjustable arm and multiple brightness settings, making it perfect for use while reading, working, or studying.",
+      "category_id": 1,
+      "quality": 1
+    },
+    {
+      "product_Id": "13",
+      "name": "Yoga Mat",
+      "price": "$200",
+      "rating": 4,
+      "img": "https://images.pexels.com/photos/4325462/pexels-photo-4325462.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "used_type": "Used",
+      "description": "Yoga Mat: Our yoga mat is made of non-slip, eco-friendly material that provides a comfortable and supportive surface for your yoga practice. The mat is lightweight and easy to carry, making it perfect for use at home or on-the-go.",
+      "category_id": 3,
+      "quality": 1
+    }
+  ]
