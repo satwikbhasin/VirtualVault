@@ -20,7 +20,7 @@ const productsList = ({ data }) => {
                 <Card.Img
                   src={item.img}
                   style={{
-                    width: "200px",
+                    width: "550px",
                     height: "200px",
                     objectFit: "cover",
                     margin: "10px",
