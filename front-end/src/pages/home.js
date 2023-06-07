@@ -3,6 +3,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { DeviceMobileIcon, MailIcon } from "@primer/octicons-react";
 import { useState } from "react";
+import "../styling/contact.css";
 
 function Home() {
   const [hoverPhone, setHoverPhone] = useState(false);
@@ -38,29 +39,28 @@ function Home() {
       <Row>
         <h1 className="p-5">Sunil Bhasin</h1>
       </Row>
-      <Row className="p-3">
+      <Row className="p-5 square border border-dark rounded">
         <Col onMouseEnter={phoneEnter} onMouseLeave={phoneLeave}>
           {hoverPhone ? (
             <>
               <DeviceMobileIcon size={30} />
-              <p className="fw-bold m-1" style={{ fontSize: 20 }}>
+              <p className="fw-bold m-1 large-font">
                 Phone
               </p>
               <a
-                href="tel:+919828298102"
-                className="text-success fw-bold"
-                style={{ fontSize: 16 }}
+                href="tel:+19176232808"
+                className="text-success fw-bold large-font"
               >
-                +91 9818298102
+                +1 (917) 623-2808
               </a>
             </>
           ) : (
             <>
               <DeviceMobileIcon size={24} />
-              <p className="fw-bold m-1" style={{ fontSize: 16 }}>
+              <p className="fw-bold m-1 medium-font">
                 Phone
               </p>
-              <p style={{ fontSize: 13 }}>+91 9818298102</p>
+              <p className="small-font"> +1 (917) 623-2808</p>
             </>
           )}
         </Col>
@@ -99,10 +99,10 @@ function Home() {
                     clip-rule="evenodd"
                   ></path>
                 </svg>
-              </a>{" "}
-              <p className="fw-bold" style={{ fontSize: 20 }}>
+              </a>
+              <p className="fw-bold large-font">
                 Whatsapp
-              </p>{" "}
+              </p>
             </>
           ) : (
             <>
@@ -139,7 +139,7 @@ function Home() {
                   ></path>
                 </svg>
               </a>
-              <p className="fw-bold" style={{ fontSize: 16 }}>
+              <p className="fw-bold medium-font">
                 Whatsapp
               </p>
             </>
@@ -149,13 +149,12 @@ function Home() {
           {hoverEmail ? (
             <>
               <MailIcon size={30} />
-              <p className="fw-bold m-1" style={{ fontSize: 20 }}>
+              <p className="fw-bold m-1 large-font">
                 E-Mail
               </p>
               <a
                 href="mailto:bhasin.sunil9@gmail.com"
-                className="text-success fw-bold"
-                style={{ fontSize: 16 }}
+                className="text-success fw-bold large-font"
               >
                 bhasin.sunil9@gmail.com
               </a>
@@ -163,10 +162,10 @@ function Home() {
           ) : (
             <>
               <MailIcon size={24} />
-              <p className="fw-bold m-1" style={{ fontSize: 16 }}>
+              <p className="fw-bold m-1 medium-font">
                 E-Mail
               </p>
-              <p style={{ fontSize: 13 }}>bhasin.sunil9@gmail.com</p>
+              <p className="small-font">bhasin.sunil9@gmail.com</p>
             </>
           )}
         </Col>

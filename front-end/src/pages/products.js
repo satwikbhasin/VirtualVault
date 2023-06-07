@@ -1,12 +1,12 @@
 import React from "react";
 import ProductList from "../components/productListGenerator";
-import jsonData from "../data.json";
+import productData from "../data.json";
 import { Container } from "react-bootstrap";
 
 const Products = () => {
   return (
     <Container>
-      <ProductList data={jsonData} />
+      <ProductList data={productData} />
     </Container>
   );
 };

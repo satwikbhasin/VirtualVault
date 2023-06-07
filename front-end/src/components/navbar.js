@@ -1,26 +1,27 @@
-import "bootstrap/dist/css/bootstrap.css";
-import "../styling/navbar.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Navbar, NavItem } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import '../styling/navbar.css';
 
 function navbar() {
   return (
-    <nav class="navbar navbar-expand-lg navbar-light bg-light p-3">
+    <Navbar
+      className="navbar-expand-lg navbar-dark bg-dark p-3"
+    >
       <NavLink className="navbar-brand" to="/">
         Healthkare
       </NavLink>
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <NavLink
-            className="nav-link"
-            activeClassName="active"
-            exact
-            to="/pages/products.js"
-          >
-            Products
-          </NavLink>
-        </li>
-      </ul>
-    </nav>
+      <NavItem>
+        <NavLink
+          className="text-light nav-link"
+          activeClassName="active"
+          exact
+          to="/products"
+        >
+          Products
+        </NavLink>
+      </NavItem>
+    </Navbar>
   );
 }
 
