@@ -1,6 +1,7 @@
 .card {
   width: 600px;
   height: 450px;
+  transition: transform 0.3s ease;
 }
 
 .card-image {
@@ -8,4 +9,9 @@
   height: 200px;
   object-fit: cover;
   margin-bottom: 10px;
+}
+
+.card.enlarged {
+  transform: scale(1.04);
+  background: #c6c6c634;
 }
