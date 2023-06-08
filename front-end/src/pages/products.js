@@ -4,6 +4,7 @@ import productData from "../data.json";
 import { Container } from "react-bootstrap";
 
 const Products = () => {
+  
   return (
     <Container>
       <ProductList data={productData} />
