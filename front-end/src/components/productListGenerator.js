@@ -1,9 +1,11 @@
 import React from "react";
-import { Card, Container, Row, Col, Button } from "react-bootstrap";
+import { Card, Container, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "../styling/card.css";
 import { useState } from "react";
+import productMapInstance from "../services/productMap";
 
-const ProductsList = ({ data }) => {
+const ProductsList = () => {
   const [hoveredCardIndex, setHoveredCardIndex] = useState(null);
 
   const handleMouseEnter = (index) => {
@@ -14,25 +16,28 @@ const ProductsList = ({ data }) => {
     setHoveredCardIndex(null);
   };
 
+  const productsMap = productMapInstance.getProductsFromMap();
+
   return (
     <Container>
       <Row className="pt-4">
-        {data.map((item, index) => (
-          <Col md={6} lg={6} xl={6} >
-            <Card
-              className={`m-3 p-2 card ${
-                hoveredCardIndex === index ? "enlarged" : ""
-              }`}
-              onMouseEnter={() => handleMouseEnter(index)}
-              onMouseLeave={handleMouseLeave}
-            >
-              <Card.Body>
-                <Card.Img src={item.image} className="card-image" />
-                <Card.Title className="m-2">{item.name}</Card.Title>
-                <Card.Text className="m-2">{item.description}</Card.Text>
-                <Button className="btn-dark m-1">Details</Button>
-              </Card.Body>
-            </Card>
+        {Array.from(productsMap.values()).map((item) => (
+          <Col md={6} lg={6} xl={6} key={item.product_id}>
+            <Link to={`/product/${item.product_id}`} class="card-name">
+              <Card
+                className={`m-3 p-2 card ${
+                  hoveredCardIndex === item.product_id ? "enlarged" : ""
+                }`}
+                onMouseEnter={() => handleMouseEnter(item.product_id)}
+                onMouseLeave={handleMouseLeave}
+              >
+                <Card.Body>
+                  <Card.Img src={item.image} className="card-image" />
+                  <Card.Title className="m-2">{item.name}</Card.Title>
+                  {/* <Card.Text className="m-2">{item.description}</Card.Text> */}
+                </Card.Body>
+              </Card>
+            </Link>
           </Col>
         ))}
       </Row>
