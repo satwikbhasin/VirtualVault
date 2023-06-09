@@ -2,7 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useParams } from "react-router-dom";
 import { Container, Row, Image, Col, Button } from "react-bootstrap";
-import productMapInstance from "../services/productMap";
+import productMapInstance from "../services/productsToMap";
 import { Link } from "react-router-dom";
 import "../styling/text-styling.css";
 
@@ -14,7 +14,7 @@ const ProductDetails = () => {
     <Container>
       <Row className="text-center pt-4">
         <Col className="col-1">
-          <Link to="/products">
+          <Link to="/products">x
             <Button className="btn-dark">Back</Button>
           </Link>
         </Col>
