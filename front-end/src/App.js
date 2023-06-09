@@ -1,5 +1,6 @@
 import Home from "./pages/home.js";
 import Products from "./pages/products.js";
+import Contact from "./pages/contact.js";
 import Navbar from "./components/navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/product/:productId" element={<ProductDetails />} />
       </Routes>
     </BrowserRouter>
