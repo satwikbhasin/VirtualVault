@@ -3,7 +3,7 @@ import { Card, Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../styling/card.css";
 import { useState } from "react";
-import productMapInstance from "../services/productMap";
+import productMapInstance from "../services/productsToMap";
 
 const Products = () => {
   const [hoveredCardIndex, setHoveredCardIndex] = useState(null);

@@ -1,10 +1,10 @@
-import data from "../data.json";
+import Axios from "axios";
 
 class ProductMap {
   constructor() {
     this.map = new Map();
-    data.forEach((item) => {
-      this.map.set(item.product_id, item);
+    Axios.get("http://localhost:3001/getAllProducts").then((res) => {
+      this.addProductsToMap(res.data);
     });
   }
 
