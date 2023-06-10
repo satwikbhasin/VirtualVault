@@ -5,16 +5,31 @@ import { Container, Row, Image, Col, Button } from "react-bootstrap";
 import productMapInstance from "../services/productsToMap";
 import { Link } from "react-router-dom";
 import "../styling/text-styling.css";
+import { useState, useEffect } from "react";
 
 const ProductDetails = () => {
+  const [product, setProduct] = useState(new Map());
+
   const { productId } = useParams();
-  const product = productMapInstance.map.get(productId);
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const fetchedProduct = await productMapInstance.fetchProductById(productId);
+        setProduct(fetchedProduct);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchProduct();
+  }, [productId]);
 
   return (
     <Container>
       <Row className="text-center pt-4">
         <Col className="col-1">
-          <Link to="/products">x
+          <Link to="/products">
             <Button className="btn-dark">Back</Button>
           </Link>
         </Col>

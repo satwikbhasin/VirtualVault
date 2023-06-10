@@ -3,14 +3,22 @@ import Axios from "axios";
 class ProductMap {
   constructor() {
     this.map = new Map();
-    Axios.get("http://localhost:3001/getAllProducts").then((res) => {
-      this.addProductsToMap(res.data);
-    });
+    this.fetchAllProducts();
   }
+
+  fetchAllProducts = async () => {
+    try {
+      const response = await Axios.get("http://localhost:3001/products/getAllProducts");
+      console.log(response.data);
+      this.addProductsToMap(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   addProductsToMap = (products) => {
     products.forEach((item) => {
-      this.map.set(item.product_id, item);
+      this.map.set(item._id, item);
     });
   };
 
@@ -18,7 +26,13 @@ class ProductMap {
     return this.map;
   };
 
-  getProductFromMap = (product_id) => {
+  fetchProductById = async(product_id) => {
+    try {
+      const response = await Axios.get("http://localhost:3001/products/getProduct/" + product_id);
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
     return this.map.get(product_id);
   };
 
