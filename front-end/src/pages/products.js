@@ -2,11 +2,12 @@ import React from "react";
 import { Card, Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../styling/card.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import productMapInstance from "../services/productsToMap";
 
 const Products = () => {
   const [hoveredCardIndex, setHoveredCardIndex] = useState(null);
+  const [productsMap, setProductsMap] = useState(new Map());
 
   const handleMouseEnter = (index) => {
     setHoveredCardIndex(index);
@@ -16,19 +17,29 @@ const Products = () => {
     setHoveredCardIndex(null);
   };
 
-  const productsMap = productMapInstance.getProductsFromMap();
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        setProductsMap(productMapInstance.getProductsFromMap());
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   return (
     <Container>
       <Row className="pt-4 pb-4">
         {Array.from(productsMap.values()).map((item) => (
-          <Col md={4} lg={4} xl={4} key={item.product_id}>
-            <Link to={`/product/${item.product_id}`} class="card-name">
+          <Col md={4} lg={4} xl={4} key={item._id}>
+            <Link to={`/product/${item._id}`} class="card-name">
               <Card
                 className={`m-3 card ${
-                  hoveredCardIndex === item.product_id ? "enlarged" : ""
+                  hoveredCardIndex === item._id ? "enlarged" : ""
                 }`}
-                onMouseEnter={() => handleMouseEnter(item.product_id)}
+                onMouseEnter={() => handleMouseEnter(item._id)}
                 onMouseLeave={handleMouseLeave}
               >
                 <Card.Body>
