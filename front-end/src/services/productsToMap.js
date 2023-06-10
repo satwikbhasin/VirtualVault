@@ -29,7 +29,6 @@ class ProductMap {
   fetchProductById = async(product_id) => {
     try {
       const response = await Axios.get("http://localhost:3001/products/getProduct/" + product_id);
-      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
