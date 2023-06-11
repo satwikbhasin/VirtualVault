@@ -11,7 +11,7 @@ class ProductMap {
       const response = await Axios.get(
         "http://localhost:3001/products/getAllProducts"
       );
-      console.log(response.data);
+      // console.log(response.data);
       this.addProductsToMap(response.data);
     } catch (error) {
       console.log(error);
