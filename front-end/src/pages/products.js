@@ -3,7 +3,8 @@ import { Card, Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../styling/productCard.css";
 import { useState, useEffect } from "react";
-import productMapInstance from "../services/productsToMap";
+import Axios from "axios";
+// import productMapInstance from "../services/productsToMap";
 
 const Products = () => {
   const [hoveredCardIndex, setHoveredCardIndex] = useState(null);
@@ -20,7 +21,15 @@ const Products = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        setProductsMap(productMapInstance.getProductsFromMap());
+        const fetchedProducts = await Axios.get(
+          "http://localhost:3001/products/getAllProducts"
+        );
+        const updatedProductsMap = new Map();
+        fetchedProducts.data.forEach((item) => {
+          updatedProductsMap.set(item._id, item);
+        });
+        setProductsMap(updatedProductsMap);
+        // setProductsMap(productMapInstance.getProductsFromMap());
       } catch (error) {
         console.log(error);
       }
