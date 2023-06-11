@@ -4,7 +4,7 @@ import "../styling/home.css";
 
 function Home() {
   return (
-    <div className="centered">
+    <div class="centered">
       <img src={watermark} alt="" height={400} width={400}></img>
     </div>
   );

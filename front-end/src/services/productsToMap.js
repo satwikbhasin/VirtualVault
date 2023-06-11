@@ -8,7 +8,9 @@ class ProductMap {
 
   fetchAllProducts = async () => {
     try {
-      const response = await Axios.get("http://localhost:3001/products/getAllProducts");
+      const response = await Axios.get(
+        "http://localhost:3001/products/getAllProducts"
+      );
       console.log(response.data);
       this.addProductsToMap(response.data);
     } catch (error) {
@@ -26,9 +28,13 @@ class ProductMap {
     return this.map;
   };
 
-  fetchProductById = async(product_id) => {
+  fetchProductById = async (product_id) => {
+    var response = null;
     try {
-      const response = await Axios.get("http://localhost:3001/products/getProduct/" + product_id);
+      response = await Axios.get(
+        "http://localhost:3001/products/getProduct/" + product_id
+      );
+      console.log(response.data);
     } catch (error) {
       console.log(error);
     }

@@ -1,0 +1,24 @@
+.contact-small-font {
+  font-size: 13px;
+}
+
+.contact-medium-font {
+  font-size: 15px;
+}
+
+.contact-large-font {
+  font-size: 17px;
+}
+
+.contact-name {
+  font-family: Gill Sans, sans-serif;
+}
+
+.card-enlarged:hover {
+  transform: scale(1.2);
+}
+
+.card-enlarged:hover {
+  transform: scale(1.2);
+  color: #0e6842e1;
+}

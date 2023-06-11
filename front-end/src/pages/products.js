@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "../styling/card.css";
+import "../styling/productCard.css";
 import { useState, useEffect } from "react";
 import productMapInstance from "../services/productsToMap";
 
@@ -44,7 +44,7 @@ const Products = () => {
               >
                 <Card.Body>
                   <Card.Img src={item.image} className="card-image" />
-                  <Card.Title className="pt-2" class="font-product-name">
+                  <Card.Title className="pt-2 font-product-name">
                     {item.name}
                   </Card.Title>
                   {/* <Card.Text className="m-2">{item.description}</Card.Text> */}

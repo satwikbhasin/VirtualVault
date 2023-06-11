@@ -2,34 +2,25 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, NavItem } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import "../styling/text-styling.css";
+import "../styling/navbar.css";
 
 function navbar() {
   return (
     <>
-      <Navbar className="navbar navbar-expand-lg navbar-dark bg-dark px-3 py-1">
+      <Navbar className="navbar-dark navbar-first px-3 py-3">
         <NavLink className="navbar-brand" to="/">
-          <h2>Healthkare</h2>
+          <h1 className="navbar-first-heading">Healthkare</h1>
         </NavLink>
       </Navbar>
-      <Navbar className="navbar-dark bg-secondary px-3 sm py-0">
-        <NavItem className="nav-tabs">
-          <NavLink
-            className="text-light no-underline"
-            activeClassName="active"
-            exact
-            to="/products"
-          >
-            <h6>Products</h6>
+      <Navbar className="navbar-second px-3 sm py-0">
+        <NavItem>
+          <NavLink className="text-light no-underline" to="/products">
+            <h5 className="nav-tabs">Products</h5>
           </NavLink>
         </NavItem>
-        <NavItem className="nav-tabs m-3">
-          <NavLink
-            className="text-light no-underline"
-            activeClassName="active"
-            exact
-            to="/contact"
-          >
-            <h6>Contact</h6>
+        <NavItem className="m-3">
+          <NavLink className="text-light no-underline" to="/contact">
+            <h5 className="nav-tabs">Contact</h5>
           </NavLink>
         </NavItem>
       </Navbar>
