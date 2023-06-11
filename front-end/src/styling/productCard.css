@@ -13,7 +13,8 @@
 
 .card.enlarged {
   transform: scale(1.04);
-  background: #c6c6c634;
+  background: #000000e2;
+  color: #dffc00e1;
 }
 
 .card-name{

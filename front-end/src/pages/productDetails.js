@@ -15,7 +15,9 @@ const ProductDetails = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const fetchedProduct = await productMapInstance.fetchProductById(productId);
+        const fetchedProduct = await productMapInstance.fetchProductById(
+          productId
+        );
         setProduct(fetchedProduct);
       } catch (error) {
         console.log(error);
@@ -27,18 +29,16 @@ const ProductDetails = () => {
 
   return (
     <Container>
-      <Row className="text-center pt-4">
-        <Col className="col-1">
-          <Link to="/products">
-            <Button className="btn-dark">Back</Button>
-          </Link>
-        </Col>
-        <Col>
-          <h2 class="font-product-heading">{product.name}</h2>
-        </Col>
+      <Row className="mt-3">
+        <Link to="/products">
+          <Button className="btn-dark">Back</Button>
+        </Link>
+      </Row>
+      <Row className="text-center">
+        <h2 className="font-product-heading">{product.name}</h2>
       </Row>
       <hr />
-      <Row className="pt-3 pb-3">
+      <Row className="pt-1 pb-3">
         <Col className="col-5">
           <Image
             style={{
@@ -52,7 +52,7 @@ const ProductDetails = () => {
           ></Image>
         </Col>
         <Col className="col-7 mt-2">
-          <h3 class="font-product-price">{product.price}</h3>
+          <h3 className="font-product-price">{product.price}</h3>
           <p className="">{product.description}</p>
         </Col>
       </Row>

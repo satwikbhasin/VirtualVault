@@ -1,0 +1,17 @@
+.navbar-first {
+  height: 90px;
+  background-color: #000000e2;
+  justify-content: center;
+
+}
+
+.navbar-second {
+  height: 50px;
+  background-color: #0e6842e1;
+  justify-content: center;
+}
+
+.nav-tabs:hover {
+  transform: scale(1.1);
+  color: #dffc00e1;
+}
