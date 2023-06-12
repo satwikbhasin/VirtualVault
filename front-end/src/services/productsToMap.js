@@ -3,6 +3,7 @@ import Axios from "axios";
 class ProductMap {
   constructor() {
     this.map = new Map();
+    this.productsCount = 0;
   }
 
   initialize = async () => {
@@ -15,7 +16,8 @@ class ProductMap {
     }
   };
 
-  fetchProductsCount = async () => { 
+  fetchProductsCount = async () => {
+    if (this.productsCount > 0) return this.productsCount;
     try {
       const response = await Axios.get(
         "http://localhost:3001/products/getProductsCount"
@@ -28,10 +30,8 @@ class ProductMap {
 
   fetchAllProducts = async () => {
     if (this.map.size > 0) {
-      console.log("Products already fetched");
       return;
     } else {
-      console.log("Fetching products");
       try {
         const response = await Axios.get(
           "http://localhost:3001/products/getAllProducts"
