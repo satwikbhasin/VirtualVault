@@ -3,12 +3,15 @@ import { Card, Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../styling/productCard.css";
 import { useState, useEffect } from "react";
-import Axios from "axios";
-// import productMapInstance from "../services/productsToMap";
+import productMapInstance from "../services/productsToMap";
+import { PaginationControl } from "react-bootstrap-pagination-control";
 
 const Products = () => {
   const [hoveredCardIndex, setHoveredCardIndex] = useState(null);
   const [productsMap, setProductsMap] = useState(new Map());
+  const [totalProductSize, setTotalProducts] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage] = useState(6);
 
   const handleMouseEnter = (index) => {
     setHoveredCardIndex(index);
@@ -21,15 +24,9 @@ const Products = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const fetchedProducts = await Axios.get(
-          "http://localhost:3001/products/getAllProducts"
-        );
-        const updatedProductsMap = new Map();
-        fetchedProducts.data.forEach((item) => {
-          updatedProductsMap.set(item._id, item);
-        });
-        setProductsMap(updatedProductsMap);
-        // setProductsMap(productMapInstance.getProductsFromMap());
+        const totalProductSize = await productMapInstance.initialize();
+        setTotalProducts(totalProductSize.count);
+        setProductsMap(productMapInstance.getAllProductsFromMap());
       } catch (error) {
         console.log(error);
       }
@@ -38,14 +35,33 @@ const Products = () => {
     fetchProducts();
   }, []);
 
+  // Calculate indexes of the products to display on the current page
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = Array.from(productsMap.values()).slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
+
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <Container>
-      <Row className="pt-4 pb-4">
-        {Array.from(productsMap.values()).map((item) => (
+      <Row className="mt-4">
+        <PaginationControl
+          page={currentPage}
+          limit={productsPerPage}
+          total={totalProductSize}
+          changePage={paginate}
+        />
+      </Row>
+      <Row className="pb-4">
+        {currentProducts.map((item) => (
           <Col md={4} lg={4} xl={4} key={item._id}>
             <Link to={`/product/${item._id}`} class="card-name">
               <Card
-                className={`m-3 card ${
+                className={`m-2 card ${
                   hoveredCardIndex === item._id ? "enlarged" : ""
                 }`}
                 onMouseEnter={() => handleMouseEnter(item._id)}
@@ -56,7 +72,13 @@ const Products = () => {
                   <Card.Title className="pt-2 font-product-name">
                     {item.name}
                   </Card.Title>
-                  {/* <Card.Text className="m-2">{item.description}</Card.Text> */}
+                  {/* {hoveredCardIndex === item._id ? (
+                    <Card.Text className="card-product-price">
+                      {item.price}
+                    </Card.Text>
+                  ) : (
+                    ""
+                  )} */}
                 </Card.Body>
               </Card>
             </Link>

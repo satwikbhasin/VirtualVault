@@ -2,8 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useParams } from "react-router-dom";
 import { Container, Row, Image, Col, Button } from "react-bootstrap";
-// import productMapInstance from "../services/productsToMap";
-import Axios from "axios";
+import productMapInstance from "../services/productsToMap";
 import { Link } from "react-router-dom";
 import "../styling/text-styling.css";
 import { useState, useEffect } from "react";
@@ -16,14 +15,11 @@ const ProductDetails = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const fetchedProduct = await Axios.get(
-          "http://localhost:3001/products/getProduct/" + productId
+        await productMapInstance.fetchAllProducts();
+        const fetchedProduct = await productMapInstance.getProductByIdFromMap(
+          productId
         );
-        setProduct(fetchedProduct.data);
-        // const fetchedProduct = await productMapInstance.fetchProductById(
-        //   productId
-        // );
-        // setProduct(fetchedProduct);
+        setProduct(fetchedProduct);
       } catch (error) {
         console.log(error);
       }
