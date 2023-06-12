@@ -72,13 +72,6 @@ const Products = () => {
                   <Card.Title className="pt-2 font-product-name">
                     {item.name}
                   </Card.Title>
-                  {/* {hoveredCardIndex === item._id ? (
-                    <Card.Text className="card-product-price">
-                      {item.price}
-                    </Card.Text>
-                  ) : (
-                    ""
-                  )} */}
                 </Card.Body>
               </Card>
             </Link>
