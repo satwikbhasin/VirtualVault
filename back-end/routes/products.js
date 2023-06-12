@@ -1,20 +1,16 @@
 var express = require("express");
 var router = express.Router();
 
-const mongoose = require("mongoose");
-
-mongoose
-  .connect(
-    "mongodb+srv://healthkare:Thumbsup10@healthkare.mlizocs.mongodb.net/Healthkare",
-    {
-      useNewUrlParser: true,
-    }
-  )
-  .then(() => {
-    console.log("Connected to MongoDB");
-  });
-
 const ProductModel = require("../models/Product.js");
+
+router.get("/getProductsCount", async (req, res) => {
+  try {
+    const productCount = await ProductModel.countDocuments({});
+    res.send({ count: productCount });
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 router.get("/getAllProducts", async (req, res) => {
   try {

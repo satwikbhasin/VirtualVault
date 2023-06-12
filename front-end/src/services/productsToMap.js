@@ -3,50 +3,54 @@ import Axios from "axios";
 class ProductMap {
   constructor() {
     this.map = new Map();
-    this.fetchAllProducts();
   }
 
-  fetchAllProducts = async () => {
+  initialize = async () => {
     try {
-      const response = await Axios.get(
-        "http://localhost:3001/products/getAllProducts"
-      );
-      // console.log(response.data);
-      this.addProductsToMap(response.data);
+      const productsCount = await this.fetchProductsCount();
+      await this.fetchAllProducts();
+      return productsCount;
     } catch (error) {
       console.log(error);
     }
   };
 
-  addProductsToMap = (products) => {
-    products.forEach((item) => {
-      this.map.set(item._id, item);
-    });
+  fetchProductsCount = async () => { 
+    try {
+      const response = await Axios.get(
+        "http://localhost:3001/products/getProductsCount"
+      );
+      return response.data;
+    } catch (error) {
+      throw new Error("Failed to fetch products count: " + error.message);
+    }
   };
 
-  getProductsFromMap = () => {
+  fetchAllProducts = async () => {
+    if (this.map.size > 0) {
+      console.log("Products already fetched");
+      return;
+    } else {
+      console.log("Fetching products");
+      try {
+        const response = await Axios.get(
+          "http://localhost:3001/products/getAllProducts"
+        );
+        response.data.forEach((item) => {
+          this.map.set(item._id, item);
+        });
+      } catch (error) {
+        throw new Error("Failed to fetch products: " + error.message);
+      }
+    }
+  };
+
+  getAllProductsFromMap = () => {
     return this.map;
   };
 
-  fetchProductById = async (product_id) => {
-    var response = null;
-    try {
-      response = await Axios.get(
-        "http://localhost:3001/products/getProduct/" + product_id
-      );
-      console.log(response.data);
-    } catch (error) {
-      console.log(error);
-    }
+  getProductByIdFromMap = (product_id) => {
     return this.map.get(product_id);
-  };
-
-  deleteProductFromMap = (product_id) => {
-    this.map.delete(product_id);
-  };
-
-  updateProductInMap = (product) => {
-    this.map.set(product.product_id, product);
   };
 }
 

@@ -1,5 +1,6 @@
 .contact-small-font {
   font-size: 13px;
+  color: #000000;
 }
 
 .contact-medium-font {
@@ -12,10 +13,6 @@
 
 .contact-name {
   font-family: Gill Sans, sans-serif;
-}
-
-.card-enlarged:hover {
-  transform: scale(1.2);
 }
 
 .card-enlarged:hover {

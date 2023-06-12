@@ -1,6 +1,7 @@
 .card {
   width: 400px;
   height: 300px;
+  max-height: 300px;
   transition: transform 0.3s ease;
 }
 
@@ -12,12 +13,25 @@
 }
 
 .card.enlarged {
+  max-height: fit-content;
+  max-width: 400px;
   transform: scale(1.04);
   background: #000000e2;
   color: #dffc00e1;
 }
 
-.card-name{
+.card-name {
   text-decoration: none;
   text-align: center;
+}
+
+.card-normal {
+  height: fit-content;
+}
+
+.card-product-price {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: #dffc00e1;
 }

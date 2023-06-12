@@ -4,8 +4,18 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var cors = require("cors");
+var mongoose = require("mongoose");
 
 var productsRouter = require("./routes/products");
+
+mongoose
+  .connect(
+    "mongodb+srv://healthkare:Thumbsup10@healthkare.mlizocs.mongodb.net/Healthkare",
+    {
+      useNewUrlParser: true,
+    }
+  )
+  .catch((err) => console.log(err));
 
 var app = express();
 
