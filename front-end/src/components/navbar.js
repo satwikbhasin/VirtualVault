@@ -13,14 +13,19 @@ function navbar() {
         </NavLink>
       </Navbar>
       <Navbar className="navbar-second px-3 sm py-0">
-        <NavItem>
+        <NavItem className="m-2">
           <NavLink className="text-light no-underline" to="/products">
             <h5 className="nav-tabs">Products</h5>
           </NavLink>
         </NavItem>
-        <NavItem className="m-3">
+        <NavItem className="m-2">
           <NavLink className="text-light no-underline" to="/contact">
             <h5 className="nav-tabs">Contact</h5>
+          </NavLink>
+        </NavItem>
+        <NavItem className="m-2">
+          <NavLink className="text-light no-underline" to="/inventory">
+            <h5 className="nav-tabs">Inventory</h5>
           </NavLink>
         </NavItem>
       </Navbar>
