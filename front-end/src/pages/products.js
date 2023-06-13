@@ -26,7 +26,7 @@ const Products = () => {
       try {
         const totalProductSize = await productMapInstance.initialize();
         setTotalProducts(totalProductSize.count);
-        setProductsMap(productMapInstance.getAllProductsFromMap());
+        setProductsMap(await productMapInstance.getAllProductsFromMap());
       } catch (error) {
         console.log(error);
       }

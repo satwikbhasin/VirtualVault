@@ -45,7 +45,7 @@ class ProductMap {
     }
   };
 
-  getAllProductsFromMap = () => {
+  getAllProductsFromMap = async () => {
     return this.map;
   };
 
