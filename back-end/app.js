@@ -8,14 +8,13 @@ var mongoose = require("mongoose");
 
 var productsRouter = require("./routes/products");
 
-mongoose
-  .connect(
-    "mongodb+srv://healthkare:Thumbsup10@healthkare.mlizocs.mongodb.net/Healthkare",
-    {
-      useNewUrlParser: true,
-    }
-  )
-  .catch((err) => console.log(err));
+
+mongoose.connect(
+  "mongodb+srv://healthkare:Thumbsup10@healthkare.mlizocs.mongodb.net/Healthkare",
+  {
+    useNewUrlParser: true,
+  }
+).catch(err => console.log(err));
 
 var app = express();
 
