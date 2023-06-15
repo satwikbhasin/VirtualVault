@@ -59,8 +59,8 @@ router.post("/insert/", async (req, res) => {
     await product.save().then((result) => {
       res.send(result);
     });
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    res.send(error);
   }
 });
 
@@ -85,8 +85,7 @@ router.post(
         res.send(data.Location);
       })
       .catch((error) => {
-        console.error("Error uploading image:", error);
-        throw error;
+        res.send(error);
       });
   }
 );
@@ -106,8 +105,9 @@ router.put("/update/", async (req, res) => {
         description: newDescription,
       }
     );
-  } catch (err) {
-    console.log(err);
+    res.status(200);
+  } catch (error) {
+    res.send(error);
   }
 });
 
@@ -124,8 +124,8 @@ router.put("/updateImage/", async (req, res) => {
     ).then((result) => {
       res.send(result);
     });
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    res.send(error);
   }
 });
 
