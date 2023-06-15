@@ -9,12 +9,15 @@ import {
   Form,
   Tab,
   Tabs,
+  Col,
+  Row,
 } from "react-bootstrap";
 import productMapInstance from "../services/productsToMap";
 
 const Inventory = () => {
   const formRef = useRef(null);
   var [productMap, setProductMap] = useState(new Map());
+  const [productId, setProductId] = useState("");
   const [productName, setProductName] = useState("");
   const [productPrice, setProductPrice] = useState("");
   const [productDescription, setProductDescription] = useState("");
@@ -23,17 +26,14 @@ const Inventory = () => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => {
-    setShow(true);
-  };
+  const handleShow = () => setShow(true);
 
-  const [updatedName, setUpdatedName] = useState("");
-  const [updatedPrice, setUpdatedPrice] = useState("");
-  const [updatedId, setUpdatedId] = useState("");
-  const [updatedDescription, setUpdatedDescription] = useState("");
-
-  const handleRefresh = (e) => {
+  const reset_refresh = (e) => {
     e.preventDefault();
+    setProductName("");
+    setProductPrice("");
+    setProductDescription("");
+    setProductImageFile(null);
     window.location.reload();
   };
 
@@ -50,38 +50,43 @@ const Inventory = () => {
     fetchProducts();
   }, [productMap]);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    addProduct();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (
+      productName.trim() === "" ||
+      productPrice.trim() === "" ||
+      productDescription.trim() === "" ||
+      productImageFile === null
+    ) {
+      return alert("Please fill all fields");
+    } else {
+      await addProduct();
+      alert("Product added successfully");
+    }
 
     formRef.current.reset();
   };
 
-  const addProduct = () => {
+  const addProduct = async () => {
     try {
       Axios.post("http://localhost:3001/products/insert/", {
         productName: productName,
         productPrice: "$" + productPrice,
         productImage: "no-link",
         productDescription: productDescription,
-      })
-        .then((response) => {
-          uploadImage(response.data._id);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      }).then((response) => {
+        uploadImage(response.data._id, productImageFile);
+      });
     } catch (error) {
-      console.log(error);
+      alert("Product upload failed: " + error);
     }
   };
 
-  const uploadImage = (mongoProductId) => {
+  const uploadImage = async (mongoProductId, imageFile) => {
     try {
       const imageData = new FormData();
-      imageData.append("image", productImageFile);
-      Axios.post(
+      imageData.append("image", imageFile);
+      await Axios.post(
         "http://localhost:3001/products/uploadImage/" + mongoProductId,
         imageData
       )
@@ -89,7 +94,7 @@ const Inventory = () => {
           updateProductImage(mongoProductId, response.data);
         })
         .catch((error) => {
-          console.log(error);
+          alert("Image upload failed: " + error);
         });
     } catch (error) {
       console.log(error);
@@ -97,12 +102,25 @@ const Inventory = () => {
   };
 
   const updateProduct = () => {
+    if (
+      !(productName || productPrice || productDescription || productImageFile)
+    ) {
+      return;
+    }
+
+    if (productImageFile != null) {
+      console.log("Updating image");
+      uploadImage(productId, productImageFile);
+    }
+
     try {
       Axios.put("http://localhost:3001/products/update/", {
-        id: updatedId,
-        updatedName: updatedName,
-        updatedPrice: updatedPrice,
-        updatedDescription: updatedDescription,
+        id: productId,
+        updatedName: productName || undefined,
+        updatedPrice: "$" + productPrice || undefined,
+        updatedDescription: productDescription || undefined,
+      }).then((response) => {
+        console.log(response);
       });
     } catch (error) {
       console.log(error);
@@ -131,7 +149,7 @@ const Inventory = () => {
           className="text-center"
         >
           <Button
-            onClick={handleRefresh}
+            onClick={reset_refresh}
             className="bg-success border-success btn-small"
           >
             <svg
@@ -179,7 +197,7 @@ const Inventory = () => {
                       variant="success"
                       onClick={() => {
                         handleShow();
-                        setUpdatedId(product._id);
+                        setProductId(product._id);
                       }}
                     >
                       Update
@@ -191,102 +209,141 @@ const Inventory = () => {
           </Table>
         </Tab>
         <Tab eventKey="addProduct" title="Add a Product">
-          <Container style={{ display: "flex", justifyContent: "center" }}>
+          <Container
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              textAlign: "center",
+            }}
+          >
             <Form ref={formRef} onSubmit={handleSubmit}>
-              <Form.Group>
-                <Form.Label className="fw-bold">Name:</Form.Label>
-                <Form.Control
-                  type="text"
-                  onChange={(event) => setProductName(event.target.value)}
-                  className="mb-4"
-                />
-              </Form.Group>
-              <Form.Group>
-                <Form.Label className="fw-bold">Description:</Form.Label>
-                <Form.Control
-                  type="text"
-                  onChange={(event) =>
-                    setProductDescription(event.target.value)
-                  }
-                  className="mb-4"
-                />
-              </Form.Group>
-              <Form.Group>
-                <Form.Label className="fw-bold">Price:</Form.Label>
-                <Form.Control
-                  type="text"
-                  onChange={(event) => setProductPrice(event.target.value)}
-                  className="mb-4"
-                />
-              </Form.Group>
+              <Row>
+                <Col className="m-4">
+                  <Form.Group>
+                    <Form.Label className="fw-bold">
+                      <h4>Name</h4>
+                    </Form.Label>
+                    <Form.Control
+                      type="text"
+                      onChange={(event) => setProductName(event.target.value)}
+                      className="mb-4"
+                    />
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label className="fw-bold">
+                      <h4>Description</h4>
+                    </Form.Label>
+                    <Form.Control
+                      type="text"
+                      onChange={(event) =>
+                        setProductDescription(event.target.value)
+                      }
+                      className=""
+                    />
+                  </Form.Group>
+                </Col>
+                <Col className="m-4">
+                  <Form.Group>
+                    <Form.Label className="fw-bold">
+                      <h4>Price</h4>
+                    </Form.Label>
+                    <Form.Control
+                      type="text"
+                      onChange={(event) => setProductPrice(event.target.value)}
+                      className="mb-4"
+                    />
+                  </Form.Group>
 
-              <Form.Group>
-                <Form.Label className="fw-bold">Image:</Form.Label>
-                <Form.Control
-                  type="file"
-                  className="mb-4 input"
-                  onChange={(event) => {
-                    setProductImageFile(event.target.files[0]);
-                  }}
-                ></Form.Control>
-              </Form.Group>
-
-              <div style={{ display: "flex", justifyContent: "center" }}>
-                <Button variant="dark" type="submit">
+                  <Form.Group>
+                    <Form.Label className="fw-bold">
+                      <h4>Image</h4>
+                    </Form.Label>
+                    <Form.Control
+                      type="file"
+                      className="mb-4 input"
+                      accept="image/*"
+                      onChange={(event) => {
+                        setProductImageFile(event.target.files[0]);
+                      }}
+                    ></Form.Control>
+                  </Form.Group>
+                </Col>
+              </Row>
+              <Row>
+                <Button
+                  variant="dark"
+                  type="submit"
+                  style={{ display: "flex", justifyContent: "center" }}
+                >
                   Add Product
                 </Button>
-              </div>
+              </Row>
             </Form>
           </Container>
         </Tab>
       </Tabs>
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Update Product</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
+        <Form>
+          <Modal.Header closeButton>
+            <Modal.Title>Update Product</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
             <Form.Group>
               <Form.Label>
                 <p className="fw-bold">New Name:</p>
               </Form.Label>
               <Form.Control
                 className="mb-3"
-                onChange={(event) => setUpdatedName(event.target.value)}
+                onChange={(event) => setProductName(event.target.value)}
               ></Form.Control>
             </Form.Group>
             <Form.Group>
               <Form.Label>
-                <p className="fw-bold">New Price:</p>
+                <p className="fw-bold">New Description</p>
               </Form.Label>
               <Form.Control
-                onChange={(event) => setUpdatedPrice(event.target.value)}
+                className="mb-3"
+                onChange={(event) => setProductDescription(event.target.value)}
               ></Form.Control>
             </Form.Group>
             <Form.Group>
               <Form.Label>
-                <p className="fw-bold">New Description:</p>
+                <p className="fw-bold">New Price</p>
               </Form.Label>
               <Form.Control
-                onChange={(event) => setUpdatedDescription(event.target.value)}
+                className="mb-3"
+                onChange={(event) => setProductPrice(event.target.value)}
               ></Form.Control>
             </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button
-            variant="primary"
-            onClick={() => {
-              handleClose();
-              updateProduct();
-            }}
-          >
-            Save Changes
-          </Button>
-        </Modal.Footer>
+            <Form.Group>
+              <Form.Label className="fw-bold">
+                <p>New Image</p>
+              </Form.Label>
+              <Form.Control
+                type="file"
+                className="mb-4 input"
+                accept="image/*"
+                onChange={(event) => {
+                  setProductImageFile(event.target.files[0]);
+                }}
+              ></Form.Control>
+            </Form.Group>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button
+              variant="primary"
+              onClick={() => {
+                handleClose();
+                updateProduct();
+              }}
+            >
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        </Form>
       </Modal>
     </Container>
   );
