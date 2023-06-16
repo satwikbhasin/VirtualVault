@@ -64,7 +64,7 @@ const Products = () => {
         <Row className="pb-4">
           {currentProducts.map((item) => (
             <Col md={4} lg={4} xl={4} key={item._id}>
-              <Link to={`/product/${item._id}`} class="card-name">
+              <Link to={`/user/product/${item._id}`} class="card-name">
                 <Card
                   className={`m-2 card ${
                     hoveredCardIndex === item._id ? "enlarged" : ""

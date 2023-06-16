@@ -1,5 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
-import Axios from "axios";
+import { Alert } from "react-bootstrap";
+import {
+  addProduct,
+  deleteProduct,
+  updateProduct,
+} from "../services/inventoryAPIs";
+
 import {
   Container,
   Image,
@@ -18,26 +24,50 @@ import AdminNavbar from "../components/adminNavbar";
 
 const Inventory = () => {
   const formRef = useRef(null);
+
   var [productMap, setProductMap] = useState(new Map());
-  const [productId, setProductId] = useState("");
-  const [productName, setProductName] = useState("");
-  const [productPrice, setProductPrice] = useState("");
-  const [productDescription, setProductDescription] = useState("");
-  const [productImageFile, setProductImageFile] = useState(null);
-  const [totalProductCount, setTotalProductCount] = useState("");
 
-  const [show, setShow] = useState(false);
+  const [product, setProduct] = useState({
+    id: "",
+    name: "",
+    price: "",
+    description: "",
+    imageFile: null,
+  });
+  const [updatedProduct, setUpdatedProduct] = useState({
+    id: "",
+    name: "",
+    price: "",
+    description: "",
+    imageFile: null,
+  });
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [totalProductCount, setTotalProductCount] = useState(0);
 
-  const reset_refresh = (e) => {
-    e.preventDefault();
-    setProductName("");
-    setProductPrice("");
-    setProductDescription("");
-    setProductImageFile(null);
+  const [showUpdateModal, setShowUpdateModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [addProductAlert, setAddProductAlert] = useState(false);
+  const [updateProductAlert, setUpdateProductAlert] = useState(false);
+
+  const refresh = () => {
     window.location.reload();
+  };
+
+  const reset = () => {
+    setProduct({
+      id: "",
+      name: "",
+      price: "",
+      description: "",
+      imageFile: null,
+    });
+    setUpdatedProduct({
+      id: "",
+      name: "",
+      price: "",
+      description: "",
+      imageFile: null,
+    });
   };
 
   useEffect(() => {
@@ -54,93 +84,45 @@ const Inventory = () => {
     fetchProducts();
   }, [productMap]);
 
-  const handleSubmit = async (e) => {
+  const handleAddProduct = async (e) => {
     e.preventDefault();
     if (
-      productName.trim() === "" ||
-      productPrice.trim() === "" ||
-      productDescription.trim() === "" ||
-      productImageFile === null
+      product.name.trim() === "" ||
+      product.price.trim() === "" ||
+      product.description.trim() === "" ||
+      product.imageFile === null
     ) {
-      return alert("Please fill all fields");
+      setAddProductAlert(true);
     } else {
-      await addProduct();
-      alert("Product added successfully");
-    }
-
-    formRef.current.reset();
-  };
-
-  const addProduct = async () => {
-    try {
-      Axios.post("http://localhost:3001/products/insert/", {
-        productName: productName,
-        productPrice: "$" + productPrice,
-        productImage: "no-link",
-        productDescription: productDescription,
-      }).then((response) => {
-        uploadImage(response.data._id, productImageFile);
+      await addProduct(product).then(() => {
+        alert("Product added successfully");
+        reset();
+        formRef.current.reset();
       });
-    } catch (error) {
-      alert("Product upload failed: " + error);
     }
   };
 
-  const uploadImage = async (mongoProductId, imageFile) => {
-    try {
-      const imageData = new FormData();
-      imageData.append("image", imageFile);
-      await Axios.post(
-        "http://localhost:3001/s3Methods/uploadImage/" + mongoProductId,
-        imageData
-      )
-        .then((response) => {
-          updateProductImage(mongoProductId, response.data);
-        })
-        .catch((error) => {
-          alert("Image upload failed: " + error);
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const handleUpdateProduct = async (e) => {
+    e.preventDefault();
 
-  const updateProduct = () => {
     if (
-      !(productName || productPrice || productDescription || productImageFile)
+      (updatedProduct.name.trim() === product.name ||
+        updatedProduct.name === "") &&
+      (updatedProduct.price.trim() === product.price ||
+        updatedProduct.price === "") &&
+      (updatedProduct.description.trim() === product.description ||
+        updatedProduct.description === "") &&
+      updatedProduct.imageFile === null
     ) {
-      return;
-    }
-
-    if (productImageFile != null) {
-      console.log("Updating image");
-      uploadImage(productId, productImageFile);
-    }
-
-    try {
-      Axios.put("http://localhost:3001/products/update/", {
-        id: productId,
-        updatedName: productName || undefined,
-        updatedPrice: productPrice || undefined,
-        updatedDescription: productDescription || undefined,
-      }).then((response) => {
-        console.log(response);
+      setUpdateProductAlert(true);
+    } else {
+      setShowUpdateModal(false);
+      console.log(updatedProduct);
+      await updateProduct(updatedProduct).then(() => {
+        alert("Product updated successfully");
+        reset();
+        formRef.current.reset();
       });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const updateProductImage = (mongoProductId, imageLink) => {
-    try {
-      Axios.put("http://localhost:3001/products/updateImage/", {
-        id: mongoProductId,
-        image: imageLink,
-      }).then((response) => {
-        console.log(response);
-      });
-    } catch (error) {
-      console.log(error);
     }
   };
 
@@ -156,7 +138,7 @@ const Inventory = () => {
             className="text-center"
           >
             <Button
-              onClick={reset_refresh}
+              onClick={refresh}
               className="bg-success border-success btn-small"
             >
               <svg
@@ -181,6 +163,7 @@ const Inventory = () => {
                   <th>Description</th>
                   <th>Price</th>
                   <th>Update</th>
+                  <th>Delete</th>
                 </tr>
               </thead>
               <tbody>
@@ -200,17 +183,42 @@ const Inventory = () => {
                       />
                     </td>
                     <td style={{ width: "400px" }}>{product.description}</td>
-                    <td style={{ width: "100px" }}>{product.price}</td>
+                    <td style={{ width: "100px" }}>${product.price}</td>
                     <td style={{ width: "100px" }}>
                       <Button
                         size="sm"
                         variant="success"
                         onClick={() => {
-                          handleShow();
-                          setProductId(product._id);
+                          setProduct({
+                            id: product._id,
+                            name: product.name,
+                            price: product.price,
+                            description: product.description,
+                            imageFile: null,
+                          });
+                          setUpdatedProduct({
+                            id: product._id,
+                            name: product.name,
+                            price: product.price,
+                            description: product.description,
+                            imageFile: null,
+                          });
+                          setShowUpdateModal(true);
                         }}
                       >
                         Update
+                      </Button>
+                    </td>
+                    <td style={{ width: "100px" }}>
+                      <Button
+                        size="sm"
+                        variant="danger"
+                        onClick={() => {
+                          setProduct({ id: product._id });
+                          setShowDeleteModal(true);
+                        }}
+                      >
+                        Delete
                       </Button>
                     </td>
                   </tr>
@@ -226,7 +234,7 @@ const Inventory = () => {
                 textAlign: "center",
               }}
             >
-              <Form ref={formRef} onSubmit={handleSubmit}>
+              <Form ref={formRef} onSubmit={handleAddProduct}>
                 <Row>
                   <Col className="m-4">
                     <Form.Group>
@@ -235,7 +243,12 @@ const Inventory = () => {
                       </Form.Label>
                       <Form.Control
                         type="text"
-                        onChange={(event) => setProductName(event.target.value)}
+                        onChange={(event) =>
+                          setProduct((prevProduct) => ({
+                            ...prevProduct,
+                            name: event.target.value,
+                          }))
+                        }
                         className="mb-4"
                       />
                     </Form.Group>
@@ -246,7 +259,10 @@ const Inventory = () => {
                       <Form.Control
                         type="text"
                         onChange={(event) =>
-                          setProductDescription(event.target.value)
+                          setProduct((prevProduct) => ({
+                            ...prevProduct,
+                            description: event.target.value,
+                          }))
                         }
                         className=""
                       />
@@ -258,9 +274,12 @@ const Inventory = () => {
                         <h4>Price</h4>
                       </Form.Label>
                       <Form.Control
-                        type="text"
+                        type="number"
                         onChange={(event) =>
-                          setProductPrice(event.target.value)
+                          setProduct((prevProduct) => ({
+                            ...prevProduct,
+                            price: event.target.value,
+                          }))
                         }
                         className="mb-4"
                       />
@@ -272,30 +291,50 @@ const Inventory = () => {
                       </Form.Label>
                       <Form.Control
                         type="file"
-                        className="mb-4 input"
+                        className="input"
                         accept="image/*"
                         onChange={(event) => {
-                          setProductImageFile(event.target.files[0]);
+                          setProduct((prevProduct) => ({
+                            ...prevProduct,
+                            imageFile: event.target.files[0],
+                          }));
                         }}
                       ></Form.Control>
                     </Form.Group>
                   </Col>
                 </Row>
+                <Row className="mb-2">
+                  {addProductAlert && (
+                    <Alert variant="danger" className="mt-4 p-1">
+                      Please fill out all fields
+                    </Alert>
+                  )}
+                </Row>
                 <Row>
-                  <Button
-                    variant="dark"
-                    type="submit"
-                    style={{ display: "flex", justifyContent: "center" }}
+                  <Col
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      textAlign: "center",
+                    }}
                   >
-                    Add Product
-                  </Button>
+                    <Button variant="dark" type="submit">
+                      Add Product
+                    </Button>
+                  </Col>
                 </Row>
               </Form>
             </Container>
           </Tab>
         </Tabs>
-        <Modal show={show} onHide={handleClose}>
-          <Form>
+
+        <Modal
+          show={showUpdateModal}
+          onHide={() => {
+            setShowUpdateModal(false);
+          }}
+        >
+          <Form onSubmit={handleUpdateProduct}>
             <Modal.Header closeButton>
               <Modal.Title>Update Product</Modal.Title>
             </Modal.Header>
@@ -306,7 +345,12 @@ const Inventory = () => {
                 </Form.Label>
                 <Form.Control
                   className="mb-3"
-                  onChange={(event) => setProductName(event.target.value)}
+                  onChange={(event) => {
+                    setUpdatedProduct((prevProduct) => ({
+                      ...prevProduct,
+                      name: event.target.value,
+                    }));
+                  }}
                 ></Form.Control>
               </Form.Group>
               <Form.Group>
@@ -315,9 +359,12 @@ const Inventory = () => {
                 </Form.Label>
                 <Form.Control
                   className="mb-3"
-                  onChange={(event) =>
-                    setProductDescription(event.target.value)
-                  }
+                  onChange={(event) => {
+                    setUpdatedProduct((prevProduct) => ({
+                      ...prevProduct,
+                      description: event.target.value,
+                    }));
+                  }}
                 ></Form.Control>
               </Form.Group>
               <Form.Group>
@@ -326,7 +373,13 @@ const Inventory = () => {
                 </Form.Label>
                 <Form.Control
                   className="mb-3"
-                  onChange={(event) => setProductPrice(event.target.value)}
+                  type="number"
+                  onChange={(event) => {
+                    setUpdatedProduct((prevProduct) => ({
+                      ...prevProduct,
+                      price: event.target.value,
+                    }));
+                  }}
                 ></Form.Control>
               </Form.Group>
               <Form.Group>
@@ -338,26 +391,64 @@ const Inventory = () => {
                   className="mb-4 input"
                   accept="image/*"
                   onChange={(event) => {
-                    setProductImageFile(event.target.files[0]);
+                    setUpdatedProduct((prevProduct) => ({
+                      ...prevProduct,
+                      imageFile: event.target.files[0],
+                    }));
                   }}
                 ></Form.Control>
               </Form.Group>
+              {updateProductAlert && (
+                <Alert variant="danger" className="mt-4 p-1">
+                  Please change at least one field
+                </Alert>
+              )}
             </Modal.Body>
+
             <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>
-                Close
-              </Button>
               <Button
-                variant="primary"
+                variant="dark"
                 onClick={() => {
-                  handleClose();
-                  updateProduct();
+                  setShowUpdateModal(false);
+                  setUpdateProductAlert(false);
                 }}
               >
+                Close
+              </Button>
+              <Button variant="success" type="submit">
                 Save Changes
               </Button>
             </Modal.Footer>
           </Form>
+        </Modal>
+        <Modal
+          show={showDeleteModal}
+          onHide={() => {
+            setShowDeleteModal(false);
+          }}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Delete Product</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Are you sure you want to delete this product?</Modal.Body>
+          <Modal.Footer>
+            <Button
+              variant="dark"
+              onClick={() => {
+                setShowDeleteModal(false);
+              }}
+            >
+              Cancel
+            </Button>
+            <Button
+              variant="danger"
+              onClick={() => {
+                deleteProduct(product.id);
+              }}
+            >
+              Confirm
+            </Button>
+          </Modal.Footer>
         </Modal>
       </Container>
     </>

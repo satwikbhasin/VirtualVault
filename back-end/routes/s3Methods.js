@@ -40,4 +40,21 @@ router.post(
   }
 );
 
+router.delete("/deleteImage/:mongoProductId", async (req, res) => {
+  const s3 = new AWS.S3();
+  const params = {
+    Bucket: "healthkare",
+    Key: "product-images/" + req.params.mongoProductId + ".jpeg",
+  };
+
+  s3.deleteObject(params)
+    .promise()
+    .then(() => {
+      res.send({ message: "Delete Successful" });
+    })
+    .catch((error) => {
+      res.send(error);
+    });
+});
+
 module.exports = router;

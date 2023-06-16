@@ -66,8 +66,9 @@ router.put("/update/", async (req, res) => {
         price: newPrice,
         description: newDescription,
       }
-    );
-    res.status(200);
+    ).then(() => {
+      res.status(200).send("Update successful");
+    });
   } catch (error) {
     res.send(error);
   }
@@ -83,11 +84,22 @@ router.put("/updateImage/", async (req, res) => {
       {
         image: newImage,
       }
-    ).then((result) => {
-      res.send(result);
+    ).then(() => {
+      res.status(200).send("Update Successful");
     });
   } catch (error) {
     res.send(error);
+  }
+});
+
+router.delete("/delete/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    await ProductModel.deleteOne({ _id: id }).then(() => {
+      res.send(200);
+    });
+  } catch (error) {
+    res.status(500).send(error);
   }
 });
 
