@@ -1,6 +1,6 @@
 import Axios from "axios";
 
-class ProductMap {
+class ProductCache {
   constructor() {
     this.map = new Map();
     this.productsCount = 0;
@@ -54,6 +54,6 @@ class ProductMap {
   };
 }
 
-const productMapInstance = new ProductMap();
+const productCacheInstance = new ProductCache();
 
-export default productMapInstance;
+export default productCacheInstance;

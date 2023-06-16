@@ -2,7 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useParams } from "react-router-dom";
 import { Container, Row, Image, Col, Button } from "react-bootstrap";
-import productMapInstance from "../services/productsToMap";
+import productMapInstance from "../services/productCacher";
 import { Link } from "react-router-dom";
 import "../styling/text-styling.css";
 import { useState, useEffect } from "react";
