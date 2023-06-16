@@ -5,6 +5,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var cors = require("cors");
 var mongoose = require("mongoose");
+const bodyParser = require('body-parser');
 
 var productsRouter = require("./routes/products");
 var s3MethodsRouter = require("./routes/s3Methods");
@@ -20,6 +21,13 @@ mongoose
   .catch((err) => console.log(err));
 
 var app = express();
+
+// Parse incoming requests with JSON payloads
+app.use(bodyParser.json());
+
+// Parse incoming requests with URL-encoded payloads
+app.use(bodyParser.urlencoded({ extended: true }));
+
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));

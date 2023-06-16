@@ -8,6 +8,8 @@ router.post("/login", async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
 
+  console.log(email, password);
+
   try {
     const user = await UserModel.findOne({ email: email });
     if (!user) {
@@ -28,7 +30,7 @@ router.post("/login", async (req, res) => {
           .send({ message: "success" })
           .status(200);
       } else {
-        res.status(201).send({ message: "fail" });
+        res.status(200).send({ message: "fail" });
       }
     }
   } catch (err) {

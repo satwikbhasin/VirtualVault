@@ -31,7 +31,7 @@ const ProductDetails = () => {
   return (
     <Container>
       <Row className="mt-3">
-        <Link to="/products">
+        <Link to="/user/products">
           <Button className="btn-dark">Back</Button>
         </Link>
       </Row>
@@ -53,7 +53,7 @@ const ProductDetails = () => {
           ></Image>
         </Col>
         <Col className="col-7 mt-2">
-          <h3 className="font-product-price">{product.price}</h3>
+          <h3 className="font-product-price">${product.price}</h3>
           <p className="">{product.description}</p>
         </Col>
       </Row>
