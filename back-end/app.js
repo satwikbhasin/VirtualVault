@@ -7,14 +7,17 @@ var cors = require("cors");
 var mongoose = require("mongoose");
 
 var productsRouter = require("./routes/products");
+var s3MethodsRouter = require("./routes/s3Methods");
+var usersRouter = require("./routes/users");
 
-
-mongoose.connect(
-  process.env.MONGODB_URL,
-  {
-    useNewUrlParser: true,
-  }
-).catch(err => console.log(err));
+mongoose
+  .connect(
+    process.env.MONGODB_URL,
+    {
+      useNewUrlParser: true,
+    }
+  )
+  .catch((err) => console.log(err));
 
 var app = express();
 
@@ -30,6 +33,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/products", productsRouter);
+app.use("/s3Methods", s3MethodsRouter);
+app.use("/users", usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

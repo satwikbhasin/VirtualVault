@@ -1,19 +1,7 @@
-const multer = require("multer");
-const fs = require("fs");
-
 var express = require("express");
 var router = express.Router();
-const upload = multer({ dest: "uploads/" });
 
 const ProductModel = require("../models/Product.js");
-
-const AWS = require("aws-sdk");
-
-AWS.config.update({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  region:  process.env.AWS_REGION,
-});
 
 router.get("/getProductsCount", async (req, res) => {
   try {
@@ -63,32 +51,6 @@ router.post("/insert/", async (req, res) => {
     res.send(error);
   }
 });
-
-router.post(
-  "/uploadImage/:mongoProductId",
-  upload.single("image"),
-  async (req, res) => {
-    const s3 = new AWS.S3();
-    const productImageFile = req.file;
-
-    const fileData = fs.readFileSync(productImageFile.path);
-
-    const params = {
-      Bucket: "healthkare",
-      Key: "product-images/" + req.params.mongoProductId + ".jpeg",
-      Body: fileData,
-    };
-
-    s3.upload(params)
-      .promise()
-      .then((data) => {
-        res.send(data.Location);
-      })
-      .catch((error) => {
-        res.send(error);
-      });
-  }
-);
 
 router.put("/update/", async (req, res) => {
   const id = req.body.id;
