@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Form, Row, Col, Alert } from "react-bootstrap";
 import HeadingNavbar from "../components/headingNavbar";
 import Axios from "axios";
+import { MailIcon, SignInIcon, KeyIcon } from "@primer/octicons-react";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
@@ -61,7 +62,10 @@ const AdminLogin = () => {
           >
             <Form onSubmit={handleFormSubmit}>
               <Form.Group controlId="email" className="mb-4">
-                <Form.Label>Email</Form.Label>
+                <Form.Label>
+                  <MailIcon size={24} className="mx-1" />
+                  Email
+                </Form.Label>
                 <Form.Control
                   type="email"
                   value={email}
@@ -70,21 +74,24 @@ const AdminLogin = () => {
               </Form.Group>
 
               <Form.Group controlId="password">
-                <Form.Label>Password</Form.Label>
+                <Form.Label>
+                  <KeyIcon size={24} className="mx-1" />
+                  Password
+                </Form.Label>
                 <Form.Control
                   type="password"
                   value={password}
                   onChange={(event) => setPassword(event.target.value)}
                 />
               </Form.Group>
-              <Button className="mt-4 btn-dark" type="submit">
-                Login
-              </Button>
               {alertVisible && (
                 <Alert variant="danger" className="mt-4 p-1">
                   Invalid Credentials
                 </Alert>
               )}
+              <Button className="mt-2 btn-dark" type="submit">
+                <SignInIcon size={24} />
+              </Button>
             </Form>
           </Col>
         </Row>

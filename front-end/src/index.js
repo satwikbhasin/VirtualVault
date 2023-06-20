@@ -1,7 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import reportWebVitals from "./reportWebVitals";
 import UserHome from "./userPages/userHome.js";
 import Products from "./userPages/products.js";
 import Contact from "./userPages/contact.js";
@@ -13,25 +13,25 @@ import {
   LoginAuthentication,
 } from "./services/routeProtection.js";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-        <Routes>
-          <Route exact path="/" element={<UserHome />} />
-          <Route path="/user/products" element={<Products />} />
-          <Route path="/user/contact" element={<Contact />} />
-          <Route path="/user/product/:productId" element={<ProductDetails />} />
+      <Routes>
+        <Route exact path="/" element={<UserHome />} />
+        <Route path="/user/products" element={<Products />} />
+        <Route path="/user/contact" element={<Contact />} />
+        <Route path="/user/product/:productId" element={<ProductDetails />} />
 
-          <Route path="/admin/login" element={<LoginAuthentication />} />
-          <Route path="/admin/" element={<HomeAuthentication />} />
-          <Route path="/admin/home" element={<HomeAuthentication />} />
-          <Route
-            path="/admin/inventory"
-            element={<InventoryAuthentication />}
-          />
-        </Routes>
-      </BrowserRouter>
+        <Route path="/admin/login" element={<LoginAuthentication />} />
+        <Route path="/admin/" element={<HomeAuthentication />} />
+        <Route path="/admin/home" element={<HomeAuthentication />} />
+        <Route
+          path="/admin/inventory"
+          element={<InventoryAuthentication />}
+        />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
