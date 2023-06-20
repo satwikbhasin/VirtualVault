@@ -7,8 +7,8 @@ import "../styling/navbar.css";
 function headingNavbar() {
   return (
     <>
-      <Navbar className="navbar-dark navbar-first px-3 py-3">
-        <NavLink className="navbar-brand" to="/">
+      <Navbar className="navbar-dark navbar-first">
+        <NavLink className="navbar-brand text-center" to="/">
           <h1 className="navbar-first-heading">Healthkare</h1>
         </NavLink>
       </Navbar>
