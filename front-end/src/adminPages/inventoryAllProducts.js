@@ -3,7 +3,12 @@ import { Alert } from "react-bootstrap";
 import { deleteProduct, updateProduct } from "../services/inventoryAPIs";
 import { Container, Image, Table, Modal, Button, Form } from "react-bootstrap";
 import productMapInstance from "../services/productCacher";
-import { TrashIcon, PencilIcon } from "@primer/octicons-react";
+import {
+  TrashIcon,
+  PencilIcon,
+  XIcon,
+  CloudIcon,
+} from "@primer/octicons-react";
 
 const AllProducts = () => {
   const formRef = useRef(null);
@@ -175,8 +180,8 @@ const AllProducts = () => {
         }}
       >
         <Form onSubmit={handleUpdateProduct}>
-          <Modal.Header closeButton>
-            <Modal.Title>Update Product</Modal.Title>
+          <Modal.Header style={{ textAlign: "center" }}>
+            <Modal.Title style={{ margin: "auto" }}>Edit Product</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form.Group>
@@ -249,16 +254,22 @@ const AllProducts = () => {
           </Modal.Body>
           <Modal.Footer>
             <Button
-              variant="dark"
+              variant=""
               onClick={() => {
                 setShowUpdateModal(false);
                 setUpdateProductAlert(false);
               }}
             >
-              Close
+              <div className="d-flex align-items-center">
+                <XIcon size={24} />
+                <span className="mx-1">Cancel</span>
+              </div>
             </Button>
-            <Button variant="success" type="submit">
-              Save Changes
+            <Button variant="" className="text-success" type="submit">
+              <div className="d-flex align-items-center">
+                <CloudIcon size={24} />
+                <span className="mx-2">Save</span>
+              </div>
             </Button>
           </Modal.Footer>
         </Form>
@@ -276,20 +287,27 @@ const AllProducts = () => {
         <Modal.Body>Are you sure you want to delete this product?</Modal.Body>
         <Modal.Footer>
           <Button
-            variant="dark"
+            className=""
+            variant=""
             onClick={() => {
               setShowDeleteModal(false);
             }}
           >
-            Cancel
+            <div className="d-flex align-items-center">
+              <XIcon size={24} />
+              <span className="mx-1">Cancel</span>
+            </div>
           </Button>
           <Button
-            variant="danger"
+            className="text-danger"
+            variant=""
             onClick={() => {
               deleteProduct(product.id);
             }}
           >
-            Confirm
+            <div className="d-flex align-items-center">
+              <TrashIcon size={24} /> <span className="mx-2">Confirm</span>
+            </div>
           </Button>
         </Modal.Footer>
       </Modal>

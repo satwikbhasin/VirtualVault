@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { Alert } from "react-bootstrap";
 import { addProduct } from "../services/inventoryAPIs";
 import { Container, Button, Form, Col, Row } from "react-bootstrap";
+import { CheckCircleFillIcon } from "@primer/octicons-react";
 
 const AddProduct = () => {
   const formRef = useRef(null);
@@ -135,7 +136,10 @@ const AddProduct = () => {
             }}
           >
             <Button variant="success" type="submit">
-              Add Product
+              <div className="d-flex align-items-center">
+                <CheckCircleFillIcon size={24} className="mx-1" />
+                <span className="ml-1">Add</span>
+              </div>
             </Button>
           </Col>
         </Row>

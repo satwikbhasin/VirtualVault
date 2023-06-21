@@ -8,8 +8,8 @@ function headingNavbar() {
   return (
     <>
       <Navbar className="navbar-dark navbar-first">
-        <NavLink className="navbar-brand text-center" to="/">
-          <h1 className="navbar-first-heading">Healthkare</h1>
+        <NavLink className="navbar-brand text-center mx-3" to="/">
+          <h1 className="navbar-first-heading">HEALTHKARE</h1>
         </NavLink>
       </Navbar>
     </>
