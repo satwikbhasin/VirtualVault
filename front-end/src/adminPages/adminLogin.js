@@ -63,8 +63,10 @@ const AdminLogin = () => {
             <Form onSubmit={handleFormSubmit}>
               <Form.Group controlId="email" className="mb-4">
                 <Form.Label>
-                  <MailIcon size={24} className="mx-1" />
-                  Email
+                  <div className="d-flex align-items-center">
+                    <MailIcon size={24} className="mx-2" />
+                    <span>Email</span>
+                  </div>
                 </Form.Label>
                 <Form.Control
                   type="email"
@@ -75,8 +77,10 @@ const AdminLogin = () => {
 
               <Form.Group controlId="password">
                 <Form.Label>
-                  <KeyIcon size={24} className="mx-1" />
-                  Password
+                  <div className="d-flex align-items-center">
+                    <KeyIcon size={24} className="mx-2" />
+                    <span>Password</span>
+                  </div>
                 </Form.Label>
                 <Form.Control
                   type="password"
@@ -89,7 +93,7 @@ const AdminLogin = () => {
                   Invalid Credentials
                 </Alert>
               )}
-              <Button className="mt-2 btn-dark" type="submit">
+              <Button className="mt-4 btn-dark" type="submit">
                 <SignInIcon size={24} />
               </Button>
             </Form>

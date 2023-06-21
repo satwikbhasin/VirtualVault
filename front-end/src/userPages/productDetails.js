@@ -1,5 +1,5 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap";
 import { useParams } from "react-router-dom";
 import { Container, Row, Image, Col, Button } from "react-bootstrap";
 import productMapInstance from "../services/productCacher";
@@ -8,11 +8,16 @@ import "../styling/text-styling.css";
 import { useState, useEffect } from "react";
 import HeadingNavbar from "../components/headingNavbar.js";
 import UserNavbar from "../components/userNavbar.js";
+import {
+  ArrowLeftIcon,
+  LinkIcon,
+  CheckCircleFillIcon,
+} from "@primer/octicons-react";
 
 const ProductDetails = () => {
   const [product, setProduct] = useState(new Map());
-
   const { productId } = useParams();
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -30,6 +35,15 @@ const ProductDetails = () => {
     fetchProduct();
   }, [productId]);
 
+  const copyPageLinkToClipboard = () => {
+    const pageLink = window.location.href;
+    navigator.clipboard
+      .writeText(pageLink)
+      .then(() => {
+        setShow(true);
+      })
+  };
+
   return (
     <>
       <HeadingNavbar />
@@ -38,16 +52,10 @@ const ProductDetails = () => {
         <Row className="mt-3">
           <Link to="/user/products">
             <Button variant="">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                width="35"
-                height="35"
-                className="mx-2"
-              >
-                <path d="M10.78 19.03a.75.75 0 0 1-1.06 0l-6.25-6.25a.75.75 0 0 1 0-1.06l6.25-6.25a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L5.81 11.5h14.44a.75.75 0 0 1 0 1.5H5.81l4.97 4.97a.75.75 0 0 1 0 1.06Z"></path>
-              </svg>
-              Back
+              <div className="d-flex align-items-center">
+                <ArrowLeftIcon size={35} className="mx-2" />
+                <span>Back</span>
+              </div>
             </Button>
           </Link>
         </Row>
@@ -70,10 +78,26 @@ const ProductDetails = () => {
           </Col>
           <Col className="col-7 mt-2">
             <h3 className="font-product-price">${product.price}</h3>
-            <p className="">{product.description}</p>
+            <p className="mb-5">{product.description}</p>
+            <Button
+              variant=""
+              className="border-dark"
+              onClick={copyPageLinkToClipboard}
+            >
+              {!show ? (
+                <div className="align-items-center">
+                  <LinkIcon size={20} className="mx-1" />
+                  <span>Copy</span>
+                </div>
+              ) : (
+                <div className="align-items-center">
+                  <CheckCircleFillIcon size={20} className="mx-1" />
+                  <span>Copied</span>
+                </div>
+              )}
+            </Button>
           </Col>
         </Row>
-        <Row className="pb-3"></Row>
       </Container>
     </>
   );
