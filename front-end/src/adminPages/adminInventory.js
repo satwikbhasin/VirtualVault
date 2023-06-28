@@ -3,7 +3,7 @@ import { Button, Col } from "react-bootstrap";
 import AdminNavbar from "../components/adminNavbar";
 import AddProduct from "./inventoryAddProduct";
 import AllProducts from "./inventoryAllProducts";
-import { XIcon } from "@primer/octicons-react";
+import { XIcon, PencilIcon } from "@primer/octicons-react";
 import "../styling/addProduct.css";
 import BootstrapSwitchButton from "bootstrap-switch-button-react";
 import ProductsView from "../components/productsView";
@@ -26,9 +26,19 @@ const Inventory = () => {
       <div className="mt-3 d-flex justify-content-center">
         <BootstrapSwitchButton
           checked={false}
-          onlabel={<span style={{ padding: "4px" }}>Edit</span>}
-          offlabel={<span style={{ padding: "4px" }}>Edit</span>}
-          width={80}
+          onlabel={
+            <div>
+              <PencilIcon size={16} />
+              <span className="ms-1">Edit</span>
+            </div>
+          }
+          offlabel={
+            <div>
+              <PencilIcon size={16} />
+              <span className="ms-1">Edit</span>
+            </div>
+          }
+          width={90}
           onstyle="dark"
           onChange={() => setIsEditMode(!isEditMode)}
         />
