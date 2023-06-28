@@ -42,7 +42,7 @@ const AdminLogin = ({ route }) => {
     try {
       await Axios.post("http://localhost:3001/users/login", {
         email: email,
-        password: password,
+        password: password.toLowerCase(),
       }).then((response) => {
         if (response.data.message === "success") {
           setAlertVisible(false);
@@ -93,7 +93,7 @@ const AdminLogin = ({ route }) => {
               </Form.Label>
               <Form.Control
                 type="email"
-                value={email}
+                value={email.toLowerCase()}
                 onChange={(event) => setEmail(event.target.value)}
                 style={{ width: "230px" }}
               />
