@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { Alert } from "react-bootstrap";
 import { addProduct } from "../services/inventoryAPIs";
 import { Container, Button, Form, Col, Row } from "react-bootstrap";
-import { CheckCircleFillIcon, PlusIcon } from "@primer/octicons-react";
+import { PlusIcon } from "@primer/octicons-react";
 
 const AddProduct = () => {
   const formRef = useRef(null);

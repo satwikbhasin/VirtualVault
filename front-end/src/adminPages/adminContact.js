@@ -62,23 +62,22 @@ const Contact = () => {
     <>
       <AdminNavbar />
       <Container className="text-center mt-3">
-      <div className="mt-3 d-flex justify-content-center">
-        <BootstrapSwitchButton
-          checked={false}
-          onlabel={<span style={{ padding: "4px" }}>Edit</span>}
-          offlabel={<span style={{ padding: "4px" }}>Edit</span>}
-          width={80}
-          onstyle="dark"
-          onChange={() => setIsEditMode(!isEditMode)}
-        />
-      </div>
+        <div className="mt-3 d-flex justify-content-center">
+          <BootstrapSwitchButton
+            checked={false}
+            onlabel={<span style={{ padding: "4px" }}>Edit</span>}
+            offlabel={<span style={{ padding: "4px" }}>Edit</span>}
+            width={80}
+            onstyle="dark"
+            onChange={() => setIsEditMode(!isEditMode)}
+          />
+        </div>
         {isEditMode ? (
           <Table className="mt-4">
             <thead>
               <tr>
                 <th style={{ width: "200px" }}>Component</th>
                 <th style={{ width: "400px" }}>Value</th>
-                <th style={{ width: "200px" }}>Visibility</th>
                 <th style={{ width: "200px" }}>Edit</th>
               </tr>
             </thead>
@@ -100,7 +99,6 @@ const Contact = () => {
                 ) : (
                   <td>{contact.name}</td>
                 )}
-                <td>Enabled</td>
                 <td>
                   {editName ? (
                     <Button
@@ -141,7 +139,6 @@ const Contact = () => {
                 ) : (
                   <td>{contact.email}</td>
                 )}
-                <td>Enabled</td>
                 <td>
                   {editEmail ? (
                     <Button
@@ -182,7 +179,6 @@ const Contact = () => {
                 ) : (
                   <td>{contact.whatsapp}</td>
                 )}
-                <td>Enabled</td>
                 <td>
                   {editWhatsapp ? (
                     <Button
@@ -223,7 +219,6 @@ const Contact = () => {
                 ) : (
                   <td>{contact.phone}</td>
                 )}
-                <td>Enabled</td>
                 <td>
                   {editPhone ? (
                     <Button
