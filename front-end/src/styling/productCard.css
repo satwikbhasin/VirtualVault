@@ -28,3 +28,9 @@
 .card-normal {
   height: fit-content;
 }
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+}
+

@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Alert } from "react-bootstrap";
 import { deleteProduct, updateProduct } from "../services/inventoryAPIs";
 import { Container, Image, Table, Modal, Button, Form } from "react-bootstrap";
 import productMapInstance from "../services/productCacher";
@@ -31,10 +30,8 @@ const AllProducts = () => {
   });
 
   const [totalProductCount, setTotalProductCount] = useState(0);
-
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [updateProductAlert, setUpdateProductAlert] = useState(false);
 
   const reset = () => {
     setProduct({
@@ -69,26 +66,13 @@ const AllProducts = () => {
 
   const handleUpdateProduct = async (e) => {
     e.preventDefault();
-
-    if (
-      (updatedProduct.name.trim() === product.name ||
-        updatedProduct.name === "") &&
-      (updatedProduct.price.trim() === product.price ||
-        updatedProduct.price === "") &&
-      (updatedProduct.description.trim() === product.description ||
-        updatedProduct.description === "") &&
-      updatedProduct.imageFile === null
-    ) {
-      setUpdateProductAlert(true);
-    } else {
-      setShowUpdateModal(false);
-      console.log(updatedProduct);
-      await updateProduct(updatedProduct).then(() => {
-        alert("Product updated successfully");
-        reset();
-        formRef.current.reset();
-      });
-    }
+    setShowUpdateModal(false);
+    console.log(updatedProduct);
+    await updateProduct(updatedProduct).then(() => {
+      alert("Product updated successfully");
+      reset();
+      formRef.current.reset();
+    });
   };
 
   return (
@@ -98,9 +82,7 @@ const AllProducts = () => {
           textAlign: "center",
         }}
       >
-        <h6 className="mt-4 mb-4">
-          Total Products in Inventory: {totalProductCount}
-        </h6>
+        <h6 className="mt-1 mb-4">Product Count: {totalProductCount}</h6>
         <Table>
           <thead>
             <tr>
@@ -246,18 +228,12 @@ const AllProducts = () => {
                 }}
               ></Form.Control>
             </Form.Group>
-            {updateProductAlert && (
-              <Alert variant="danger" className="mt-4 p-1">
-                Please change at least one field
-              </Alert>
-            )}
           </Modal.Body>
           <Modal.Footer>
             <Button
               variant=""
               onClick={() => {
                 setShowUpdateModal(false);
-                setUpdateProductAlert(false);
               }}
             >
               <div className="d-flex align-items-center">
@@ -265,7 +241,20 @@ const AllProducts = () => {
                 <span className="mx-1">Cancel</span>
               </div>
             </Button>
-            <Button variant="" className="text-success" type="submit">
+            <Button
+              variant=""
+              className="text-success"
+              type="submit"
+              disabled={
+                (updatedProduct.name.trim() === product.name ||
+                  updatedProduct.name === "") &&
+                (updatedProduct.price.trim() === product.price ||
+                  updatedProduct.price === "") &&
+                (updatedProduct.description.trim() === product.description ||
+                  updatedProduct.description === "") &&
+                updatedProduct.imageFile === null
+              }
+            >
               <div className="d-flex align-items-center">
                 <CloudIcon size={24} />
                 <span className="mx-2">Save</span>
