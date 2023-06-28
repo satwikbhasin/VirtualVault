@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { Alert } from "react-bootstrap";
 import { addProduct } from "../services/inventoryAPIs";
 import { Container, Button, Form, Col, Row } from "react-bootstrap";
-import { CheckCircleFillIcon } from "@primer/octicons-react";
+import { CheckCircleFillIcon, PlusIcon } from "@primer/octicons-react";
 
 const AddProduct = () => {
   const formRef = useRef(null);
@@ -135,10 +135,19 @@ const AddProduct = () => {
               textAlign: "center",
             }}
           >
-            <Button variant="success" type="submit">
+            <Button
+              variant="success"
+              type="submit"
+              disabled={
+                product.description === "" ||
+                product.imageFile === null ||
+                product.name === "" ||
+                product.price === ""
+              }
+            >
               <div className="d-flex align-items-center">
-                <CheckCircleFillIcon size={24} className="mx-1" />
-                <span className="ml-1">Add</span>
+                <PlusIcon size={24} />
+                <span className="ms-1">Add</span>
               </div>
             </Button>
           </Col>

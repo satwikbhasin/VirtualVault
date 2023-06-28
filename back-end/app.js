@@ -10,6 +10,7 @@ const bodyParser = require('body-parser');
 var productsRouter = require("./routes/products");
 var s3MethodsRouter = require("./routes/s3Methods");
 var usersRouter = require("./routes/users");
+var contactDetailsRouter = require("./routes/contactDetails");
 
 mongoose
   .connect(
@@ -43,6 +44,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/products", productsRouter);
 app.use("/s3Methods", s3MethodsRouter);
 app.use("/users", usersRouter);
+app.use("/contactDetails", contactDetailsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
