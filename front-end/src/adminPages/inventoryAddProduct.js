@@ -2,7 +2,6 @@ import React, { useState, useRef } from "react";
 import { Alert } from "react-bootstrap";
 import { addProduct } from "../services/inventoryAPIs";
 import { Container, Button, Form, Col, Row } from "react-bootstrap";
-import { PlusIcon } from "@primer/octicons-react";
 
 const AddProduct = () => {
   const formRef = useRef(null);
@@ -146,7 +145,7 @@ const AddProduct = () => {
               }
             >
               <div className="d-flex align-items-center">
-                <PlusIcon size={24} />
+                <i class="bi bi-plus-circle-fill fs-6"></i>
                 <span className="ms-1">Add</span>
               </div>
             </Button>

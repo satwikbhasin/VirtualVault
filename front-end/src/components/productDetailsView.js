@@ -4,12 +4,7 @@ import { Container, Row, Image, Col, Button } from "react-bootstrap";
 import productMapInstance from "../services/productCacher";
 import "../styling/text-styling.css";
 import { useState, useEffect } from "react";
-
-import {
-  ArrowLeftIcon,
-  LinkIcon,
-  CheckCircleFillIcon,
-} from "@primer/octicons-react";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 const ProductDetailsView = ({ productId }) => {
   const [product, setProduct] = useState(new Map());
@@ -40,9 +35,11 @@ const ProductDetailsView = ({ productId }) => {
   };
 
   const copyPageLinkToClipboard = () => {
-    navigator.clipboard.writeText("http://localhost:3000/user/product/"+productId).then(() => {
-      setShow(true);
-    });
+    navigator.clipboard
+      .writeText("http://localhost:3000/user/product/" + productId)
+      .then(() => {
+        setShow(true);
+      });
   };
 
   return (
@@ -51,7 +48,7 @@ const ProductDetailsView = ({ productId }) => {
         <div className="d-flex align-items-center justify-content-center pt-3">
           <Button variant="" className="mr-auto" onClick={handleGoBack}>
             <div className="d-flex align-items-center">
-              <ArrowLeftIcon size={35} className="" />
+              <i class="bi bi-arrow-bar-left fs-3"></i>
               <span>Back</span>
             </div>
           </Button>
@@ -83,12 +80,12 @@ const ProductDetailsView = ({ productId }) => {
             >
               {!show ? (
                 <div className="align-items-center">
-                  <LinkIcon size={20} className="mx-1" />
+                  <i class="bi bi-clipboard-fill fs-5 me-1"></i>
                   <span>Copy</span>
                 </div>
               ) : (
                 <div className="align-items-center">
-                  <CheckCircleFillIcon size={20} className="mx-1" />
+                  <i class="bi bi-clipboard-check-fill fs-5 me-1"></i>
                   <span>Copied</span>
                 </div>
               )}

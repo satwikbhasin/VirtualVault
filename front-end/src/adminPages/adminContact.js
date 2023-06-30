@@ -6,7 +6,7 @@ import ContactCard from "../components/contactCard.js";
 import BootstrapSwitchButton from "bootstrap-switch-button-react";
 import "../styling/contactCard.css";
 import "../styling/text-styling.css";
-import { PencilIcon } from "@primer/octicons-react";
+import "bootstrap-icons/font/bootstrap-icons.css";
 import { updateContact } from "../services/contactAPIs";
 
 const Contact = () => {
@@ -62,16 +62,24 @@ const Contact = () => {
     <>
       <AdminNavbar />
       <Container className="text-center mt-3">
-        <div className="mt-3 d-flex justify-content-center">
-          <BootstrapSwitchButton
-            checked={false}
-            onlabel={<span style={{ padding: "4px" }}>Edit</span>}
-            offlabel={<span style={{ padding: "4px" }}>Edit</span>}
-            width={80}
-            onstyle="dark"
-            onChange={() => setIsEditMode(!isEditMode)}
-          />
-        </div>
+        <BootstrapSwitchButton
+          checked={false}
+          onlabel={
+            <div>
+              <i class="bi bi-pencil fs-6"></i>
+              <span className="ms-1">Edit</span>
+            </div>
+          }
+          offlabel={
+            <div>
+              <i class="bi bi-pencil fs-6"></i>
+              <span className="ms-1">Edit</span>
+            </div>
+          }
+          width={90}
+          onstyle="dark"
+          onChange={() => setIsEditMode(!isEditMode)}
+        />
         {isEditMode ? (
           <Table className="mt-4">
             <thead>
@@ -117,7 +125,7 @@ const Contact = () => {
                         toggleEditName();
                       }}
                     >
-                      <PencilIcon size={24} />
+                      <i class="bi bi-pencil fs-6"></i>
                     </Button>
                   )}
                 </td>
@@ -157,7 +165,7 @@ const Contact = () => {
                         toggleEditEmail();
                       }}
                     >
-                      <PencilIcon size={24} />
+                      <i class="bi bi-pencil fs-6"></i>
                     </Button>
                   )}
                 </td>
@@ -197,7 +205,7 @@ const Contact = () => {
                         toggleEditWhatsapp();
                       }}
                     >
-                      <PencilIcon size={24} />
+                      <i class="bi bi-pencil fs-6"></i>
                     </Button>
                   )}
                 </td>
@@ -237,7 +245,7 @@ const Contact = () => {
                         toggleEditPhone();
                       }}
                     >
-                      <PencilIcon size={24} />
+                      <i class="bi bi-pencil fs-6"></i>
                     </Button>
                   )}
                 </td>

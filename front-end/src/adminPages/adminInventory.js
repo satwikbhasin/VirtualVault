@@ -3,7 +3,6 @@ import { Button, Col } from "react-bootstrap";
 import AdminNavbar from "../components/adminNavbar";
 import AddProduct from "./inventoryAddProduct";
 import AllProducts from "./inventoryAllProducts";
-import { XIcon, PencilIcon } from "@primer/octicons-react";
 import "../styling/addProduct.css";
 import BootstrapSwitchButton from "bootstrap-switch-button-react";
 import ProductsView from "../components/productsView";
@@ -28,13 +27,13 @@ const Inventory = () => {
           checked={false}
           onlabel={
             <div>
-              <PencilIcon size={16} />
+              <i class="bi bi-pencil fs-6"></i>
               <span className="ms-1">Edit</span>
             </div>
           }
           offlabel={
             <div>
-              <PencilIcon size={16} />
+              <i class="bi bi-pencil fs-6"></i>
               <span className="ms-1">Edit</span>
             </div>
           }
@@ -59,14 +58,7 @@ const Inventory = () => {
                   onClick={handleAddProduct}
                   className="utilityButtons mt-2"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    width="32"
-                    height="32"
-                  >
-                    <path d="M11.75 4.5a.75.75 0 0 1 .75.75V11h5.75a.75.75 0 0 1 0 1.5H12.5v5.75a.75.75 0 0 1-1.5 0V12.5H5.25a.75.75 0 0 1 0-1.5H11V5.25a.75.75 0 0 1 .75-.75Z"></path>
-                  </svg>
+                  <i class="bi bi-plus-circle-fill fs-3"></i>{" "}
                 </Button>
               )}
             </Col>
@@ -79,7 +71,7 @@ const Inventory = () => {
                 onClick={handleAddProductCancel}
               >
                 <div className="d-flex align-items-center">
-                  <XIcon size={24} />
+                  <i class="bi bi-x-circle fs-6 me-1"></i>{" "}
                   <span className="ml-1">Cancel</span>
                 </div>
               </Button>
