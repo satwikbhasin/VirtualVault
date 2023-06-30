@@ -2,12 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { deleteProduct, updateProduct } from "../services/inventoryAPIs";
 import { Container, Image, Table, Modal, Button, Form } from "react-bootstrap";
 import productMapInstance from "../services/productCacher";
-import {
-  TrashIcon,
-  PencilIcon,
-  XIcon,
-  CloudIcon,
-} from "@primer/octicons-react";
 
 const AllProducts = () => {
   const formRef = useRef(null);
@@ -134,7 +128,7 @@ const AllProducts = () => {
                       setShowUpdateModal(true);
                     }}
                   >
-                    <PencilIcon size={24} />
+                    <i class="bi bi-pencil fs-4"></i>
                   </Button>
                 </td>
                 <td style={{ width: "100px" }}>
@@ -146,7 +140,7 @@ const AllProducts = () => {
                       setShowDeleteModal(true);
                     }}
                   >
-                    <TrashIcon size={24} />
+                    <i class="bi bi-trash3 fs-4"></i>
                   </Button>
                 </td>
               </tr>
@@ -237,8 +231,8 @@ const AllProducts = () => {
               }}
             >
               <div className="d-flex align-items-center">
-                <XIcon size={24} />
-                <span className="mx-1">Cancel</span>
+                <i class="bi bi-x-circle-fill fs-6"></i>
+                <span className="ms-1">Cancel</span>
               </div>
             </Button>
             <Button
@@ -256,8 +250,8 @@ const AllProducts = () => {
               }
             >
               <div className="d-flex align-items-center">
-                <CloudIcon size={24} />
-                <span className="mx-2">Save</span>
+                <i class="bi bi-save-fill fs-6"></i>
+                <span className="ms-1">Save</span>
               </div>
             </Button>
           </Modal.Footer>
@@ -283,8 +277,8 @@ const AllProducts = () => {
             }}
           >
             <div className="d-flex align-items-center">
-              <XIcon size={24} />
-              <span className="mx-1">Cancel</span>
+              <i class="bi bi-x-circle-fill fs-4"></i>
+              <span className="ms-1">Cancel</span>
             </div>
           </Button>
           <Button
@@ -295,7 +289,8 @@ const AllProducts = () => {
             }}
           >
             <div className="d-flex align-items-center">
-              <TrashIcon size={24} /> <span className="mx-2">Confirm</span>
+              <i class="bi bi-check-circle-fill fs-4"></i>
+              <span className="ms-1">Confirm</span>
             </div>
           </Button>
         </Modal.Footer>
