@@ -1,5 +1,4 @@
 import React from "react";
-import watermark from "../Healthkare-Watermark.png";
 import UserNavbar from "../components/userNavbar.js";
 import "../styling/home.css";
 
@@ -8,7 +7,12 @@ function Home() {
     <>
       <UserNavbar />
       <div className="centered">
-        <img src={watermark} alt="" height={400} width={400}></img>
+        <img
+          src={"https://healthkare.s3.amazonaws.com/assets/login-background-2"}
+          alt=""
+          height={500}
+          width={500}
+        ></img>
       </div>
     </>
   );

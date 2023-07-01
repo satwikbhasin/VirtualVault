@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Button, Col } from "react-bootstrap";
+import { Button, Col, Form } from "react-bootstrap";
 import AdminNavbar from "../components/adminNavbar";
 import AddProduct from "./inventoryAddProduct";
 import AllProducts from "./inventoryAllProducts";
 import "../styling/addProduct.css";
-import BootstrapSwitchButton from "bootstrap-switch-button-react";
 import ProductsView from "../components/productsView";
+import { FormGroup, Switch, FormControlLabel } from "@mui/material";
 
 const Inventory = () => {
   const [showAddProduct, setShowAddProduct] = useState(false);
@@ -23,24 +23,20 @@ const Inventory = () => {
     <>
       <AdminNavbar />
       <div className="mt-3 d-flex justify-content-center">
-        <BootstrapSwitchButton
-          checked={false}
-          onlabel={
-            <div>
-              <i class="bi bi-pencil fs-6"></i>
-              <span className="ms-1">Edit</span>
-            </div>
-          }
-          offlabel={
-            <div>
-              <i class="bi bi-pencil fs-6"></i>
-              <span className="ms-1">Edit</span>
-            </div>
-          }
-          width={90}
-          onstyle="dark"
-          onChange={() => setIsEditMode(!isEditMode)}
-        />
+        <Form>
+          <FormGroup>
+            <FormControlLabel
+              control={<Switch color="success" />}
+              onChange={() => setIsEditMode(!isEditMode)}
+              labelPlacement="start"
+              label={
+                <div>
+                  <span className="ms-2">Edit</span>
+                </div>
+              }
+            />
+          </FormGroup>
+        </Form>
       </div>
       {isEditMode ? (
         <>
@@ -58,7 +54,7 @@ const Inventory = () => {
                   onClick={handleAddProduct}
                   className="utilityButtons mt-2"
                 >
-                  <i class="bi bi-plus-circle-fill fs-3"></i>{" "}
+                  <i class="bi bi-plus-circle-fill fs-3"></i>
                 </Button>
               )}
             </Col>

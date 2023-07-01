@@ -1,13 +1,13 @@
 .navbar-first-user {
   height: 70;
-  background-color: #132372bb;
+  background-color: #137252;
   justify-content: left;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .navbar-first-admin {
   height: 70;
-  background-color: #137252bb;
+  background-color: #137252;
   justify-content: left;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
