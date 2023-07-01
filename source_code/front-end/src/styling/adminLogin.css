@@ -1,14 +1,40 @@
 .password-input {
-    position: relative;
-  }
-  
-  .password-toggle {
-    position: absolute;
-    top: 50%;
-    right: 0px;
-    transform: translateY(-50%);
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-  }
-  
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 0px;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.login-form-box {
+  color: white;
+  border: 1px solid #137252;
+  border-radius: 15px;
+  padding: 50px;
+  margin: auto;
+  margin-top: 200px;
+  max-width: 400px;
+  background-color: #137252;
+}
+
+.login-form-container {
+  background-image: url("https://healthkare.s3.amazonaws.com/assets/login-background-1");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 10px;
+  width: 100%;
+  height: 1000px;
+}
+
+.login-form-container-overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}

@@ -3,7 +3,7 @@ import { Card, Container, Row, Col, Button } from "react-bootstrap";
 import "../styling/productCard.css";
 import { useState, useEffect } from "react";
 import productMapInstance from "../services/productCacher";
-import { PaginationControl } from "react-bootstrap-pagination-control";
+import Pagination from "@mui/material/Pagination";
 import ProductDetailsView from "./productDetailsView";
 
 const ProductsView = () => {
@@ -46,7 +46,9 @@ const ProductsView = () => {
   );
 
   // Change page
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const handleChangePage = (event, pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   return (
     <>
@@ -56,11 +58,13 @@ const ProductsView = () => {
         <Container>
           <Row className="mt-4 justify-content-center">
             <div className="pagination-container">
-              <PaginationControl
+              <Pagination
+                variant="outlined"
+                color="success"
+                count={Math.ceil(totalProductSize / productsPerPage)}
                 page={currentPage}
-                limit={productsPerPage}
-                total={totalProductSize}
-                changePage={paginate}
+                onChange={handleChangePage}
+                className="mb-3"
               />
             </div>
           </Row>

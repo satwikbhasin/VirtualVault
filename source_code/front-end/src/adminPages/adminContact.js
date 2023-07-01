@@ -3,11 +3,11 @@ import { Button, Container, Table, Form } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { getContact } from "../services/contactAPIs";
 import ContactCard from "../components/contactCard.js";
-import BootstrapSwitchButton from "bootstrap-switch-button-react";
 import "../styling/contactCard.css";
 import "../styling/text-styling.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { updateContact } from "../services/contactAPIs";
+import { FormGroup, Switch, FormControlLabel } from "@mui/material";
 
 const Contact = () => {
   const [contact, setContact] = useState({
@@ -62,24 +62,22 @@ const Contact = () => {
     <>
       <AdminNavbar />
       <Container className="text-center mt-3">
-        <BootstrapSwitchButton
-          checked={false}
-          onlabel={
-            <div>
-              <i class="bi bi-pencil fs-6"></i>
-              <span className="ms-1">Edit</span>
-            </div>
-          }
-          offlabel={
-            <div>
-              <i class="bi bi-pencil fs-6"></i>
-              <span className="ms-1">Edit</span>
-            </div>
-          }
-          width={90}
-          onstyle="dark"
-          onChange={() => setIsEditMode(!isEditMode)}
-        />
+        <div className="mt-3 d-flex justify-content-center">
+          <Form>
+            <FormGroup>
+              <FormControlLabel
+                control={<Switch color="success" />}
+                onChange={() => setIsEditMode(!isEditMode)}
+                labelPlacement="start"
+                label={
+                  <div>
+                    <span className="ms-2">Edit</span>
+                  </div>
+                }
+              />
+            </FormGroup>
+          </Form>
+        </div>
         {isEditMode ? (
           <Table className="mt-4">
             <thead>
