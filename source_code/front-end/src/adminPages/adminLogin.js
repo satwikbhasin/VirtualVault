@@ -54,16 +54,6 @@ const AdminLogin = ({ route }) => {
       <div className="login-form-container">
         <div className="login-form-container-overlay">
           <div className="login-form-box">
-            <div
-              style={{
-                textAlign: "center",
-              }}
-              className="mb-3"
-            >
-              <Col>
-                <h2>Admin Login</h2>
-              </Col>
-            </div>
             <div>
               <Col
                 style={{
@@ -74,10 +64,10 @@ const AdminLogin = ({ route }) => {
               >
                 <Form onSubmit={handleFormSubmit}>
                   <Form.Group controlId="email" className="mb-4">
-                    <Form.Label>
+                    <Form.Label className="text-light">
                       <div className="d-flex align-items-center">
                         <i class="bi bi-envelope fs-4 me-1"></i>
-                        <span>Email</span>
+                        <span className="text-light">Email</span>
                       </div>
                     </Form.Label>
                     <Form.Control
@@ -88,7 +78,7 @@ const AdminLogin = ({ route }) => {
                     />
                   </Form.Group>
                   <Form.Group controlId="password">
-                    <Form.Label>
+                    <Form.Label className="text-light">
                       <div className="d-flex align-items-center">
                         <i class="bi bi-key fs-4 me-1"></i>
                         <span>Password</span>
@@ -126,7 +116,7 @@ const AdminLogin = ({ route }) => {
                     </Alert>
                   )}
                   <Button
-                    className="mt-3 btn-dark"
+                    className="mt-4 btn-dark"
                     type="submit"
                     disabled={password === "" || email === ""}
                   >

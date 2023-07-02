@@ -5,10 +5,11 @@ import productMapInstance from "../services/productCacher";
 import "../styling/text-styling.css";
 import { useState, useEffect } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import { saveAs } from "file-saver";
 
 const ProductDetailsView = ({ productId }) => {
   const [product, setProduct] = useState(new Map());
-  const [show, setShow] = useState(false);
+  const [showCopied, setShowCopied] = useState(false);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -38,8 +39,12 @@ const ProductDetailsView = ({ productId }) => {
     navigator.clipboard
       .writeText("http://localhost:3000/user/product/" + productId)
       .then(() => {
-        setShow(true);
+        setShowCopied(true);
       });
+  };
+
+  const downloadImage = () => {
+    saveAs(product.image, "image.jpg");
   };
 
   return (
@@ -68,28 +73,41 @@ const ProductDetailsView = ({ productId }) => {
               }}
               src={product.image}
               alt=""
-            ></Image>
+            />
+            <Row className="d-flex align-items-center justify-content-center">
+              <Button variant="" className="" onClick={downloadImage} col="6">
+                <div className="d-flex align-items-center justify-content-center">
+                  <i class="bi bi-cloud-arrow-down-fill fs-4 me-1"></i>
+                  <span>Download Image</span>
+                </div>
+              </Button>
+            </Row>
           </Col>
           <Col className="col-7 mt-2">
             <h3 className="font-product-price">${product.price}</h3>
-            <p className="mb-5">{product.description}</p>
-            <Button
-              variant=""
-              className="border-dark"
-              onClick={copyPageLinkToClipboard}
-            >
-              {!show ? (
-                <div className="align-items-center">
-                  <i class="bi bi-clipboard-fill fs-5 me-1"></i>
-                  <span>Copy</span>
-                </div>
-              ) : (
-                <div className="align-items-center">
-                  <i class="bi bi-clipboard-check-fill fs-5 me-1"></i>
-                  <span>Copied</span>
-                </div>
-              )}
-            </Button>
+            <p className="mb-3">{product.description}</p>
+            <Row className="mt-3">
+              <Col>
+                <Button
+                  variant=""
+                  className="border-dark"
+                  onClick={copyPageLinkToClipboard}
+                  col="6"
+                >
+                  {!showCopied ? (
+                    <div className="align-items-center">
+                      <i className="bi bi-clipboard-fill fs-5 me-1"></i>
+                      <span>Copy</span>
+                    </div>
+                  ) : (
+                    <div className="align-items-center">
+                      <i className="bi bi-clipboard-check-fill fs-5 me-1"></i>
+                      <span>Copied</span>
+                    </div>
+                  )}
+                </Button>
+              </Col>
+            </Row>
           </Col>
         </Row>
       </Container>
