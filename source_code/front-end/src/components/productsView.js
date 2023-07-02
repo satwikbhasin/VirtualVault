@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Container, Row, Col, Button } from "react-bootstrap";
-import "../styling/productCard.css";
+import "../styling/productsView.css";
 import { useState, useEffect } from "react";
 import productMapInstance from "../services/productCacher";
 import Pagination from "@mui/material/Pagination";
