@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Button, Col, Form } from "react-bootstrap";
-import AdminNavbar from "../components/adminNavbar";
+import AdminNavbar from ".././components/adminNavbar/adminNavbar.js";
 import AddProduct from "./inventoryAddProduct";
-import AllProducts from "./inventoryAllProducts";
+import AllProducts from "./inventoryAllProducts.js";
 import "../styling/addProduct.css";
 import ProductsView from "../components/productsView";
 import { FormGroup, Switch, FormControlLabel } from "@mui/material";
@@ -10,14 +10,6 @@ import { FormGroup, Switch, FormControlLabel } from "@mui/material";
 const Inventory = () => {
   const [showAddProduct, setShowAddProduct] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
-
-  const handleAddProduct = () => {
-    setShowAddProduct(true);
-  };
-
-  const handleAddProductCancel = () => {
-    setShowAddProduct(false);
-  };
 
   return (
     <>
@@ -51,7 +43,9 @@ const Inventory = () => {
               {!showAddProduct && (
                 <Button
                   variant=""
-                  onClick={handleAddProduct}
+                  onClick={() => {
+                    setShowAddProduct(true);
+                  }}
                   className="utilityButtons mt-2"
                 >
                   <i class="bi bi-plus-circle-fill fs-3"></i>
@@ -64,7 +58,9 @@ const Inventory = () => {
               <Button
                 variant="danger"
                 className="mx-4"
-                onClick={handleAddProductCancel}
+                onClick={() => {
+                  setShowAddProduct(false);
+                }}
               >
                 <div className="d-flex align-items-center">
                   <i class="bi bi-x-circle fs-6 me-1"></i>{" "}

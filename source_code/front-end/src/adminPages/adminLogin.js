@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Form, Col, Alert, NavLink, Navbar } from "react-bootstrap";
-import Axios from "axios";
+import { loginAdmin } from "../services/authenticationAPIs";
 import "../styling/adminLogin.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
@@ -14,26 +14,19 @@ const AdminLogin = ({ route }) => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    await authenticateAdmin(email, password);
+    await authenticateAdmin(email, password, route);
 
     setEmail("");
     setPassword("");
   };
 
-  const toggleShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
-
-  const authenticateAdmin = async (email, password) => {
+  const authenticateAdmin = async (email, password, route) => {
     try {
-      await Axios.post("http://localhost:3001/users/login", {
-        email: email,
-        password: password.toLowerCase(),
-      }).then((response) => {
+      loginAdmin(email, password).then((response) => {
         if (response.data.message === "success") {
-          setAlertVisible(false);
           localStorage.setItem("token", response.data.token);
           window.location.href = route;
+          setAlertVisible(false);
         } else {
           console.log(response.data.message);
           setAlertVisible(true);
@@ -98,7 +91,9 @@ const AdminLogin = ({ route }) => {
                       {passwordTyped && password !== "" && (
                         <Button
                           variant=""
-                          onClick={toggleShowPassword}
+                          onClick={() => {
+                            setShowPassword(!showPassword);
+                          }}
                           className="password-toggle"
                         >
                           {showPassword ? (

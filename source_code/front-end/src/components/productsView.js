@@ -4,7 +4,7 @@ import "../styling/productsView.css";
 import { useState, useEffect } from "react";
 import productMapInstance from "../services/productCacher";
 import Pagination from "@mui/material/Pagination";
-import ProductDetailsView from "./productDetailsView";
+import ProductDetailsView from "./productDetailsView/productDetailsView.js";
 
 const ProductsView = () => {
   const [hoveredCardIndex, setHoveredCardIndex] = useState(null);
