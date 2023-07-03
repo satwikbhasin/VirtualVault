@@ -1,6 +1,6 @@
 import React from "react";
-import AdminNavbar from "../components/adminNavbar.js";
-import "../styling/home.css";
+import AdminNavbar from ".././components/adminNavbar/adminNavbar.js";
+import ".././styling/text-styling.css";
 
 function Home() {
   return (

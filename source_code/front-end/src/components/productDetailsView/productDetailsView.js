@@ -1,11 +1,16 @@
 import React from "react";
 import "bootstrap";
 import { Container, Row, Image, Col, Button } from "react-bootstrap";
-import productMapInstance from "../services/productCacher";
-import "../styling/text-styling.css";
+import productMapInstance from "../../services/productCacher";
+import "../.././styling/text-styling.css";
 import { useState, useEffect } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import { saveAs } from "file-saver";
+import {
+  handleGoBack,
+  copyPageLinkToClipboard,
+  downloadImage,
+  downloadProductInfo,
+} from "./helper";
 
 const ProductDetailsView = ({ productId }) => {
   const [product, setProduct] = useState(new Map());
@@ -26,26 +31,6 @@ const ProductDetailsView = ({ productId }) => {
 
     fetchProduct();
   }, [productId]);
-
-  const handleGoBack = () => {
-    if (window.location.pathname === "/admin/inventory") {
-      window.location.href = "/admin/inventory";
-    } else {
-      window.location.href = "/user/products";
-    }
-  };
-
-  const copyPageLinkToClipboard = () => {
-    navigator.clipboard
-      .writeText("http://localhost:3000/user/product/" + productId)
-      .then(() => {
-        setShowCopied(true);
-      });
-  };
-
-  const downloadImage = () => {
-    saveAs(product.image, "image.jpg");
-  };
 
   return (
     <>
@@ -74,14 +59,6 @@ const ProductDetailsView = ({ productId }) => {
               src={product.image}
               alt=""
             />
-            <Row className="d-flex align-items-center justify-content-center">
-              <Button variant="" className="" onClick={downloadImage} col="6">
-                <div className="d-flex align-items-center justify-content-center">
-                  <i class="bi bi-cloud-arrow-down-fill fs-4 me-1"></i>
-                  <span>Download Image</span>
-                </div>
-              </Button>
-            </Row>
           </Col>
           <Col className="col-7 mt-2">
             <h3 className="font-product-price">${product.price}</h3>
@@ -91,7 +68,44 @@ const ProductDetailsView = ({ productId }) => {
                 <Button
                   variant=""
                   className="border-dark"
-                  onClick={copyPageLinkToClipboard}
+                  onClick={() => {
+                    downloadImage(product.image);
+                  }}
+                  col="6"
+                >
+                  <div className="align-items-center">
+                    <i class="bi bi-file-earmark-word-fill fs-5 me-1"></i>
+                    <span>Download Image</span>
+                  </div>
+                </Button>
+              </Col>
+            </Row>
+            <Row className="mt-3">
+              <Col>
+                <Button
+                  variant=""
+                  className="border-dark"
+                  onClick={() => {
+                    downloadProductInfo(product);
+                  }}
+                  col="6"
+                >
+                  <div className="align-items-center">
+                    <i class="bi bi-file-earmark-word-fill fs-5 me-1"></i>
+                    <span>Download Word File</span>
+                  </div>
+                </Button>
+              </Col>
+            </Row>
+            <Row className="mt-3">
+              <Col>
+                <Button
+                  variant=""
+                  className="border-dark"
+                  onClick={() => {
+                    copyPageLinkToClipboard(productId);
+                    setShowCopied(true);
+                  }}
                   col="6"
                 >
                   {!showCopied ? (

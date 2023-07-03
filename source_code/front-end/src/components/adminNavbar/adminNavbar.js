@@ -1,17 +1,12 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, NavItem, Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import "../styling/text-styling.css";
-import "../styling/navbar.css";
+import "../../styling/text-styling.css";
+import "../../styling/navbar.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import { handleLogout } from "./helper";
 
 const adminNavbar = () => {
-  const handleLogout = () => {
-    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    localStorage.removeItem("token");
-    sessionStorage.removeItem("token");
-    window.location.href = "/admin/login";
-  };
   return (
     <>
       <Navbar className="navbar-dark navbar-first-admin">

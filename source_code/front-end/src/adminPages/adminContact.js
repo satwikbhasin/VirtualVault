@@ -1,13 +1,13 @@
-import AdminNavbar from "../components/adminNavbar";
+import AdminNavbar from "../components/adminNavbar/adminNavbar.js";
 import { Button, Container, Table, Form } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import { getContact } from "../services/contactAPIs";
+import { getContact } from "../services/contactAPIs.js";
 import ContactCard from "../components/contactCard.js";
 import "../styling/contactCard.css";
 import "../styling/text-styling.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import { updateContact } from "../services/contactAPIs";
 import { FormGroup, Switch, FormControlLabel } from "@mui/material";
+import { updateContact } from "../services/contactAPIs.js";
 
 const Contact = () => {
   const [contact, setContact] = useState({
@@ -22,30 +22,6 @@ const Contact = () => {
   const [editWhatsapp, setEditWhatsapp] = useState(false);
   const [editPhone, setEditPhone] = useState(false);
 
-  const toggleEditName = () => {
-    setEditName(!editName);
-  };
-
-  const toggleEditEmail = () => {
-    setEditEmail(!editEmail);
-  };
-
-  const toggleEditWhatsapp = () => {
-    setEditWhatsapp(!editWhatsapp);
-  };
-
-  const toggleEditPhone = () => {
-    setEditPhone(!editPhone);
-  };
-
-  const handleUpdateContact = async () => {
-    try {
-      await updateContact(contact);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
     const fetchContact = async () => {
       try {
@@ -57,6 +33,14 @@ const Contact = () => {
     };
     fetchContact();
   }, []);
+
+  const handleUpdateContact = async () => {
+    try {
+      await updateContact(contact);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -110,7 +94,7 @@ const Contact = () => {
                     <Button
                       variant=""
                       onClick={() => {
-                        toggleEditName();
+                        setEditName(!editName);
                         handleUpdateContact();
                       }}
                     >
@@ -120,7 +104,7 @@ const Contact = () => {
                     <Button
                       variant=""
                       onClick={() => {
-                        toggleEditName();
+                        setEditName(!editName);
                       }}
                     >
                       <i class="bi bi-pencil fs-6"></i>
@@ -150,7 +134,7 @@ const Contact = () => {
                     <Button
                       variant=""
                       onClick={() => {
-                        toggleEditEmail();
+                        setEditEmail(!editEmail);
                         handleUpdateContact();
                       }}
                     >
@@ -160,7 +144,7 @@ const Contact = () => {
                     <Button
                       variant=""
                       onClick={() => {
-                        toggleEditEmail();
+                        setEditEmail(!editEmail);
                       }}
                     >
                       <i class="bi bi-pencil fs-6"></i>
@@ -190,7 +174,7 @@ const Contact = () => {
                     <Button
                       variant=""
                       onClick={() => {
-                        toggleEditWhatsapp();
+                        setEditWhatsapp(!editWhatsapp);
                         handleUpdateContact();
                       }}
                     >
@@ -200,7 +184,7 @@ const Contact = () => {
                     <Button
                       variant=""
                       onClick={() => {
-                        toggleEditWhatsapp();
+                        setEditWhatsapp(!editWhatsapp);
                       }}
                     >
                       <i class="bi bi-pencil fs-6"></i>
@@ -230,7 +214,7 @@ const Contact = () => {
                     <Button
                       variant=""
                       onClick={() => {
-                        toggleEditPhone();
+                        setEditPhone(!editPhone);
                         handleUpdateContact();
                       }}
                     >
@@ -240,7 +224,7 @@ const Contact = () => {
                     <Button
                       variant=""
                       onClick={() => {
-                        toggleEditPhone();
+                        setEditPhone(!editPhone);
                       }}
                     >
                       <i class="bi bi-pencil fs-6"></i>
