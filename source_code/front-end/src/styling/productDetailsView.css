@@ -1,0 +1,15 @@
+.utility-buttons {
+  background-color: #137252;
+  border: #137252;
+  border-radius: 0px;
+  height: 40px;
+  width: 100px;
+}
+
+.utility-buttons:hover {
+  background-color: rgb(42, 42, 42);
+}
+
+.utility-button-holder{
+    width: 100px;
+}
