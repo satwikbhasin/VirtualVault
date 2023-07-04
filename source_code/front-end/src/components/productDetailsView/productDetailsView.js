@@ -3,13 +3,15 @@ import "bootstrap";
 import { Container, Row, Image, Col, Button } from "react-bootstrap";
 import productMapInstance from "../../services/productCacher";
 import "../.././styling/text-styling.css";
+import "../.././styling/productDetailsView.css";
 import { useState, useEffect } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import {
   handleGoBack,
   copyPageLinkToClipboard,
   downloadImage,
-  downloadProductInfo,
+  downloadProductInfoWord,
+  downloadProductInfoPDF,
 } from "./helper";
 
 const ProductDetailsView = ({ productId }) => {
@@ -60,53 +62,64 @@ const ProductDetailsView = ({ productId }) => {
               alt=""
             />
           </Col>
-          <Col className="col-7 mt-2">
+          <Col className="col-7 ">
             <h3 className="font-product-price">${product.price}</h3>
-            <p className="mb-3">{product.description}</p>
-            <Row className="mt-3">
-              <Col>
+            <p className="">{product.description}</p>
+            <Row>
+              <h5>Download</h5>
+            </Row>
+            <Row>
+              <Col className="col-1 utility-button-holder">
                 <Button
-                  variant=""
-                  className="border-dark"
+                  className="utility-buttons"
                   onClick={() => {
                     downloadImage(product.image);
                   }}
-                  col="6"
                 >
                   <div className="align-items-center">
-                    <i class="bi bi-file-earmark-word-fill fs-5 me-1"></i>
-                    <span>Download Image</span>
+                    <i class="bi bi-file-earmark-image fs-5 me-1"></i>
+                    <span>Image</span>
                   </div>
                 </Button>
               </Col>
-            </Row>
-            <Row className="mt-3">
-              <Col>
+              <Col className="col-1 utility-button-holder">
                 <Button
-                  variant=""
-                  className="border-dark"
+                  className="utility-buttons"
                   onClick={() => {
-                    downloadProductInfo(product);
+                    downloadProductInfoPDF(product);
                   }}
-                  col="6"
+                >
+                  <div className="align-items-center">
+                    <i class="bi bi-file-earmark-pdf fs-5 me-1"></i>
+                    <span>PDF</span>
+                  </div>
+                </Button>
+              </Col>
+              <Col className="col-1 utility-button-holder">
+                <Button
+                  className="utility-buttons"
+                  onClick={() => {
+                    downloadProductInfoWord(product);
+                  }}
                 >
                   <div className="align-items-center">
                     <i class="bi bi-file-earmark-word-fill fs-5 me-1"></i>
-                    <span>Download Word File</span>
+                    <span>Word</span>
                   </div>
                 </Button>
               </Col>
             </Row>
             <Row className="mt-3">
+              <h5>Share</h5>
+            </Row>
+            <Row>
               <Col>
                 <Button
-                  variant=""
-                  className="border-dark"
+                  className="utility-buttons"
                   onClick={() => {
                     copyPageLinkToClipboard(productId);
                     setShowCopied(true);
                   }}
-                  col="6"
                 >
                   {!showCopied ? (
                     <div className="align-items-center">
