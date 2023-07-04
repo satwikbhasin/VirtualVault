@@ -69,7 +69,7 @@ const ProductDetailsView = ({ productId }) => {
               <h5>Download</h5>
             </Row>
             <Row>
-              <Col className="col-1 utility-button-holder">
+              <Col className="col-1 utility-button-holder me-2">
                 <Button
                   className="utility-buttons"
                   onClick={() => {
@@ -82,7 +82,7 @@ const ProductDetailsView = ({ productId }) => {
                   </div>
                 </Button>
               </Col>
-              <Col className="col-1 utility-button-holder">
+              <Col className="col-1 utility-button-holder me-2">
                 <Button
                   className="utility-buttons"
                   onClick={() => {
@@ -95,7 +95,7 @@ const ProductDetailsView = ({ productId }) => {
                   </div>
                 </Button>
               </Col>
-              <Col className="col-1 utility-button-holder">
+              <Col className="col-1 utility-button-holder align-items-center me-2">
                 <Button
                   className="utility-buttons"
                   onClick={() => {
