@@ -33,13 +33,11 @@ router.get("/getProduct/:product_id", async (req, res) => {
 
 router.post("/insert/", async (req, res) => {
   const productName = req.body.productName;
-  const productPrice = req.body.productPrice;
   const productImage = req.body.productImage;
   const productDescription = req.body.productDescription;
 
   const product = new ProductModel({
     name: productName,
-    price: productPrice,
     image: productImage,
     description: productDescription,
   });
@@ -55,7 +53,6 @@ router.post("/insert/", async (req, res) => {
 router.put("/update/", async (req, res) => {
   const id = req.body.id;
   const newName = req.body.updatedName;
-  const newPrice = req.body.updatedPrice;
   const newDescription = req.body.updatedDescription;
 
   try {
@@ -63,7 +60,6 @@ router.put("/update/", async (req, res) => {
       { _id: id },
       {
         name: newName,
-        price: newPrice,
         description: newDescription,
       }
     ).then(() => {
