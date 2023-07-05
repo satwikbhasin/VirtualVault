@@ -11,14 +11,12 @@ const AllProducts = () => {
   const [product, setProduct] = useState({
     id: "",
     name: "",
-    price: "",
     description: "",
     imageFile: null,
   });
   const [updatedProduct, setUpdatedProduct] = useState({
     id: "",
     name: "",
-    price: "",
     description: "",
     imageFile: null,
   });
@@ -31,14 +29,12 @@ const AllProducts = () => {
     setProduct({
       id: "",
       name: "",
-      price: "",
       description: "",
       imageFile: null,
     });
     setUpdatedProduct({
       id: "",
       name: "",
-      price: "",
       description: "",
       imageFile: null,
     });
@@ -83,7 +79,6 @@ const AllProducts = () => {
               <th>Name</th>
               <th>Image</th>
               <th>Description</th>
-              <th>Price</th>
               <th>Edit</th>
               <th>Delete</th>
             </tr>
@@ -105,7 +100,6 @@ const AllProducts = () => {
                   />
                 </td>
                 <td style={{ width: "400px" }}>{product.description}</td>
-                <td style={{ width: "100px" }}>${product.price}</td>
                 <td style={{ width: "100px" }}>
                   <Button
                     variant=""
@@ -114,14 +108,12 @@ const AllProducts = () => {
                       setProduct({
                         id: product._id,
                         name: product.name,
-                        price: product.price,
                         description: product.description,
                         imageFile: null,
                       });
                       setUpdatedProduct({
                         id: product._id,
                         name: product.name,
-                        price: product.price,
                         description: product.description,
                         imageFile: null,
                       });
@@ -191,22 +183,6 @@ const AllProducts = () => {
               ></Form.Control>
             </Form.Group>
             <Form.Group>
-              <Form.Label>
-                <p className="fw-bold">Price</p>
-              </Form.Label>
-              <Form.Control
-                className="mb-3"
-                type="number"
-                onChange={(event) => {
-                  setUpdatedProduct((prevProduct) => ({
-                    ...prevProduct,
-                    price: event.target.value,
-                  }));
-                }}
-                placeholder={`$${product.price}`}
-              ></Form.Control>
-            </Form.Group>
-            <Form.Group>
               <Form.Label className="fw-bold">
                 <p>Image</p>
               </Form.Label>
@@ -242,8 +218,6 @@ const AllProducts = () => {
               disabled={
                 (updatedProduct.name.trim() === product.name ||
                   updatedProduct.name === "") &&
-                (updatedProduct.price.trim() === product.price ||
-                  updatedProduct.price === "") &&
                 (updatedProduct.description.trim() === product.description ||
                   updatedProduct.description === "") &&
                 updatedProduct.imageFile === null

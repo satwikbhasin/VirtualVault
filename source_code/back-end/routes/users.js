@@ -13,7 +13,10 @@ router.post("/login", async (req, res) => {
     if (!user) {
       res.status(200).send({ message: "Email doesn't exist" });
     } else {
-      if (user.password === password) {
+      const isMatch = await user.comparePassword(password);
+      if (!isMatch) {
+        res.status(200).send({ message: "Wrong password" });
+      } else {
         const token = jwt.sign(
           { userId: user._id, email: user.email },
           "your-secret-key"
@@ -27,8 +30,6 @@ router.post("/login", async (req, res) => {
           })
           .send({ message: "success" })
           .status(200);
-      } else {
-        res.status(200).send({ message: "fail" });
       }
     }
   } catch (err) {

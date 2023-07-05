@@ -9,7 +9,6 @@ const AddProduct = () => {
   const [product, setProduct] = useState({
     id: "",
     name: "",
-    price: "",
     description: "",
     imageFile: null,
   });
@@ -18,7 +17,6 @@ const AddProduct = () => {
     setProduct({
       id: "",
       name: "",
-      price: "",
       description: "",
       imageFile: null,
     });
@@ -28,7 +26,6 @@ const AddProduct = () => {
     e.preventDefault();
     if (
       product.name.trim() === "" ||
-      product.price.trim() === "" ||
       product.description.trim() === "" ||
       product.imageFile === null
     ) {
@@ -87,22 +84,6 @@ const AddProduct = () => {
           <Col className="m-4">
             <Form.Group>
               <Form.Label className="fw-bold">
-                <h4>Price</h4>
-              </Form.Label>
-              <Form.Control
-                type="number"
-                onChange={(event) =>
-                  setProduct((prevProduct) => ({
-                    ...prevProduct,
-                    price: event.target.value,
-                  }))
-                }
-                className="mb-4"
-              />
-            </Form.Group>
-
-            <Form.Group>
-              <Form.Label className="fw-bold">
                 <h4>Image</h4>
               </Form.Label>
               <Form.Control
@@ -140,8 +121,7 @@ const AddProduct = () => {
               disabled={
                 product.description === "" ||
                 product.imageFile === null ||
-                product.name === "" ||
-                product.price === ""
+                product.name === ""
               }
             >
               <div className="d-flex align-items-center">

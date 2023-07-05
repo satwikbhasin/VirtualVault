@@ -63,7 +63,6 @@ const ProductDetailsView = ({ productId }) => {
             />
           </Col>
           <Col className="col-7 ">
-            <h3 className="font-product-price">${product.price}</h3>
             <p className="">{product.description}</p>
             <Row>
               <h5>Download</h5>
