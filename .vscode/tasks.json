@@ -1,0 +1,21 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "nodemon",
+			"path": "source_code/back-end",
+			"problemMatcher": [],
+			"label": "npm: nodemon - source_code/back-end",
+			"detail": "nodemon ./bin/www"
+		},
+		{
+			"type": "npm",
+			"script": "start",
+			"path": "source_code/front-end",
+			"problemMatcher": [],
+			"label": "npm: start - source_code/front-end",
+			"detail": "react-scripts start"
+		}
+	]
+}
