@@ -6,7 +6,7 @@ import "../../styling/navbar.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { handleLogout } from "./helper";
 
-const adminNavbar = () => {
+const AdminNavbar = () => {
   return (
     <>
       <Navbar className="navbar-dark navbar-first-admin">
@@ -39,6 +39,16 @@ const adminNavbar = () => {
               </div>
             </NavLink>
           </NavItem>
+          <NavItem className="ms-3">
+            <NavLink className="text-light no-underline" to="/admin/inquiries">
+              <div className="d-flex align-items-center justify-content-center">
+                <i class="bi bi-list-ul fs-4 me-1"></i>
+                <span className="mt-2">
+                  <h5>Inquires</h5>
+                </span>
+              </div>
+            </NavLink>
+          </NavItem>
         </Nav>
 
         <Nav>
@@ -58,4 +68,4 @@ const adminNavbar = () => {
   );
 };
 
-export default adminNavbar;
+export default AdminNavbar;

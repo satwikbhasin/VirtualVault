@@ -2,6 +2,7 @@ import AdminLogin from "../adminPages/adminLogin.js";
 import AdminHome from "../adminPages/adminHome.js";
 import AdminInventory from "../adminPages/adminInventory.js";
 import AdminContact from "../adminPages/adminContact.js";
+import AdminInquiries from "../adminPages/adminInquiries.js";
 
 import isLoggedIn from "./loginVerification.js";
 
@@ -15,6 +16,8 @@ const RouteProtection = ({ route }) => {
       return <AdminInventory />;
     } else if (route === "/admin/contact") {
       return <AdminContact />;
+    } else if (route === "/admin/inquiries") {
+      return <AdminInquiries />;
     }
   } else {
     return <AdminLogin route={route} />;

@@ -11,6 +11,7 @@ var productsRouter = require("./routes/products");
 var s3MethodsRouter = require("./routes/s3Methods");
 var usersRouter = require("./routes/users");
 var contactDetailsRouter = require("./routes/contactDetails");
+var inquiryRouter = require("./routes/inquiry");
 
 mongoose
   .connect(
@@ -45,6 +46,7 @@ app.use("/products", productsRouter);
 app.use("/s3Methods", s3MethodsRouter);
 app.use("/users", usersRouter);
 app.use("/contactDetails", contactDetailsRouter);
+app.use("/inquiry", inquiryRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
