@@ -1,7 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import { deleteProduct, updateProduct } from "../services/inventoryAPIs";
-import { Container, Image, Table, Modal, Button, Form } from "react-bootstrap";
+import { Modal, Button, Form } from "react-bootstrap";
 import productMapInstance from "../services/productCacher";
+import { MaterialReactTable } from "material-react-table";
+import { IconButton, Box, MenuItem } from "@mui/material";
 
 const AllProducts = () => {
   const formRef = useRef(null);
@@ -65,81 +67,108 @@ const AllProducts = () => {
     });
   };
 
+  const columns = useMemo(
+    () => [
+      {
+        accessorKey: "name",
+        header: "Name",
+        size: 100,
+      },
+      {
+        accessorKey: "img",
+        header: "Image",
+        size: 100,
+        Cell: ({ row }) => (
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: "1rem",
+            }}
+          >
+            <img
+              alt="avatar"
+              src={row.original.image}
+              loading="lazy"
+              style={{
+                height: "120px",
+                width: "80px",
+                objectFit: "cover",
+                borderRadius: "10px",
+              }}
+            />
+            \{" "}
+          </Box>
+        ),
+      },
+      {
+        accessorKey: "description",
+        header: "Description",
+        size: 400,
+      },
+    ],
+    []
+  );
+
   return (
     <>
-      <Container
+      <div
         style={{
           textAlign: "center",
         }}
       >
-        <h6 className="mt-1 mb-4">Product Count: {totalProductCount}</h6>
-        <Table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Image</th>
-              <th>Description</th>
-              <th>Edit</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            {Array.from(productMap.values()).map((product) => (
-              <tr key={product._id}>
-                <td style={{ width: "200px" }}>{product.name}</td>
-                <td style={{ width: "200px" }}>
-                  <Image
-                    style={{
-                      height: "120px",
-                      width: "80px",
-                      objectFit: "cover",
-                      borderRadius: "10px",
-                    }}
-                    src={product.image}
-                    alt={product.name}
-                  />
-                </td>
-                <td style={{ width: "400px" }}>{product.description}</td>
-                <td style={{ width: "100px" }}>
-                  <Button
-                    variant=""
-                    className="text-success"
-                    onClick={() => {
-                      setProduct({
-                        id: product._id,
-                        name: product.name,
-                        description: product.description,
-                        imageFile: null,
-                      });
-                      setUpdatedProduct({
-                        id: product._id,
-                        name: product.name,
-                        description: product.description,
-                        imageFile: null,
-                      });
-                      setShowUpdateModal(true);
-                    }}
-                  >
-                    <i class="bi bi-pencil fs-4"></i>
-                  </Button>
-                </td>
-                <td style={{ width: "100px" }}>
-                  <Button
-                    variant=""
-                    className="text-danger"
-                    onClick={() => {
-                      setProduct({ id: product._id });
-                      setShowDeleteModal(true);
-                    }}
-                  >
-                    <i class="bi bi-trash3 fs-4"></i>
-                  </Button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-      </Container>
+        <h5 className="mt-4 fw-bold mb-4">Product Count: {totalProductCount}</h5>
+        <MaterialReactTable
+          columns={columns}
+          data={Array.from(productMap.values())}
+          enableRowActions={true}
+          enablePinning={true}
+          enableStickyHeader={true}
+          displayColumnDefOptions={{
+            "mrt-row-actions": {
+              header: "Actions",
+            },
+          }}
+          initialState={{
+            columnOrder: ["name", "img", "description", "mrt-row-actions"],
+          }}
+          renderRowActionMenuItems={({ row }) => [
+            <MenuItem>
+              <IconButton
+                onClick={() => {
+                  setProduct({
+                    id: row.original._id,
+                    name: row.original.name,
+                    description: row.original.description,
+                    imageFile: null,
+                  });
+                  setUpdatedProduct({
+                    id: row.original._id,
+                    name: row.original.name,
+                    description: row.original.description,
+                    imageFile: null,
+                  });
+                  setShowUpdateModal(true);
+                }}
+                className="text-success"
+              >
+                <i class="bi bi-pencil"></i>
+              </IconButton>
+            </MenuItem>,
+            <MenuItem>
+              <IconButton
+                onClick={() => {
+                  setProduct({ id: row.original._id });
+                  setShowDeleteModal(true);
+                }}
+                className="text-danger"
+              >
+                <i class="bi bi-trash3"></i>
+              </IconButton>
+            </MenuItem>,
+          ]}
+        />
+      </div>
 
       <Modal
         show={showUpdateModal}

@@ -8,7 +8,6 @@ const { Console } = require("console");
 router.get("/getInquiries", async (req, res) => {
   try {
     const inquiries = await InquiryModel.find();
-    console.log(inquiries);
     res.status(200).send(inquiries);
   } catch (err) {
     res.send(err);

@@ -199,9 +199,9 @@ const ProductDetailsView = ({ productId }) => {
           <Modal.Title>Inquiry Form</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4 className="fw-bold text-center">About You</h4>
+          <h4 className="fw-bold">About You</h4>
           <form>
-            <div className="mb-3 fw-bold">
+            <div className="fw-bold mb-3">
               <label for="name" className="form-label">
                 Name
               </label>
@@ -252,9 +252,9 @@ const ProductDetailsView = ({ productId }) => {
                 }}
               />
             </div>
-            <div className="mb-3">
+            <div className="">
               <label for="company" className="form-label fw-bold">
-                Company/Firm (optional)
+                Company (optional)
               </label>
               <input
                 type="text"
@@ -269,8 +269,7 @@ const ProductDetailsView = ({ productId }) => {
                 }}
               />
             </div>
-            <hr />
-            <div className="mb-3 text-center">
+            <div className="mb-3">
               <h4 className="fw-bold">
                 How can we help you with '{product.name}'?
               </h4>
