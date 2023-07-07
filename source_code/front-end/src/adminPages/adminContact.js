@@ -1,5 +1,5 @@
 import AdminNavbar from "../components/adminNavbar/adminNavbar.js";
-import { Button, Container, Table, Form } from "react-bootstrap";
+import { Button, Table, Form } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { getContact } from "../services/contactAPIs.js";
 import ContactCard from "../components/contactCard.js";
@@ -45,7 +45,7 @@ const Contact = () => {
   return (
     <>
       <AdminNavbar />
-      <Container className="text-center mt-3">
+      <div className="text-center mt-3">
         <div className="mt-3 d-flex justify-content-center">
           <Form>
             <FormGroup>
@@ -162,7 +162,10 @@ const Contact = () => {
                       placeholder="Whatsapp Number"
                       value={contact.whatsapp}
                       onChange={(event) =>
-                        setContact({ ...contact, whatsapp: event.target.value })
+                        setContact({
+                          ...contact,
+                          whatsapp: event.target.value,
+                        })
                       }
                     />
                   </td>
@@ -237,7 +240,7 @@ const Contact = () => {
         ) : (
           <ContactCard />
         )}
-      </Container>
+      </div>
     </>
   );
 };
