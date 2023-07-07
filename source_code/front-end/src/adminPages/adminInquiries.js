@@ -53,7 +53,7 @@ const Inquires = () => {
                   <p>Name: {inquiry.name}</p>
                   <p>Email: {inquiry.email}</p>
                   <p>Phone: {inquiry.phone}</p>
-                  <p> Company/Firm: {inquiry.company}</p>
+                  <p> Company/Firm:{inquiry.company}</p>
                 </td>
                 <td style={{ width: "650px" }}>{inquiry.message}</td>
                 <td style={{ width: "650px" }}>
