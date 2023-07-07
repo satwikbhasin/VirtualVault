@@ -40,6 +40,10 @@ root.render(
           path="/admin/contact"
           element={<RouteProtection route={"/admin/contact"} />}
         />
+        <Route
+          path="/admin/inquiries"
+          element={<RouteProtection route={"/admin/inquiries"} />}
+        />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
