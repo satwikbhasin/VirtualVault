@@ -3,6 +3,8 @@
   height: 300px;
   max-height: 300px;
   transition: transform 0.3s ease;
+  background: #37464d;
+  color: white;
 }
 
 .card-image {
@@ -16,8 +18,7 @@
   max-height: fit-content;
   max-width: 400px;
   transform: scale(1.04);
-  background: #8b8b8b30;
-  color: #000000;
+  background: #3c4d54;
 }
 
 .card-name {
@@ -33,4 +34,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.pagination {
+  color: rgb(255, 255, 255);
+}
+
+.products-container {
+  margin: 50px;
+  margin-top: 0px;
 }

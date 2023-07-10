@@ -3,19 +3,20 @@ import { Navbar, NavItem, Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import "../../styling/text-styling.css";
 import "../../styling/navbar.css";
+import "../../styling/theme.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { handleLogout } from "./helper";
 
 const AdminNavbar = () => {
   return (
-    <>
-      <Navbar className="navbar-dark navbar-first-admin">
+    <div maxWidth="xl">
+      <Navbar className="navbar-dark navbar-first-admin primary-bg">
         <NavLink className="navbar-brand ms-3" to="/admin/">
           <h1 className="navbar-first-heading">HEALTHKARE</h1>
         </NavLink>
       </Navbar>
       <Navbar
-        className="navbar-second-admin d-flex justify-content-between"
+        className="navbar-second-admin d-flex justify-content-between secondary-bg"
         fluid
       >
         <Nav>
@@ -64,7 +65,7 @@ const AdminNavbar = () => {
           </NavItem>
         </Nav>
       </Navbar>
-    </>
+    </div>
   );
 };
 

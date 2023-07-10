@@ -1,0 +1,30 @@
+.primary-bg {
+  background-color: #192428;
+  color: white;
+  margin-left: 0;
+  margin-right: 0;
+  overflow-x: hidden;
+}
+
+.secondary-bg {
+  background-color: #0784b5;
+  color: white;
+  margin-left: 0;
+  margin-right: 0;
+  overflow-x: hidden;
+}
+
+.ternary-bg {
+  background-color: #2d383c;
+  color: white;
+  min-height: 100vh;
+  margin: 0%;
+  margin-left: 0;
+  margin-right: 0;
+  overflow-x: hidden;
+}
+
+.selected-row:hover {
+  background-color: #000000;
+  color: #000000;
+}

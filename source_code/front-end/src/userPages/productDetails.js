@@ -9,8 +9,8 @@ const ProductDetails = () => {
 
   return (
     <>
-      <UserNavbar />
-      <ProductDetailsView productId={productId} />
+        <UserNavbar />
+        <ProductDetailsView productId={productId} />
     </>
   );
 };

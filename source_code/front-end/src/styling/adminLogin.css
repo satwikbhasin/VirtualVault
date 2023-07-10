@@ -19,11 +19,11 @@
   margin: auto;
   margin-top: 200px;
   max-width: 400px;
-  background-color: #1372529e;
+  background-color: #192428b4;
 }
 
 .login-form-container {
-  background-image: url("https://healthkare.s3.amazonaws.com/assets/login-background-1");
+  background-image: url("https://healthkare.s3.amazonaws.com/assets/login-background-3");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 10px;

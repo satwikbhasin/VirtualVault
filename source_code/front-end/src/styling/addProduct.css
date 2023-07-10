@@ -3,7 +3,6 @@
   text-decoration: none;
 }
 
-.custom-switch-color {
-  background-color: #5f0000;
-  border-color: #22ff00;
+.utilityButtons {
+  color: white;
 }

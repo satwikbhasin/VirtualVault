@@ -28,8 +28,8 @@ const ContactCard = () => {
   }, []);
 
   return (
-    <Container className="text-center">
-      <Row className="p-4 mt-4 square border border-dark rounded">
+    <Container className="contact-card primary-bg">
+      <Row className="p-4">
         <h1 class="contact-name">{contact.name}</h1>
         <hr className="mb-5" />
         <Col className="card-enlarged">

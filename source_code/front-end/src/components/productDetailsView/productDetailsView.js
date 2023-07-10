@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap";
-import { Container, Row, Image, Col, Button, Modal } from "react-bootstrap";
+import { Row, Image, Col, Button, Modal } from "react-bootstrap";
 import productMapInstance from "../../services/productCacher";
 import "../.././styling/text-styling.css";
 import "../.././styling/productDetailsView.css";
@@ -65,10 +65,10 @@ const ProductDetailsView = ({ productId }) => {
 
   return (
     <>
-      <Container>
-        <div className="d-flex mt-4">
+      <div className="ternary-bg">
+        <div className="d-flex p-3">
           <Button variant="" className="" onClick={handleGoBack}>
-            <div className="d-flex align-items-center">
+            <div className="d-flex align-items-center text-light">
               <i class="bi bi-arrow-bar-left fs-3"></i>
               <span>Back</span>
             </div>
@@ -78,7 +78,7 @@ const ProductDetailsView = ({ productId }) => {
           </div>
         </div>
         <hr />
-        <Row className="pt-1 pb-3">
+        <div className="d-flex p-3">
           <Col className="col-5">
             <Image
               style={{
@@ -96,7 +96,7 @@ const ProductDetailsView = ({ productId }) => {
             <Row className="mb-3">
               <Col>
                 <Button
-                  variant="dark"
+                  className="inquire-button"
                   onClick={() => {
                     setShowInquiryForm(true);
                   }}
@@ -114,7 +114,7 @@ const ProductDetailsView = ({ productId }) => {
                   <h5>Download</h5>
                 </Row>
                 <Row>
-                  <Col className="col-1 utility-button-holder align-items-center">
+                  <Col className="col-1 utility-button-holder align-items-center me-2">
                     <Button
                       className="utility-buttons"
                       onClick={() => {
@@ -127,7 +127,7 @@ const ProductDetailsView = ({ productId }) => {
                       </div>
                     </Button>
                   </Col>
-                  <Col className="col-1 utility-button-holder align-items-center">
+                  <Col className="col-1 utility-button-holder align-items-center me-2">
                     <Button
                       className="utility-buttons"
                       onClick={() => {
@@ -140,7 +140,7 @@ const ProductDetailsView = ({ productId }) => {
                       </div>
                     </Button>
                   </Col>
-                  <Col className="col-1 utility-button-holder align-items-center">
+                  <Col className="col-1 utility-button-holder align-items-center me-2">
                     <Button
                       className="utility-buttons"
                       onClick={() => {
@@ -186,8 +186,8 @@ const ProductDetailsView = ({ productId }) => {
             </Row>
             <Row></Row>
           </Col>
-        </Row>
-      </Container>
+        </div>
+      </div>
 
       <Modal
         show={showInquiryForm}

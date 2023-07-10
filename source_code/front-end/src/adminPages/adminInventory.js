@@ -4,6 +4,7 @@ import AdminNavbar from ".././components/adminNavbar/adminNavbar.js";
 import AddProduct from "./inventoryAddProduct";
 import AllProducts from "./inventoryAllProducts.js";
 import "../styling/addProduct.css";
+import "../styling/theme.css";
 import ProductsView from "../components/productsView";
 import { FormGroup, Switch, FormControlLabel } from "@mui/material";
 
@@ -12,13 +13,13 @@ const Inventory = () => {
   const [isEditMode, setIsEditMode] = useState(false);
 
   return (
-    <>
+    <div className="ternary-bg">
       <AdminNavbar />
-      <div className="mt-3 d-flex justify-content-center">
-        <Form>
+      <div className="mt-3 d-flex justify-content-center p-1">
+        <Form className="edit-switch">
           <FormGroup>
             <FormControlLabel
-              control={<Switch color="success" />}
+              control={<Switch />}
               onChange={() => setIsEditMode(!isEditMode)}
               labelPlacement="start"
               label={
@@ -46,7 +47,7 @@ const Inventory = () => {
                   onClick={() => {
                     setShowAddProduct(true);
                   }}
-                  className="utilityButtons mt-2"
+                  className="utilityButtons p-1"
                 >
                   <i class="bi bi-plus-circle-fill fs-3"></i>
                 </Button>
@@ -76,7 +77,7 @@ const Inventory = () => {
       ) : (
         <ProductsView />
       )}
-    </>
+    </div>
   );
 };
 

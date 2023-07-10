@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Container, Row, Col, Button } from "react-bootstrap";
+import { Card, Button, Row } from "react-bootstrap";
 import "../styling/productsView.css";
 import { useState, useEffect } from "react";
 import productMapInstance from "../services/productCacher";
@@ -11,7 +11,7 @@ const ProductsView = () => {
   const [productsMap, setProductsMap] = useState(new Map());
   const [totalProductSize, setTotalProducts] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage] = useState(6);
+  const [productsPerPage] = useState(9);
   const [showProductDetails, setShowProductDetails] = useState(false);
   const [productId, setProductId] = useState(null);
 
@@ -51,27 +51,25 @@ const ProductsView = () => {
   };
 
   return (
-    <>
+    <div className="ternary-bg">
       {showProductDetails ? (
         <ProductDetailsView productId={productId}></ProductDetailsView>
       ) : (
-        <Container>
-          <Row className="mt-4 justify-content-center">
+        <div className="ternary-bg">
+          <div className="justify-content-center">
             <div className="pagination-container">
               <Pagination
-                variant="outlined"
-                color="success"
                 count={Math.ceil(totalProductSize / productsPerPage)}
                 page={currentPage}
                 onChange={handleChangePage}
-                className="mb-3"
+                className="p-4 pagination"
               />
             </div>
-          </Row>
+          </div>
 
-          <Row className="pb-4">
+          <Row className="products-container">
             {currentProducts.map((item) => (
-              <Col md={4} lg={4} xl={4} key={item._id}>
+              <div className="col-md-4 col-lg-4 col-xl-4" key={item._id}>
                 <Button
                   variant=""
                   onClick={() => {
@@ -95,12 +93,12 @@ const ProductsView = () => {
                     </Card.Body>
                   </Card>
                 </Button>
-              </Col>
+              </div>
             ))}
           </Row>
-        </Container>
+        </div>
       )}
-    </>
+    </div>
   );
 };
 
