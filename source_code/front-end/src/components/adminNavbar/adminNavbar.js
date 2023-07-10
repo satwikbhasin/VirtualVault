@@ -19,7 +19,7 @@ const AdminNavbar = () => {
         fluid
       >
         <Nav>
-          <NavItem className="link-holder">
+          <NavItem>
             <NavLink
               className={
                 window.location.pathname === "/admin/inventory" ||
@@ -37,7 +37,7 @@ const AdminNavbar = () => {
               </div>
             </NavLink>
           </NavItem>
-          <NavItem className="link-holder">
+          <NavItem>
             <NavLink
               className={
                 window.location.pathname === "/admin/contact" ||
@@ -55,7 +55,7 @@ const AdminNavbar = () => {
               </div>
             </NavLink>
           </NavItem>
-          <NavItem className="link-holder">
+          <NavItem>
             <NavLink
               className={
                 window.location.pathname === "/admin/inquiries" ||
