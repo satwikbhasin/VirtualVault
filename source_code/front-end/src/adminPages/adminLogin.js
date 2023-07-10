@@ -111,14 +111,12 @@ const AdminLogin = ({ route }) => {
                     </Alert>
                   )}
                   <Button
-                    className="mt-4 btn-dark"
+                    className="mt-4 login-button"
                     type="submit"
                     disabled={password === "" || email === ""}
                   >
-                    <div className="d-flex align-items-center">
-                      <i class="bi bi-door-closed fs-5 me-1"></i>
-                      <span className="">Login</span>
-                    </div>
+                    <i class="bi bi-door-closed fs-5 me-1"></i>
+                    <span className="">Login</span>
                   </Button>
                 </Form>
               </Col>

@@ -109,11 +109,6 @@ const Inquires = () => {
             sx: {
               color: "#2d383c",
               backgroundColor: "#2d383c",
-              top: 0,
-              bottom: 0,
-              left: 0,
-              right: 0,
-              overflow: "auto",
             },
           }}
           muiTableBodyCellProps={{
@@ -131,24 +126,24 @@ const Inquires = () => {
           muiTableHeadCellProps={{
             sx: {
               color: "#DDE6ED",
-              backgroundColor: "#2d383c",
+              backgroundColor: "#414c50",
             },
           }}
           muiBottomToolbarProps={{
             sx: {
-              backgroundColor: "#2d383c",
+              backgroundColor: "#414c50",
               color: "#DDE6ED",
             },
           }}
           muiTopToolbarProps={{
             sx: {
-              backgroundColor: "#2d383c",
+              backgroundColor: "#414c50",
               color: "#DDE6ED",
             },
           }}
           muiTablePaginationProps={{
             sx: {
-              backgroundColor: "#2d383c",
+              backgroundColor: "#414c50",
               color: "#DDE6ED",
             },
           }}

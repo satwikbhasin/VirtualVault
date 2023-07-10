@@ -15,7 +15,7 @@ const Inventory = () => {
   return (
     <div className="ternary-bg">
       <AdminNavbar />
-      <div className="mt-3 d-flex justify-content-center p-1">
+      <div className="mt-3 d-flex justify-content-center">
         <Form className="edit-switch">
           <FormGroup>
             <FormControlLabel
@@ -24,7 +24,7 @@ const Inventory = () => {
               labelPlacement="start"
               label={
                 <div>
-                  <span className="ms-2">Edit</span>
+                  <span>Edit</span>
                 </div>
               }
             />
