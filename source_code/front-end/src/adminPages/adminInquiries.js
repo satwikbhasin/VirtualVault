@@ -153,10 +153,7 @@ const Inquires = () => {
             },
           }}
           renderRowActionMenuItems={({ row }) => [
-            <MenuItem
-              sx={{ height: "15px", background: "#2d383c", color: "yellow" }}
-              className="selected-row"
-            >
+            <MenuItem sx={{ height: "15px" }} className="selected-row">
               <IconButton key={0} sx={{ m: 0 }}>
                 <a
                   href={`mailto:${row.original.email}?subject=Regrding your inquiry for ${row.original.productName} at Healthkare&body=Hello ${row.original.name}, Thank you for your inquiry stated as:%0D%0A%0D%0A"${row.original.message}" %0D%0A%0D%0AThankyou,%0D%0AHealthkare`}
@@ -164,7 +161,7 @@ const Inquires = () => {
                   target="_blank"
                   className="contact-small-font no-underline"
                 >
-                  <div className="d-flex align-items-center justify-content-center">
+                  <div className="d-flex align-items-center justify-content-center text-dark">
                     <i class="bi bi-reply-fill fs-4 me-1"></i>
                     <span>Reply</span>
                   </div>

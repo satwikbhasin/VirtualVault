@@ -1,0 +1,12 @@
+.edit-form .modal-content {
+  color: white;
+  background-color: #192428;
+}
+
+.edit-form .modal-header {
+  border-bottom: 1px solid #0784b5;
+}
+
+.edit-form .modal-footer {
+  border-top: 1px solid #0784b5;
+}
