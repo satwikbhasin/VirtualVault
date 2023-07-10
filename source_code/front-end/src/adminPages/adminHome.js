@@ -1,12 +1,13 @@
 import React from "react";
 import AdminNavbar from ".././components/adminNavbar/adminNavbar.js";
-import ".././styling/text-styling.css";
+import ".././styling/theme.css";
+import ".././styling/home.css";
 
 function Home() {
   return (
     <>
       <AdminNavbar />
-      <div className="centered ternary-bg">
+      <div className="home-screen-watermark ternary-bg">
         <img
           src={"https://healthkare.s3.amazonaws.com/assets/login-background-3"}
           alt=""

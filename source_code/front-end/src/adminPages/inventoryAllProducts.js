@@ -5,7 +5,8 @@ import productMapInstance from "../services/productCacher";
 import { MaterialReactTable } from "material-react-table";
 import { IconButton, Box, MenuItem, Button } from "@mui/material";
 import "../styling/inventoryAllProducts.css";
-import "../styling/general.css";
+import "../styling/form.css";
+import "../styling/buttons.css";
 
 const AllProducts = () => {
   const formRef = useRef(null);
@@ -286,8 +287,7 @@ const AllProducts = () => {
           </Modal.Body>
           <Modal.Footer>
             <Button
-              variant=""
-              color="primary"
+              className="cancel-button me-2"
               onClick={() => {
                 setShowUpdateModal(false);
               }}
@@ -298,8 +298,7 @@ const AllProducts = () => {
               </div>
             </Button>
             <Button
-              variant=""
-              className="text-success"
+              className="save-button me-2"
               type="submit"
               disabled={
                 (updatedProduct.name.trim() === product.name ||

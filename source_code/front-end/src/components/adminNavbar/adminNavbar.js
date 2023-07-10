@@ -1,7 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, NavItem, Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import "../../styling/text-styling.css";
 import "../../styling/navbar.css";
 import "../../styling/theme.css";
 import "bootstrap-icons/font/bootstrap-icons.css";

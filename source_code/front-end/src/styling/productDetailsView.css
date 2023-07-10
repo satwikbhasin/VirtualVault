@@ -1,33 +1,18 @@
-.utility-buttons {
-  border-radius: 10px;
-  height: 35px;
-  width: 100px;
-  background-color: #414c50;
-  border: #414c50;
-  margin-right: 100px;
+.product-heading {
+  font-family: Impact, fantasy;
+  font-size: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 151px
 }
 
-.utility-buttons:hover {
-  background-color: #192428;
-  transform: scale(1.05);
+.product-name {
+  font-family: Verdana, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
 }
 
 .utility-button-holder {
   width: 100px;
-}
-
-.edit-button {
-  margin-top: 10;
-}
-
-.inquire-button {
-  border: #0784b5;
-  background-color: #0784b5;
-  border-radius: 10px;
-}
-
-.inquire-button:hover {
-  border: #192428;
-  background-color: #192428;
-  border-radius: 10px;
 }

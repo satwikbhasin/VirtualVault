@@ -1,0 +1,162 @@
+/* ALL BUTTONS */
+
+/* Admin Inventory Page */
+
+.edit-button {
+  margin-top: 10;
+}
+
+.save-button {
+  background-color: #192428;
+  border: #192428;
+  color: #ffffff;
+}
+
+.save-button:disabled {
+  background-color: transparent;
+  border: #192428;
+  color: #dc1d1d;
+}
+
+.save-button:hover {
+  transform: scale(1.1);
+  transition: ease-out 0.3s;
+  color: #59c177;
+}
+
+.add-product-button {
+  background-color: transparent;
+  border: transparent;
+  color: #ffffff;
+}
+
+.add-product-button:hover {
+  background-color: transparent;
+  border: transparent;
+  transform: scale(1.1);
+  transition: ease-out 0.3s;
+  color: #59c177;
+}
+
+.edit-switch {
+  margin-right: 15px;
+  color: #ffffff;
+}
+
+/* Product Details Page */
+
+.utility-button {
+  border-radius: 10px;
+  height: 35px;
+  width: 100px;
+  background-color: #414c50;
+  border: #414c50;
+  margin-right: 100px;
+}
+
+.utility-button:hover {
+  background-color: #192428;
+  transform: scale(1.05);
+}
+
+.inquire-button {
+  border: #0784b5;
+  background-color: #0784b5;
+  border-radius: 10px;
+}
+
+.inquire-button:hover {
+  border: #192428;
+  background-color: #192428;
+  border-radius: 10px;
+}
+
+.all-products-button {
+  margin-left: 10px;
+  color: white;
+  border: transparent;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border-radius: 10px;
+}
+
+.all-products-button:hover {
+  transform: translateX(-25px);
+  transition: ease-in 0.3s;
+}
+
+/* Admin Login Page */
+
+.login-button {
+  background-color: #0784b5;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.login-button:disabled {
+  background-color: #0784b5;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.login-button:hover {
+  background-color: #3886a5;
+  border: none;
+  border-radius: 15px;
+  color: rgb(0, 0, 0);
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+/* Add Product Page */
+
+.cancel-button {
+  margin-left: 30px;
+  margin-top: 30px;
+  background-color: #192428;
+  border: #192428;
+  color: white;
+}
+
+.cancel-button:disabled {
+  background-color: #192428;
+  background: #192428;
+  border: #192428;
+  color: white;
+}
+
+.cancel-button:hover {
+  transform: scale(1.1);
+  transition: ease-out 0.3s;
+  color: #c15959;
+  background-color: #192428;
+  border: #192428;
+}
+
+.add-button {
+  background-color: #192428;
+  border: #192428;
+  color: white;
+}
+
+.add-button:disabled {
+  background-color: #192428;
+  background: #192428;
+  border: #192428;
+  color: white;
+}
+
+.add-button:hover {
+  transform: scale(1.1);
+  transition: ease-out 0.3s;
+  color: #59c177;
+  background-color: #192428;
+  border: #192428;
+}

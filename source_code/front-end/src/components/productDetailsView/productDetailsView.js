@@ -2,7 +2,6 @@ import React from "react";
 import "bootstrap";
 import { Row, Image, Col, Button, Modal } from "react-bootstrap";
 import productMapInstance from "../../services/productCacher";
-import "../.././styling/text-styling.css";
 import "../.././styling/productDetailsView.css";
 import { useState, useEffect } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -14,6 +13,7 @@ import {
   downloadProductInfoPDF,
 } from "./helper";
 import { addInquiry } from "../../services/inquiryAPIs";
+import "../.././styling/buttons.css";
 
 const ProductDetailsView = ({ productId }) => {
   const [product, setProduct] = useState(new Map());
@@ -67,14 +67,14 @@ const ProductDetailsView = ({ productId }) => {
     <>
       <div className="ternary-bg">
         <div className="d-flex p-3">
-          <Button variant="" className="" onClick={handleGoBack}>
-            <div className="d-flex align-items-center text-light">
+          <Button variant="" onClick={handleGoBack}>
+            <div className="all-products-button">
               <i class="bi bi-arrow-bar-left fs-3"></i>
-              <span>Back</span>
+              <span>All Products</span>
             </div>
           </Button>
-          <div className="flex-grow-1 d-flex align-items-center justify-content-center">
-            <h2 className="font-product-heading">{product.name}</h2>
+          <div className="flex-grow-1">
+            <h2 className="product-heading">{product.name}</h2>
           </div>
         </div>
         <hr />
@@ -101,7 +101,7 @@ const ProductDetailsView = ({ productId }) => {
                     setShowInquiryForm(true);
                   }}
                 >
-                  <div className="d-flex align-items-center justify-content-center">
+                  <div>
                     <i class="bi bi-pencil-square me-2 fs-5"></i>
                     <span>Inquire</span>
                   </div>
@@ -114,40 +114,40 @@ const ProductDetailsView = ({ productId }) => {
                   <h5>Download</h5>
                 </Row>
                 <Row>
-                  <Col className="col-1 utility-button-holder align-items-center me-2">
+                  <Col className="col-1 utility-button-holder me-2">
                     <Button
-                      className="utility-buttons"
+                      className="utility-button"
                       onClick={() => {
                         downloadImage(product.image);
                       }}
                     >
-                      <div className="align-items-center">
+                      <div>
                         <i class="bi bi-file-earmark-image fs-6 me-1"></i>
                         <span>Image</span>
                       </div>
                     </Button>
                   </Col>
-                  <Col className="col-1 utility-button-holder align-items-center me-2">
+                  <Col className="col-1 utility-button-holder me-2">
                     <Button
-                      className="utility-buttons"
+                      className="utility-button"
                       onClick={() => {
                         downloadProductInfoPDF(product);
                       }}
                     >
-                      <div className="align-items-center">
+                      <div>
                         <i class="bi bi-file-earmark-pdf fs-6 me-1"></i>
                         <span>PDF</span>
                       </div>
                     </Button>
                   </Col>
-                  <Col className="col-1 utility-button-holder align-items-center me-2">
+                  <Col className="col-1 utility-button-holder me-2">
                     <Button
-                      className="utility-buttons"
+                      className="utility-button"
                       onClick={() => {
                         downloadProductInfoWord(product);
                       }}
                     >
-                      <div className="align-items-center">
+                      <div>
                         <i class="bi bi-file-earmark-word-fill fs-6 me-1"></i>
                         <span>Word</span>
                       </div>
@@ -160,21 +160,21 @@ const ProductDetailsView = ({ productId }) => {
                   <h5>Share</h5>
                 </Row>
                 <Row>
-                  <Col className="col-1 utility-button-holder align-items-center me-2">
+                  <Col className="col-1 utility-button-holder me-2">
                     <Button
-                      className="utility-buttons"
+                      className="utility-button"
                       onClick={() => {
                         copyPageLinkToClipboard(productId);
                         setShowCopied(true);
                       }}
                     >
                       {!showCopied ? (
-                        <div className="align-items-center">
+                        <div>
                           <i className="bi bi-clipboard-fill fs-6 me-1"></i>
                           <span>Copy</span>
                         </div>
                       ) : (
-                        <div className="align-items-center">
+                        <div>
                           <i className="bi bi-clipboard-check-fill fs-6 me-1"></i>
                           <span>Copied</span>
                         </div>
@@ -190,7 +190,7 @@ const ProductDetailsView = ({ productId }) => {
       </div>
 
       <Modal
-        className="inquiry-form"
+        className="modal-form"
         show={showInquiryForm}
         onHide={() => {
           setShowInquiryForm(false);

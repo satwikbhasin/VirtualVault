@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 import { useState, useEffect } from "react";
 import { getContact } from "../services/contactAPIs";
 import "../styling/contactCard.css";
-import "../styling/text-styling.css";
+import "../styling/general.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 const ContactCard = () => {

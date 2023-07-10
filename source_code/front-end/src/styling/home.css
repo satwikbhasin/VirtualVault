@@ -1,5 +1,5 @@
-.centered {
-  display: flex;
+.home-screen-watermark {
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+  display: flex;
 }
