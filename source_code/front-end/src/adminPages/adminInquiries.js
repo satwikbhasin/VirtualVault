@@ -4,6 +4,7 @@ import { getInquiries } from "../services/inquiryAPIs";
 import { useState, useEffect, useMemo } from "react";
 import { MaterialReactTable } from "material-react-table";
 import { IconButton, MenuItem } from "@mui/material";
+import "../styling/theme.css";
 
 const Inquires = () => {
   var [inquiryMap, setInquiryMap] = useState(new Map());
@@ -72,8 +73,9 @@ const Inquires = () => {
         style={{
           textAlign: "center",
         }}
+        className="ternary-bg"
       >
-        <h5 className="mt-4 fw-bold mb-4">
+        <h5 className="text-light fw-bold p-4">
           Inquiry Count: {totalInquiryCount}
         </h5>
         <MaterialReactTable
@@ -97,8 +99,64 @@ const Inquires = () => {
               "mrt-row-actions",
             ],
           }}
+          muiTableBodyRowProps={{
+            hover: false,
+            sx: {
+              backgroundColor: "#2d383c",
+            },
+          }}
+          muiTablePaperProps={{
+            sx: {
+              color: "#2d383c",
+              backgroundColor: "#2d383c",
+              top: 0,
+              bottom: 0,
+              left: 0,
+              right: 0,
+              overflow: "auto",
+            },
+          }}
+          muiTableBodyCellProps={{
+            sx: {
+              color: "#DDE6ED",
+              backgroundColor: "#2d383c",
+            },
+          }}
+          muiTableDetailPanelProps={{
+            sx: {
+              backgroundColor: "#2d383c",
+              color: "#DDE6ED",
+            },
+          }}
+          muiTableHeadCellProps={{
+            sx: {
+              color: "#DDE6ED",
+              backgroundColor: "#2d383c",
+            },
+          }}
+          muiBottomToolbarProps={{
+            sx: {
+              backgroundColor: "#2d383c",
+              color: "#DDE6ED",
+            },
+          }}
+          muiTopToolbarProps={{
+            sx: {
+              backgroundColor: "#2d383c",
+              color: "#DDE6ED",
+            },
+          }}
+          muiTablePaginationProps={{
+            sx: {
+              backgroundColor: "#2d383c",
+              color: "#DDE6ED",
+            },
+          }}
           renderRowActionMenuItems={({ row }) => [
-            <MenuItem sx={{ height: "15px" }}>
+            <MenuItem
+              sx={{ height: "15px", background: "#2d383c", color: "yellow" }}
+              className="selected-row"
+            >
               <IconButton key={0} sx={{ m: 0 }}>
                 <a
                   href={`mailto:${row.original.email}?subject=Regrding your inquiry for ${row.original.productName} at Healthkare&body=Hello ${row.original.name}, Thank you for your inquiry stated as:%0D%0A%0D%0A"${row.original.message}" %0D%0A%0D%0AThankyou,%0D%0AHealthkare`}
@@ -106,7 +164,7 @@ const Inquires = () => {
                   target="_blank"
                   className="contact-small-font no-underline"
                 >
-                  <div className="d-flex align-items-center justify-content-center"> 
+                  <div className="d-flex align-items-center justify-content-center">
                     <i class="bi bi-reply-fill fs-4 me-1"></i>
                     <span>Reply</span>
                   </div>

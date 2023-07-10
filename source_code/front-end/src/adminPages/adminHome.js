@@ -6,9 +6,9 @@ function Home() {
   return (
     <>
       <AdminNavbar />
-      <div className="centered">
+      <div className="centered ternary-bg">
         <img
-          src={"https://healthkare.s3.amazonaws.com/assets/login-background-2"}
+          src={"https://healthkare.s3.amazonaws.com/assets/login-background-3"}
           alt=""
           height={500}
           width={500}

@@ -1,6 +1,6 @@
 .contact-small-font {
   font-size: 13px;
-  color: #000000;
+  color: white;
 }
 
 .contact-medium-font {
@@ -16,6 +16,20 @@
 }
 
 .card-enlarged:hover {
+  transition: transform 0.5s ease;
   transform: scale(1.2);
   color: #132372bb;
+}
+
+.contact-card {
+  margin-top: 60px;
+  color: white;
+  border-radius: 20px;
+  text-align: center;
+  margin: 60px;
+}
+
+.table-body-background {
+  background-color: aquamarine;
+  color: aqua;
 }

@@ -8,12 +8,12 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 const userNavbar = () => {
   return (
     <>
-      <Navbar className="navbar-dark navbar-first-user">
+      <Navbar className="navbar-dark navbar-first-user primary-bg">
         <NavLink className="navbar-brand text-center ms-3" to="/user/">
           <h1 className="navbar-first-heading">HEALTHKARE</h1>
         </NavLink>
       </Navbar>
-      <Navbar className="navbar-second-user justify-content-left">
+      <Navbar className="navbar-second-user justify-content-left secondary-bg">
         <NavItem className="ms-3">
           <NavLink
             className="text-light no-underline nav-tabs"

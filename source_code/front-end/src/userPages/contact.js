@@ -5,8 +5,10 @@ import UserNavbar from "../components/userNavbar";
 function Contact() {
   return (
     <>
-      <UserNavbar />
-      <ContactCard />
+      <div className="ternary-bg">
+        <UserNavbar />
+        <ContactCard />
+      </div>
     </>
   );
 }

@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import { deleteProduct, updateProduct } from "../services/inventoryAPIs";
-import { Modal, Button, Form } from "react-bootstrap";
+import { Form, Modal } from "react-bootstrap";
 import productMapInstance from "../services/productCacher";
 import { MaterialReactTable } from "material-react-table";
-import { IconButton, Box, MenuItem } from "@mui/material";
+import { IconButton, Box, MenuItem, Button } from "@mui/material";
 
 const AllProducts = () => {
   const formRef = useRef(null);
@@ -97,7 +97,6 @@ const AllProducts = () => {
                 borderRadius: "10px",
               }}
             />
-            \{" "}
           </Box>
         ),
       },
@@ -117,16 +116,72 @@ const AllProducts = () => {
           textAlign: "center",
         }}
       >
-        <h5 className="mt-4 fw-bold mb-4">Product Count: {totalProductCount}</h5>
+        <h5 className="text-light fw-bold p-1">
+          Product Count: {totalProductCount}
+        </h5>
         <MaterialReactTable
           columns={columns}
           data={Array.from(productMap.values())}
           enableRowActions={true}
+          onHoveredRowChange={(row) => {
+            console.log(row.original);
+          }}
           enablePinning={true}
           enableStickyHeader={true}
+          className="custom-material-table"
           displayColumnDefOptions={{
             "mrt-row-actions": {
               header: "Actions",
+            },
+          }}
+          muiTableBodyRowProps={{
+            hover: false,
+            sx: {
+              backgroundColor: "#2d383c",
+            },
+          }}
+          muiTablePaperProps={{
+            sx: {
+              color: "#2d383c",
+              "& tr": {
+                backgroundColor: "#2d383c",
+              },
+            },
+          }}
+          muiTableBodyCellProps={{
+            sx: {
+              color: "#DDE6ED",
+              backgroundColor: "#2d383c",
+            },
+          }}
+          muiTableDetailPanelProps={{
+            sx: {
+              backgroundColor: "#2d383c",
+              color: "#DDE6ED",
+            },
+          }}
+          muiTableHeadCellProps={{
+            sx: {
+              color: "#DDE6ED",
+              backgroundColor: "#2d383c",
+            },
+          }}
+          muiBottomToolbarProps={{
+            sx: {
+              backgroundColor: "#2d383c",
+              color: "#DDE6ED",
+            },
+          }}
+          muiTopToolbarProps={{
+            sx: {
+              backgroundColor: "#2d383c",
+              color: "#DDE6ED",
+            },
+          }}
+          muiTablePaginationProps={{
+            sx: {
+              backgroundColor: "#2d383c",
+              color: "#DDE6ED",
             },
           }}
           initialState={{
@@ -171,8 +226,9 @@ const AllProducts = () => {
       </div>
 
       <Modal
-        show={showUpdateModal}
-        onHide={() => {
+        className="edit-modal"
+        open={showUpdateModal}
+        onClose={() => {
           setShowUpdateModal(false);
         }}
       >
@@ -230,7 +286,8 @@ const AllProducts = () => {
           </Modal.Body>
           <Modal.Footer>
             <Button
-              variant=""
+              variant="contained"
+              color="primary"
               onClick={() => {
                 setShowUpdateModal(false);
               }}
@@ -262,6 +319,7 @@ const AllProducts = () => {
       </Modal>
 
       <Modal
+        className="delete-modal"
         show={showDeleteModal}
         onHide={() => {
           setShowDeleteModal(false);
