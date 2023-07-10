@@ -145,9 +145,7 @@ const AllProducts = () => {
           muiTablePaperProps={{
             sx: {
               color: "#2d383c",
-              "& tr": {
-                backgroundColor: "#DDE6ED",
-              },
+              backgroundColor: "#2d383c",
             },
           }}
           muiTableBodyCellProps={{
@@ -165,24 +163,24 @@ const AllProducts = () => {
           muiTableHeadCellProps={{
             sx: {
               color: "#DDE6ED",
-              backgroundColor: "#2d383c",
+              backgroundColor: "#414c50",
             },
           }}
           muiBottomToolbarProps={{
             sx: {
-              backgroundColor: "#2d383c",
+              backgroundColor: "#414c50",
               color: "#DDE6ED",
             },
           }}
           muiTopToolbarProps={{
             sx: {
-              backgroundColor: "#2d383c",
+              backgroundColor: "#414c50",
               color: "#DDE6ED",
             },
           }}
           muiTablePaginationProps={{
             sx: {
-              backgroundColor: "#2d383c",
+              backgroundColor: "#414c50",
               color: "#DDE6ED",
             },
           }}
