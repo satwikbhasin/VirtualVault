@@ -9,7 +9,7 @@ import { handleLogout } from "./helper";
 
 const AdminNavbar = () => {
   return (
-    <div maxWidth="xl">
+    <div>
       <Navbar className="navbar-dark navbar-first-admin primary-bg">
         <NavLink className="navbar-brand ms-3" to="/admin/">
           <h1 className="navbar-first-heading">HEALTHKARE</h1>
@@ -20,8 +20,16 @@ const AdminNavbar = () => {
         fluid
       >
         <Nav>
-          <NavItem className="ms-3">
-            <NavLink className="text-light no-underline" to="/admin/inventory">
+          <NavItem className="link-holder">
+            <NavLink
+              className={
+                window.location.pathname === "/admin/inventory" ||
+                window.location.pathname === "/admin/inventory/"
+                  ? "active-link"
+                  : "inactive-link"
+              }
+              to="/admin/inventory"
+            >
               <div className="d-flex align-items-center justify-content-center">
                 <i class="bi bi-boxes fs-4 me-1"></i>
                 <span className="mt-2">
@@ -30,8 +38,16 @@ const AdminNavbar = () => {
               </div>
             </NavLink>
           </NavItem>
-          <NavItem className="ms-3">
-            <NavLink className="text-light no-underline" to="/admin/contact">
+          <NavItem className="link-holder">
+            <NavLink
+              className={
+                window.location.pathname === "/admin/contact" ||
+                window.location.pathname === "/admin/contact/"
+                  ? "active-link"
+                  : "inactive-link"
+              }
+              to="/admin/contact"
+            >
               <div className="d-flex align-items-center justify-content-center">
                 <i class="bi bi-person-gear fs-4 me-1"></i>
                 <span className="mt-2">
@@ -40,8 +56,16 @@ const AdminNavbar = () => {
               </div>
             </NavLink>
           </NavItem>
-          <NavItem className="ms-3">
-            <NavLink className="text-light no-underline" to="/admin/inquiries">
+          <NavItem className="link-holder">
+            <NavLink
+              className={
+                window.location.pathname === "/admin/inquiries" ||
+                window.location.pathname === "/admin/inquiries/"
+                  ? "active-link"
+                  : "inactive-link"
+              }
+              to="/admin/inquiries"
+            >
               <div className="d-flex align-items-center justify-content-center">
                 <i class="bi bi-list-ul fs-4 me-1"></i>
                 <span className="mt-2">
@@ -53,7 +77,7 @@ const AdminNavbar = () => {
         </Nav>
 
         <Nav>
-          <NavItem className="me-3">
+          <NavItem className="logout-holder">
             <NavLink className="text-light no-underline">
               <div className="d-flex align-items-center justify-content-center">
                 <i class="bi bi-door-open fs-4 me-1"></i>

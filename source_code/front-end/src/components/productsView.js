@@ -59,6 +59,7 @@ const ProductsView = () => {
           <div className="justify-content-center">
             <div className="pagination-container">
               <Pagination
+                color="primary"
                 count={Math.ceil(totalProductSize / productsPerPage)}
                 page={currentPage}
                 onChange={handleChangePage}

@@ -18,7 +18,7 @@
   max-height: fit-content;
   max-width: 400px;
   transform: scale(1.04);
-  background: #3c4d54;
+  background: #414c50;
 }
 
 .card-name {
@@ -43,4 +43,8 @@
 .products-container {
   margin: 50px;
   margin-top: 0px;
+}
+
+.pagination-change {
+  color: #ff0000;
 }

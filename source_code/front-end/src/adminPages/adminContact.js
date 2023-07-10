@@ -115,7 +115,7 @@ const Contact = () => {
                 >
                   <Form.Control
                     type="text"
-                    className="form-control"
+                    className="contact-edit-input"
                     placeholder="Name"
                     value={contact.name}
                     onChange={(event) =>
@@ -166,10 +166,10 @@ const Contact = () => {
             <tr>
               <td style={{ background: "#2d383c", color: "white" }}>Email</td>
               {editEmail ? (
-                <td>
+                <td style={{ background: "#2d383c", color: "white" }}>
                   <Form.Control
                     type="text"
-                    className="form-control"
+                    className="contact-edit-input"
                     placeholder="Email"
                     value={contact.email}
                     onChange={(event) =>
@@ -213,7 +213,7 @@ const Contact = () => {
                 <td style={{ background: "#2d383c", color: "white" }}>
                   <Form.Control
                     type="text"
-                    className="form-control"
+                    className="contact-edit-input"
                     placeholder="Whatsapp Number"
                     value={contact.whatsapp}
                     onChange={(event) =>
@@ -255,10 +255,10 @@ const Contact = () => {
             <tr>
               <td style={{ background: "#2d383c", color: "white" }}>Phone</td>
               {editPhone ? (
-                <td>
+                <td style={{ background: "#2d383c", color: "white" }}>
                   <Form.Control
                     type="text"
-                    className="form-control"
+                    className="contact-edit-input"
                     placeholder="Phone Number"
                     value={contact.phone}
                     onChange={(event) =>

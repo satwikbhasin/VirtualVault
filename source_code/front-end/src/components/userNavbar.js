@@ -14,9 +14,14 @@ const userNavbar = () => {
         </NavLink>
       </Navbar>
       <Navbar className="navbar-second-user justify-content-left secondary-bg">
-        <NavItem className="ms-3">
+        <NavItem className="link-holder">
           <NavLink
-            className="text-light no-underline nav-tabs"
+            className={
+              window.location.pathname === "/user/products" ||
+              window.location.pathname === "/user/products/"
+                ? "active-link"
+                : "inactive-link"
+            }
             to="/user/products"
           >
             <div className="d-flex align-items-center justify-content-center">
@@ -27,9 +32,14 @@ const userNavbar = () => {
             </div>
           </NavLink>
         </NavItem>
-        <NavItem className="ms-3">
+        <NavItem className="link-holder">
           <NavLink
-            className="text-light no-underline nav-tabs"
+            className={
+              window.location.pathname === "/user/contact" ||
+              window.location.pathname === "/user/contact/"
+                ? "active-link"
+                : "inactive-link"
+            }
             to="/user/contact"
           >
             <div className="d-flex align-items-center justify-content-center">

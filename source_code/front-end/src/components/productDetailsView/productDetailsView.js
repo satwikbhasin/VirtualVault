@@ -190,6 +190,7 @@ const ProductDetailsView = ({ productId }) => {
       </div>
 
       <Modal
+        className="inquiry-form"
         show={showInquiryForm}
         onHide={() => {
           setShowInquiryForm(false);
@@ -295,16 +296,12 @@ const ProductDetailsView = ({ productId }) => {
               resetForm();
             }}
           >
-            <div className="d-flex align-items-center">
+            <div className="d-flex align-items-center text-light">
               <i class="bi bi-x-circle-fill fs-6"></i>
               <span className="ms-1">Cancel</span>
             </div>
           </Button>
-          <Button
-            variant=""
-            className="text-success"
-            onClick={handleSendInquiry}
-          >
+          <Button variant="" className="text-light" onClick={handleSendInquiry}>
             <div className="d-flex align-items-center">
               <i class="bi bi-send-fill fs-6"></i>
               <span className="ms-1">Send</span>

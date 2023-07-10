@@ -4,6 +4,8 @@ import { Form, Modal } from "react-bootstrap";
 import productMapInstance from "../services/productCacher";
 import { MaterialReactTable } from "material-react-table";
 import { IconButton, Box, MenuItem, Button } from "@mui/material";
+import "../styling/inventoryAllProducts.css";
+import "../styling/general.css";
 
 const AllProducts = () => {
   const formRef = useRef(null);
@@ -144,7 +146,7 @@ const AllProducts = () => {
             sx: {
               color: "#2d383c",
               "& tr": {
-                backgroundColor: "#2d383c",
+                backgroundColor: "#DDE6ED",
               },
             },
           }}
@@ -226,9 +228,9 @@ const AllProducts = () => {
       </div>
 
       <Modal
-        className="edit-modal"
-        open={showUpdateModal}
-        onClose={() => {
+        className="modal-form"
+        show={showUpdateModal}
+        onHide={() => {
           setShowUpdateModal(false);
         }}
       >
@@ -286,7 +288,7 @@ const AllProducts = () => {
           </Modal.Body>
           <Modal.Footer>
             <Button
-              variant="contained"
+              variant=""
               color="primary"
               onClick={() => {
                 setShowUpdateModal(false);
@@ -319,7 +321,7 @@ const AllProducts = () => {
       </Modal>
 
       <Modal
-        className="delete-modal"
+        className="modal-form"
         show={showDeleteModal}
         onHide={() => {
           setShowDeleteModal(false);
