@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { Alert } from "react-bootstrap";
 import { addProduct } from "../services/inventoryAPIs";
 import { Container, Button, Form, Col, Row } from "react-bootstrap";
+import "../styling/buttons.css";
 
 const AddProduct = () => {
   const formRef = useRef(null);
@@ -116,7 +117,7 @@ const AddProduct = () => {
             }}
           >
             <Button
-              variant="success"
+              className="add-button"
               type="submit"
               disabled={
                 product.description === "" ||

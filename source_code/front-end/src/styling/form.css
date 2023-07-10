@@ -1,0 +1,12 @@
+.modal-form .modal-content {
+    color: white;
+    background-color: #192428;
+  }
+  
+  .modal-form .modal-header {
+    border-bottom: 1px solid #0784b5;
+  }
+  
+  .modal-form .modal-footer {
+    border-top: 1px solid #0784b5;
+  }

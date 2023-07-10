@@ -5,6 +5,7 @@ import AddProduct from "./inventoryAddProduct";
 import AllProducts from "./inventoryAllProducts.js";
 import "../styling/addProduct.css";
 import "../styling/theme.css";
+import "../styling/buttons.css";
 import ProductsView from "../components/productsView";
 import { FormGroup, Switch, FormControlLabel } from "@mui/material";
 
@@ -43,11 +44,10 @@ const Inventory = () => {
             <Col>
               {!showAddProduct && (
                 <Button
-                  variant=""
+                  className="add-product-button"
                   onClick={() => {
                     setShowAddProduct(true);
                   }}
-                  className="utilityButtons p-1"
                 >
                   <i class="bi bi-plus-circle-fill fs-3"></i>
                 </Button>
@@ -57,13 +57,13 @@ const Inventory = () => {
           {showAddProduct ? (
             <>
               <Button
-                variant="danger"
-                className="mx-4"
+                variant=""
+                className="cancel-button"
                 onClick={() => {
                   setShowAddProduct(false);
                 }}
               >
-                <div className="d-flex align-items-center">
+                <div className="">
                   <i class="bi bi-x-circle fs-6 me-1"></i>{" "}
                   <span className="ml-1">Cancel</span>
                 </div>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Form, Col, Alert, NavLink, Navbar } from "react-bootstrap";
 import { loginAdmin } from "../services/authenticationAPIs";
 import "../styling/adminLogin.css";
+import "../styling/buttons.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 const AdminLogin = ({ route }) => {
@@ -44,8 +45,9 @@ const AdminLogin = ({ route }) => {
           <h1 className="navbar-first-heading">HEALTHKARE</h1>
         </NavLink>
       </Navbar>
-      <div className="login-form-container">
-        <div className="login-form-container-overlay">
+      <div className="login-form-bg-holder">
+        <div className="login-form-bg">
+        <div className="login-form-background-overlay">
           <div className="login-form-box">
             <div>
               <Col
@@ -122,6 +124,7 @@ const AdminLogin = ({ route }) => {
               </Col>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </>
