@@ -16,7 +16,7 @@ router.get("/getInquiries", async (req, res) => {
 
 // POST an inquiry
 router.post("/addInquiry", async (req, res) => {
-  const { inquiryForm, product } = req.body;
+  const { inquiryForm, product, date } = req.body;
   const inquiry = new InquiryModel({
     name: inquiryForm.name,
     email: inquiryForm.email,
@@ -25,6 +25,7 @@ router.post("/addInquiry", async (req, res) => {
     message: inquiryForm.message,
     productId: product._id,
     productName: product.name,
+    date: date,
   });
 
   try {

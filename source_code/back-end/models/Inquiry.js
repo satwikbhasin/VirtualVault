@@ -29,6 +29,10 @@ const InquirySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 const Inquiry = mongoose.model("Inquiry", InquirySchema);
