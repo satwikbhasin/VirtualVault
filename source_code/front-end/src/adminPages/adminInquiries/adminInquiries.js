@@ -21,8 +21,12 @@ const Inquires = () => {
           return;
         } else {
           const inquiries = await getInquiries();
+          const updatedInquiries = inquiries.data.map((inquiry) => ({
+            ...inquiry,
+            date: calculateElapsedTime(new Date(inquiry.date)),
+          }));
           setInquiryMap(
-            new Map(inquiries.data.map((inquiry) => [inquiry._id, inquiry]))
+            new Map(updatedInquiries.map((inquiry) => [inquiry._id, inquiry]))
           );
           setTotalInquiryCount(inquiries.data.length);
         }
@@ -33,6 +37,40 @@ const Inquires = () => {
 
     fetchInquiries();
   }, [inquiryMap.size]);
+
+  const calculateElapsedTime = (date) => {
+    const elapsedTime = Math.abs(Date.now() - date);
+    const days = Math.floor(elapsedTime / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((elapsedTime / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((elapsedTime / (1000 * 60)) % 60);
+    const seconds = Math.floor((elapsedTime / 1000) % 60);
+
+    if (days > 0) {
+      if (days === 1) {
+        return `${days} day ago`;
+      } else {
+        return `${days} days ago`;
+      }
+    } else if (hours > 0) {
+      if (hours === 1) {
+        return `${hours} hour ago`;
+      } else {
+        return `${hours} hours ago`;
+      }
+    } else if (minutes > 0) {
+      if (minutes === 1) {
+        return `${minutes} minute ago`;
+      } else {
+        return `${minutes} minutes ago`;
+      }
+    } else {
+      if (seconds === 1) {
+        return `${seconds} second ago`;
+      } else {
+        return `${seconds} seconds ago`;
+      }
+    }
+  };
 
   const columns = useMemo(
     () => [
@@ -64,6 +102,11 @@ const Inquires = () => {
       {
         accessorKey: "message",
         header: "Inquiry",
+        size: 100,
+      },
+      {
+        accessorKey: "date",
+        header: "Recieved",
         size: 100,
       },
     ],
@@ -100,6 +143,7 @@ const Inquires = () => {
               "company",
               "productName",
               "message",
+              "date",
               "mrt-row-actions",
             ],
           }}
