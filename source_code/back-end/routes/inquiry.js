@@ -14,16 +14,6 @@ router.get("/getInquiries", async (req, res) => {
   }
 });
 
-// // GET a specific inquiry
-// router.get("/:inquiryId", async (req, res) => {
-//   try {
-//     const inquiry = await InquiryModel.findById(req.params.inquiryId);
-//     res.json(inquiry);
-//   } catch (err) {
-//     res.json({ message: err });
-//   }
-// });
-
 // POST an inquiry
 router.post("/addInquiry", async (req, res) => {
   const { inquiryForm, product } = req.body;
@@ -40,6 +30,18 @@ router.post("/addInquiry", async (req, res) => {
   try {
     const savedInquiry = await inquiry.save();
     res.status(200).send("Inquiry saved successfully!");
+  } catch (err) {
+    res.send({ message: err });
+  }
+});
+
+// DELETE an inquiry
+router.delete("/deleteInquiry", async (req, res) => {
+  const { inquiryId } = req.body;
+
+  try {
+    const deletedInquiry = await InquiryModel.findByIdAndDelete(inquiryId);
+    res.status(200).send("Inquiry deleted successfully!");
   } catch (err) {
     res.send({ message: err });
   }

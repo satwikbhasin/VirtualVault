@@ -35,7 +35,9 @@
   display: flex;
   padding-left: 5px;
   padding-right: 5px;
-  border-radius: 8px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-bottom: -1px;
 }
 
 .active-link {
@@ -49,8 +51,8 @@
   align-items: center;
   justify-content: center;
   display: flex;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   margin-bottom: -1px;

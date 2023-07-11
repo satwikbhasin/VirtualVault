@@ -208,7 +208,8 @@ const AllProducts = () => {
                 }}
                 className="text-success"
               >
-                <i class="bi bi-pencil"></i>
+                <i class="bi bi-pencil fs-4 me-1"></i>
+                <span>Edit</span>
               </IconButton>
             </MenuItem>,
             <MenuItem>
@@ -219,7 +220,8 @@ const AllProducts = () => {
                 }}
                 className="text-danger"
               >
-                <i class="bi bi-trash3"></i>
+                <i class="bi bi-trash3 fs-4 me-1"></i>
+                <span>Delete</span>
               </IconButton>
             </MenuItem>,
           ]}
@@ -324,13 +326,13 @@ const AllProducts = () => {
           setShowDeleteModal(false);
         }}
       >
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title>Delete Product</Modal.Title>
         </Modal.Header>
         <Modal.Body>Are you sure you want to delete this product?</Modal.Body>
         <Modal.Footer>
           <Button
-            className=""
+            className="cancel-button me-2 text-light"
             variant=""
             onClick={() => {
               setShowDeleteModal(false);
@@ -342,8 +344,7 @@ const AllProducts = () => {
             </div>
           </Button>
           <Button
-            className="text-danger"
-            variant=""
+            className="text-danger cancel-button"
             onClick={() => {
               deleteProduct(product.id);
             }}
