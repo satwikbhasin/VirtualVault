@@ -44,8 +44,8 @@ const Contact = () => {
   return (
     <div className="ternary-bg">
       <AdminNavbar />
-      <div className="d-flex justify-content-center p-4">
-        <Form>
+      <div className="mt-3 d-flex justify-content-center">
+        <Form className="edit-switch">
           <FormGroup>
             <FormControlLabel
               control={<Switch />}

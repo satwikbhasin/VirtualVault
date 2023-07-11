@@ -2,7 +2,7 @@ import AdminLogin from "../adminPages/adminLogin.js";
 import AdminHome from "../adminPages/adminHome.js";
 import AdminInventory from "../adminPages/adminInventory.js";
 import AdminContact from "../adminPages/adminContact.js";
-import AdminInquiries from "../adminPages/adminInquiries.js";
+import AdminInquiries from "../adminPages/adminInquiries/adminInquiries.js";
 
 import isLoggedIn from "./loginVerification.js";
 

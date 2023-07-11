@@ -25,7 +25,7 @@ const Inventory = () => {
               labelPlacement="start"
               label={
                 <div>
-                  <span>Edit</span>
+                  <span className="ms-2">Edit</span>
                 </div>
               }
             />

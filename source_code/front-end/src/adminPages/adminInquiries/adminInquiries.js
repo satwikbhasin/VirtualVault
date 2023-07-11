@@ -1,14 +1,18 @@
 import React from "react";
-import AdminNavbar from "../components/adminNavbar/adminNavbar.js";
-import { getInquiries } from "../services/inquiryAPIs";
+import AdminNavbar from "../../components/adminNavbar/adminNavbar.js";
+import { getInquiries } from "../../services/inquiryAPIs.js";
 import { useState, useEffect, useMemo } from "react";
 import { MaterialReactTable } from "material-react-table";
-import { IconButton, MenuItem } from "@mui/material";
-import "../styling/theme.css";
+import { IconButton, MenuItem, Button } from "@mui/material";
+import { handleDeleteInquiry } from "./helper.js";
+import { Modal } from "react-bootstrap";
+import "../../styling/theme.css";
 
 const Inquires = () => {
   var [inquiryMap, setInquiryMap] = useState(new Map());
   const [totalInquiryCount, setTotalInquiryCount] = useState(0);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [inquiryToDelete, setInquiryToDelete] = useState(null);
 
   useEffect(() => {
     const fetchInquiries = async () => {
@@ -148,7 +152,7 @@ const Inquires = () => {
             },
           }}
           renderRowActionMenuItems={({ row }) => [
-            <MenuItem sx={{ height: "15px" }} className="selected-row">
+            <MenuItem sx={{ height: "15px" }}>
               <IconButton key={0} sx={{ m: 0 }}>
                 <a
                   href={`mailto:${row.original.email}?subject=Regrding your inquiry for ${row.original.productName} at Healthkare&body=Hello ${row.original.name}, Thank you for your inquiry stated as:%0D%0A%0D%0A"${row.original.message}" %0D%0A%0D%0AThankyou,%0D%0AHealthkare`}
@@ -163,9 +167,62 @@ const Inquires = () => {
                 </a>
               </IconButton>
             </MenuItem>,
+            <MenuItem sx={{ height: "25px" }}>
+              <IconButton
+                key={0}
+                sx={{ m: 0 }}
+                onClick={() => {
+                  setShowDeleteModal(true);
+                  setInquiryToDelete(row.original._id);
+                }}
+              >
+                <div className=" mt-3 d-flex align-items-center justify-content-center text-dark contact-small-font">
+                  <i class="bi bi-trash3 fs-5 me-1"></i>
+                  <span>Delete</span>
+                </div>
+              </IconButton>
+            </MenuItem>,
           ]}
         />
       </div>
+
+      <Modal
+        className="modal-form"
+        show={showDeleteModal}
+        onHide={() => {
+          setShowDeleteModal(false);
+        }}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Delete Inquiry</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure you want to delete this inquiry?</Modal.Body>
+        <Modal.Footer>
+          <Button
+            className="text-light cancel-button"
+            onClick={() => {
+              setShowDeleteModal(false);
+            }}
+          >
+            <div className="d-flex align-items-center">
+              <i class="bi bi-x-circle-fill fs-4"></i>
+              <span className="ms-1">Cancel</span>
+            </div>
+          </Button>
+          <Button
+            className="text-danger save-button"
+            variant=""
+            onClick={() => {
+              handleDeleteInquiry(inquiryToDelete);
+            }}
+          >
+            <div className="d-flex align-items-center">
+              <i class="bi bi-check-circle-fill fs-4"></i>
+              <span className="ms-1">Confirm</span>
+            </div>
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 };
