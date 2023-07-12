@@ -51,7 +51,7 @@ const ProductsView = () => {
   };
 
   return (
-    <div className="ternary-bg">
+    <div className="ternary-bg full-screen-bg">
       {showProductDetails ? (
         <ProductDetailsView productId={productId}></ProductDetailsView>
       ) : (

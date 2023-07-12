@@ -42,9 +42,9 @@ const Contact = () => {
   };
 
   return (
-    <div className="ternary-bg">
+    <div className="ternary-bg full-screen-bg">
       <AdminNavbar />
-      <div className="mt-3 d-flex justify-content-center">
+      <div className="primary-bg page-header justify-content-center align-content-center d-flex p-2">
         <Form className="edit-switch">
           <FormGroup>
             <FormControlLabel

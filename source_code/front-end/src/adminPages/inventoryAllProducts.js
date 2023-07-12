@@ -3,7 +3,7 @@ import { deleteProduct, updateProduct } from "../services/inventoryAPIs";
 import { Form, Modal } from "react-bootstrap";
 import productMapInstance from "../services/productCacher";
 import { MaterialReactTable } from "material-react-table";
-import { IconButton, Box, MenuItem, Button } from "@mui/material";
+import { IconButton, Box, Button } from "@mui/material";
 import "../styling/inventoryAllProducts.css";
 import "../styling/form.css";
 import "../styling/buttons.css";
@@ -118,6 +118,7 @@ const AllProducts = () => {
         style={{
           textAlign: "center",
         }}
+        className="ternary-bg full-screen-bg"
       >
         <h5 className="text-light fw-bold p-1">
           Product Count: {totalProductCount}
@@ -132,6 +133,54 @@ const AllProducts = () => {
           enablePinning={true}
           enableStickyHeader={true}
           className="custom-material-table"
+          icons={{
+            SearchIcon: () => <i class="bi bi-search fs-6 text-light"></i>,
+            SearchOffIcon: () => <i class="bi bi-x fs-4 text-light"></i>,
+            FilterListIcon: () => <i class="bi bi-funnel fs-6 text-light "></i>,
+            FilterListOffIcon: () => (
+              <i class="bi bi-funnel-fill fs-6 text-light"></i>
+            ),
+            CloseIcon: () => <i class="bi bi-x fs-4 text-dark"></i>,
+            ViewColumnIcon: () => <i class="bi bi-eye fs-6 text-light"></i>,
+            DensityLargeIcon: () => (
+              <i class="bi bi-arrows-fullscreen fs-6 text-light"></i>
+            ),
+            DensityMediumIcon: () => (
+              <i class="bi bi-bounding-box fs-6 text-light"></i>
+            ),
+            DensitySmallIcon: () => (
+              <i class="bi bi-arrows-angle-contract fs-6 text-light"></i>
+            ),
+            FullscreenExitIcon: () => (
+              <i class="bi bi-fullscreen-exit fs-6 text-light"></i>
+            ),
+            FullscreenIcon: () => (
+              <i class="bi bi-fullscreen fs-6 text-light"></i>
+            ),
+          }}
+          muiSearchTextFieldProps={{
+            sx: {
+              backgroundColor: "#DDE6ED",
+              color: "#DDE6ED",
+            },
+          }}
+          muiTableHeadCellFilterTextFieldProps={{
+            sx: {
+              backgroundColor: "#DDE6ED",
+              color: "#DDE6ED",
+            },
+          }}
+          muiTableHeadProps={{
+            sx: {
+              backgroundColor: "#DDE6ED",
+              color: "#DDE6ED",
+            },
+          }}
+          muiTableHeadCellColumnActionsButtonProps={{
+            sx: {
+              color: "#DDE6ED",
+            },
+          }}
           displayColumnDefOptions={{
             "mrt-row-actions": {
               header: "Actions",
@@ -188,42 +237,44 @@ const AllProducts = () => {
           initialState={{
             columnOrder: ["name", "img", "description", "mrt-row-actions"],
           }}
-          renderRowActionMenuItems={({ row }) => [
-            <MenuItem>
-              <IconButton
-                onClick={() => {
-                  setProduct({
-                    id: row.original._id,
-                    name: row.original.name,
-                    description: row.original.description,
-                    imageFile: null,
-                  });
-                  setUpdatedProduct({
-                    id: row.original._id,
-                    name: row.original.name,
-                    description: row.original.description,
-                    imageFile: null,
-                  });
-                  setShowUpdateModal(true);
-                }}
-                className="text-success"
-              >
-                <i class="bi bi-pencil fs-4 me-1"></i>
+          renderRowActions={({ row }) => [
+            <IconButton
+              key={0}
+              sx={{ m: 0 }}
+              onClick={() => {
+                setProduct({
+                  id: row.original._id,
+                  name: row.original.name,
+                  description: row.original.description,
+                  imageFile: null,
+                });
+                setUpdatedProduct({
+                  id: row.original._id,
+                  name: row.original.name,
+                  description: row.original.description,
+                  imageFile: null,
+                });
+                setShowUpdateModal(true);
+              }}
+            >
+              <div className="text-success contact-small-font">
+                <i class="bi bi-pencil fs-5 me-1"></i>
                 <span>Edit</span>
-              </IconButton>
-            </MenuItem>,
-            <MenuItem>
-              <IconButton
-                onClick={() => {
-                  setProduct({ id: row.original._id });
-                  setShowDeleteModal(true);
-                }}
-                className="text-danger"
-              >
-                <i class="bi bi-trash3 fs-4 me-1"></i>
+              </div>
+            </IconButton>,
+            <IconButton
+              key={0}
+              sx={{ m: 0 }}
+              onClick={() => {
+                setProduct({ id: row.original._id });
+                setShowDeleteModal(true);
+              }}
+            >
+              <div className="text-danger contact-small-font">
+                <i class="bi bi-trash3 fs-5 me-1"></i>
                 <span>Delete</span>
-              </IconButton>
-            </MenuItem>,
+              </div>
+            </IconButton>,
           ]}
         />
       </div>

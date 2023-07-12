@@ -5,7 +5,7 @@ import UserNavbar from "../components/userNavbar";
 function Contact() {
   return (
     <>
-      <div className="ternary-bg">
+      <div className="ternary-bg full-screen-bg">
         <UserNavbar />
         <ContactCard />
       </div>

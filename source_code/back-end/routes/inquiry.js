@@ -2,7 +2,6 @@ var express = require("express");
 var router = express.Router();
 
 const InquiryModel = require("../models/Inquiry.js");
-const { Console } = require("console");
 
 // GET all inquiries
 router.get("/getInquiries", async (req, res) => {
@@ -43,6 +42,19 @@ router.delete("/deleteInquiry", async (req, res) => {
   try {
     const deletedInquiry = await InquiryModel.findByIdAndDelete(inquiryId);
     res.status(200).send("Inquiry deleted successfully!");
+  } catch (err) {
+    res.send({ message: err });
+  }
+});
+
+// PUT an inquiry as read
+router.put("/setInquiryStatus", async (req, res) => {
+  const { inquiryId, status } = req.body;
+  try {
+    await InquiryModel.findByIdAndUpdate(inquiryId, {
+      read: status,
+    });
+    res.status(200).send("Inquiry marked as read successfully!");
   } catch (err) {
     res.send({ message: err });
   }
