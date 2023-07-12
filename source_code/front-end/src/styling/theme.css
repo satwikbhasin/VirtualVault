@@ -17,9 +17,12 @@
 .ternary-bg {
   background-color: #2d383c;
   color: white;
-  min-height: 100vh;
   margin: 0%;
   margin-left: 0;
   margin-right: 0;
   overflow-x: hidden;
+}
+
+.full-screen-bg {
+  min-height: 800px;
 }

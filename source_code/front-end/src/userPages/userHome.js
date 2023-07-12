@@ -7,7 +7,7 @@ function Home() {
   return (
     <>
       <UserNavbar />
-      <div className="home-screen-watermark ternary-bg">
+      <div className="home-screen-watermark ternary-bg full-screen-bg">
         <img
           src={"https://healthkare.s3.amazonaws.com/assets/login-background-3"}
           alt=""

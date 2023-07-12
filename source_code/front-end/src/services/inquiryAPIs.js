@@ -18,3 +18,10 @@ export const deleteInquiry = async (inquiryId) => {
     },
   });
 };
+
+export const setInquiryStatus = async (inquiryId, status) => {
+  return axios.put("http://localhost:3001/inquiry/setInquiryStatus", {
+    inquiryId,
+    status,
+  });
+};

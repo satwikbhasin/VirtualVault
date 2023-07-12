@@ -14,9 +14,9 @@ const Inventory = () => {
   const [isEditMode, setIsEditMode] = useState(false);
 
   return (
-    <div className="ternary-bg">
+    <div className="primary-bg">
       <AdminNavbar />
-      <div className="mt-3 d-flex justify-content-center">
+      <div className="justify-content-center align-content-center d-flex p-2 page-header">
         <Form className="edit-switch">
           <FormGroup>
             <FormControlLabel
@@ -40,6 +40,7 @@ const Inventory = () => {
               justifyContent: "center",
               textAlign: "center",
             }}
+            className="ternary-bg"
           >
             <Col>
               {!showAddProduct && (
