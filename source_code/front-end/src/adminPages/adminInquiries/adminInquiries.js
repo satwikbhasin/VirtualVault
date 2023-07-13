@@ -112,9 +112,8 @@ const Inquires = () => {
           textAlign: "center",
         }}
       >
-        <div className="primary-bg page-header">
+        <div className="primary-bg page-header status-tabs-holder">
           <Tabs
-            className="status-tabs"
             value={activeTab}
             onChange={handleChange}
             textColor="inherit"
