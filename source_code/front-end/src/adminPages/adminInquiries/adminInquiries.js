@@ -117,7 +117,8 @@ const Inquires = () => {
             value={activeTab}
             onChange={handleChange}
             textColor="inherit"
-            indicatorColor="primary"
+            // indicatorColor="#c9510c"
+            className="status-tabs"
           >
             <Tab
               className="status-tab"

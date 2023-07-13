@@ -34,8 +34,9 @@
   align-items: center;
 }
 
-.pagination {
+.pagination .css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
   color: rgb(255, 255, 255);
+  background-color: #0784b5;
 }
 
 .products-container {
