@@ -51,11 +51,11 @@ const ProductsView = () => {
   };
 
   return (
-    <div className="ternary-bg full-screen-bg">
+    <div className="primary-bg full-screen-bg">
       {showProductDetails ? (
         <ProductDetailsView productId={productId}></ProductDetailsView>
       ) : (
-        <div className="ternary-bg">
+        <div className="primary-bg">
           <div className="justify-content-center">
             <div className="pagination-container">
               <Pagination

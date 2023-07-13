@@ -161,7 +161,7 @@ const Inquires = () => {
             />
           </Tabs>
         </div>
-        <div className="ternary-bg full-screen-bg">
+        <div className="primary-bg full-screen-bg">
           <MaterialReactTable
             columns={columns}
             data={filteredInquiries}

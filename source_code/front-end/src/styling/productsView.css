@@ -1,7 +1,5 @@
 .card {
   width: 400px;
-  height: 300px;
-  max-height: 300px;
   transition: transform 0.3s ease;
   background: #37464d;
   color: white;

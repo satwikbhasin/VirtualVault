@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap";
-import { Row, Image, Col, Button, Modal } from "react-bootstrap";
+import { Row, Col, Button, Modal } from "react-bootstrap";
 import productMapInstance from "../../services/productCacher";
 import "../.././styling/productDetailsView.css";
 import { useState, useEffect } from "react";
@@ -14,6 +14,7 @@ import {
 } from "./helper";
 import { addInquiry } from "../../services/inquiryAPIs";
 import "../.././styling/buttons.css";
+import ReactImageMagnify from "react-image-magnify";
 
 const ProductDetailsView = ({ productId }) => {
   const [product, setProduct] = useState(new Map());
@@ -26,6 +27,7 @@ const ProductDetailsView = ({ productId }) => {
     company: "Not Applicable",
     message: "",
   });
+  const [showImageModal, setShowImageModal] = useState(false);
 
   const resetForm = () => {
     setInquiryForm({
@@ -65,7 +67,7 @@ const ProductDetailsView = ({ productId }) => {
 
   return (
     <>
-      <div className="ternary-bg">
+      <div className="primary-bg">
         <div className="d-flex p-3">
           <Button variant="" onClick={handleGoBack}>
             <div className="all-products-button">
@@ -80,16 +82,21 @@ const ProductDetailsView = ({ productId }) => {
         <hr />
         <div className="d-flex p-3">
           <Col className="col-5">
-            <Image
-              style={{
-                height: "500px",
-                width: "500px",
-                objectFit: "cover",
-                borderRadius: "10px",
+            <div
+              className="small-product-image"
+              onClick={() => {
+                setShowImageModal(true);
               }}
-              src={product.image}
-              alt=""
-            />
+              style={{ cursor: "pointer" }}
+            >
+              <img
+                src={product.image}
+                alt={product.name}
+                width={500}
+                height={500}
+                className="product-image"
+              />
+            </div>
           </Col>
           <Col className="col-7">
             <p>{product.description}</p>
@@ -308,6 +315,31 @@ const ProductDetailsView = ({ productId }) => {
             </div>
           </Button>
         </Modal.Footer>
+      </Modal>
+
+      <Modal
+        className="image-modal"
+        show={showImageModal}
+        onHide={() => {
+          setShowImageModal(false);
+        }}
+      >
+        <ReactImageMagnify
+          {...{
+            smallImage: {
+              alt: product.name,
+              src: product.image,
+              width: 600,
+              height: 600,
+            },
+            largeImage: {
+              src: product.image,
+              width: 1200,
+              height: 1200,
+            },
+          }}
+          enlargedImagePosition="over"
+        />
       </Modal>
     </>
   );
