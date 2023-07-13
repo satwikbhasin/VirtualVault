@@ -24,3 +24,9 @@
 .status-tab:hover {
   background-color: #414c50;
 }
+
+.status-tabs {
+  .MuiTabs-indicator {
+    background-color: #c9510c;
+  }
+}

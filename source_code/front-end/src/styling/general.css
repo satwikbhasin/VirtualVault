@@ -5,3 +5,11 @@
 .page-header {
   height: 52px;
 }
+
+.edit-switch .css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked+.MuiSwitch-track {
+  background-color: #0784b5;
+}
+
+.edit-switch .css-jsexje-MuiSwitch-thumb {
+  background-color: #0784b5;
+}

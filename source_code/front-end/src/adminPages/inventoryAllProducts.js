@@ -132,7 +132,6 @@ const AllProducts = () => {
           }}
           enablePinning={true}
           enableStickyHeader={true}
-          className="custom-material-table"
           icons={{
             SearchIcon: () => <i class="bi bi-search fs-6 text-light"></i>,
             SearchOffIcon: () => <i class="bi bi-x fs-4 text-light"></i>,
@@ -217,6 +216,7 @@ const AllProducts = () => {
             },
           }}
           muiBottomToolbarProps={{
+            className: "custom-react-table-bottom-toolbar",
             sx: {
               backgroundColor: "#414c50",
               color: "#DDE6ED",

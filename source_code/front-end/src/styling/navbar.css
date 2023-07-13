@@ -33,7 +33,7 @@
   display: flex;
   padding-left: 10px;
   padding-right: 10px;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .active-link {
@@ -47,7 +47,7 @@
   display: flex;
   padding-left: 10px;
   padding-right: 10px;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .inactive-link:hover {
@@ -55,7 +55,7 @@
 }
 
 .logout-holder {
-  color: #dde6ed;
+  color: #c9510c;
   margin-right: 10px;
   align-items: center;
   justify-content: center;
@@ -66,7 +66,7 @@
 
 .logout-holder:hover {
   background-color: #414c5030;
-  border-radius: 8px;
+  border-radius: 5px;
   transform: scale(1.06);
   transition: transform 0.2s ease;
 }

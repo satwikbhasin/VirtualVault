@@ -20,7 +20,7 @@ const Inventory = () => {
         <Form className="edit-switch">
           <FormGroup>
             <FormControlLabel
-              control={<Switch />}
+              control={<Switch className="edit-switch" />}
               onChange={() => setIsEditMode(!isEditMode)}
               labelPlacement="start"
               label={

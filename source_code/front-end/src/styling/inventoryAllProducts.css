@@ -1,1 +1,9 @@
+.custom-react-table-bottom-toolbar {
+  .css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon {
+    color: #ffffff;
+  }
 
+  .css-zylse7-MuiButtonBase-root-MuiIconButton-root.Mui-disabled {
+    color: #ffffff;
+  }
+}
