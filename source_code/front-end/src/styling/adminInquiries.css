@@ -1,5 +1,7 @@
-.status-tabs {
-  margin-left: 142px;
+.status-tabs-holder {
+  justify-content: center;
+  display: flex;
+  align-items: center;
 }
 
 .count-circle {
