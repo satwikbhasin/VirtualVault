@@ -89,13 +89,23 @@ const ProductDetailsView = ({ productId }) => {
               }}
               style={{ cursor: "pointer" }}
             >
-              <img
-                src={product.image}
-                alt={product.name}
-                width={500}
-                height={500}
-                className="product-image"
-              />
+              {showImageModal ? (
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  width={500}
+                  height={500}
+                  className="layover-product-image"
+                />
+              ) : (
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  width={500}
+                  height={500}
+                  className="product-image"
+                />
+              )}
             </div>
           </Col>
           <Col className="col-7">
