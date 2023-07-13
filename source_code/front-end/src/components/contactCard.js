@@ -28,7 +28,7 @@ const ContactCard = () => {
   }, []);
 
   return (
-    <Container className="contact-card primary-bg">
+    <Container className="contact-card ternary-bg">
       <Row className="p-4">
         <h1 class="contact-name">{contact.name}</h1>
         <hr className="mb-5" />

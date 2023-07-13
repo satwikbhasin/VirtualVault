@@ -6,8 +6,7 @@ function Contact() {
   return (
     <>
       <UserNavbar />
-      <div className="primary-bg page-header justify-content-center align-content-center d-flex p-2"></div>
-      <div className="ternary-bg full-screen-bg">
+      <div className="primary-bg full-screen-bg">
         <ContactCard />
       </div>
     </>

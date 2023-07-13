@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { getContact } from "../services/contactAPIs.js";
 import ContactCard from "../components/contactCard.js";
 import "../styling/contactCard.css";
+import "../styling/adminContact.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { FormGroup, Switch, FormControlLabel } from "@mui/material";
 import { updateContact } from "../services/contactAPIs.js";

@@ -6,7 +6,6 @@ const Products = () => {
   return (
     <>
       <UserNavbar />
-      <div className="primary-bg page-header justify-content-center align-content-center d-flex p-2"></div>
       <ProductsView />
     </>
   );
