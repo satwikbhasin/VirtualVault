@@ -33,10 +33,3 @@
   transition: ease-out 0.5s;
   transform: scale(1.06);
 }
-
-.contact-edit-input {
-  border-radius: 10px;
-  border: 1px solid #0784b5;
-  background-color: #192428;
-  color: white;
-}
