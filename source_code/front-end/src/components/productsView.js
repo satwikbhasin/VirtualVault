@@ -70,7 +70,7 @@ const ProductsView = () => {
 
           <Row className="products-container">
             {currentProducts.map((item) => (
-              <div className="col-md-4 col-lg-4 col-xl-4" key={item._id}>
+              <div className="col-md-4 col-lg-4 col-xl-4 mb-3" key={item._id}>
                 <Button
                   variant=""
                   onClick={() => {
@@ -80,7 +80,7 @@ const ProductsView = () => {
                   class="card-name"
                 >
                   <Card
-                    className={`mb-3 card ${
+                    className={`card ${
                       hoveredCardIndex === item._id ? "enlarged" : ""
                     }`}
                     onMouseEnter={() => handleMouseEnter(item._id)}
