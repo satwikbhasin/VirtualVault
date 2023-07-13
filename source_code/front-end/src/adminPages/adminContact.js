@@ -42,7 +42,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="ternary-bg full-screen-bg">
+    <div className="primary-bg full-screen-bg">
       <AdminNavbar />
       <div className="primary-bg page-header justify-content-center align-content-center d-flex p-2">
         <Form className="edit-switch">

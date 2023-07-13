@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 151px
+  margin-right: 151px;
 }
 
 .product-name {
@@ -13,6 +13,23 @@
   font-size: 20px;
 }
 
+.product-image {
+  margin-left: 35px;
+  border-radius: 10px;
+}
+
+.product-image:hover {
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
+}
+
 .utility-button-holder {
   width: 100px;
+}
+
+.image-modal {
+  margin-top: 80px;
+  margin-left: 340px;
+  width: 700px;
+  height: 700px;
 }

@@ -47,6 +47,7 @@ const AddProduct = () => {
         justifyContent: "center",
         textAlign: "center",
       }}
+      className="full-screen-bg"
     >
       <Form ref={formRef} onSubmit={handleAddProduct}>
         <Row>

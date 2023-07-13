@@ -49,13 +49,13 @@
   border-radius: 10px;
   height: 35px;
   width: 100px;
-  background-color: #414c50;
+  background-color: #2d383c;
   border: #414c50;
   margin-right: 100px;
 }
 
 .utility-button:hover {
-  background-color: #192428;
+  background-color: #414c50;
   transform: scale(1.05);
 }
 
@@ -66,8 +66,7 @@
 }
 
 .inquire-button:hover {
-  border: #192428;
-  background-color: #192428;
+  background-color: #414c50;
   border-radius: 10px;
 }
 
