@@ -4,6 +4,9 @@ import { Form, Modal } from "react-bootstrap";
 import productMapInstance from "../services/productCacher";
 import { MaterialReactTable } from "material-react-table";
 import { IconButton, Box, Button } from "@mui/material";
+import DensityLargeIcon from "@mui/icons-material/DensityLarge.js";
+import DensityMediumIcon from "@mui/icons-material/DensityMedium";
+import DensitySmallIcon from "@mui/icons-material/DensitySmall";
 import "../styling/inventoryAllProducts.css";
 import "../styling/form.css";
 import "../styling/buttons.css";
@@ -142,13 +145,13 @@ const AllProducts = () => {
             CloseIcon: () => <i class="bi bi-x fs-4 text-dark"></i>,
             ViewColumnIcon: () => <i class="bi bi-eye fs-6 text-light"></i>,
             DensityLargeIcon: () => (
-              <i class="bi bi-arrows-fullscreen fs-6 text-light"></i>
+              <DensityLargeIcon className="text-light fs-6" />
             ),
             DensityMediumIcon: () => (
-              <i class="bi bi-bounding-box fs-6 text-light"></i>
+              <DensityMediumIcon className="text-light fs-6" />
             ),
             DensitySmallIcon: () => (
-              <i class="bi bi-arrows-angle-contract fs-6 text-light"></i>
+              <DensitySmallIcon className="text-light fs-6" />
             ),
             FullscreenExitIcon: () => (
               <i class="bi bi-fullscreen-exit fs-6 text-light"></i>
@@ -180,11 +183,6 @@ const AllProducts = () => {
               color: "#DDE6ED",
             },
           }}
-          displayColumnDefOptions={{
-            "mrt-row-actions": {
-              header: "Actions",
-            },
-          }}
           muiTableBodyRowProps={{
             hover: false,
             sx: {
@@ -196,6 +194,13 @@ const AllProducts = () => {
               color: "#2d383c",
               backgroundColor: "#2d383c",
             },
+          }}
+          muiTableBodyProps={{
+            className: "custom-react-table-body",
+            // sx: {
+            //   color: "#DDE6ED",
+            //   backgroundColor: "#2d383c",
+            // },
           }}
           muiTableBodyCellProps={{
             sx: {
