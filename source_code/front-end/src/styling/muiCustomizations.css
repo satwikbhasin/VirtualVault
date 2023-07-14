@@ -1,0 +1,60 @@
+/* Inventory Edit Switch */
+.edit-switch
+  .css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked
+  + .MuiSwitch-track {
+  background-color: #0784b5;
+}
+
+.edit-switch .css-jsexje-MuiSwitch-thumb {
+  background-color: #0784b5;
+}
+
+/* Inventory MUI Table */
+.custom-react-table-bottom-toolbar {
+  .css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon {
+    color: #ffffff;
+  }
+  .css-zylse7-MuiButtonBase-root-MuiIconButton-root.Mui-disabled {
+    color: #9c9c9c;
+  }
+  .css-1llu0od {
+    background-color: #414c50;
+    height: 100%;
+  }
+}
+
+.custom-react-table-body {
+  background: #414c50;
+  .css-18mhbc8-MuiTypography-root {
+    color: #ffffff;
+  }
+}
+
+.custom-react-table-bottom-toolbar {
+    .css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon {
+      color: #ffffff;
+    }
+    .css-zylse7-MuiButtonBase-root-MuiIconButton-root.Mui-disabled {
+      color: #9c9c9c;
+    }
+    .css-1llu0od {
+      background-color: #414c50;
+      height: 100%;
+    }
+  }
+  
+  .custom-react-table-pagination {
+    background-color: #414c50;
+    .css-78c6dr-MuiToolbar-root-MuiTablePagination-toolbar {
+      color: #ffffff;
+    }
+  }
+
+  .custom-react-table-body-row {
+    background-color: #12b8f4;
+
+    .css-q2yhwl-MuiTableRow-root {
+      background-color: #12b8f4;
+
+    }
+  }

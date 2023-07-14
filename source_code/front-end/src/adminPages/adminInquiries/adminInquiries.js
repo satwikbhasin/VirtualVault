@@ -12,6 +12,7 @@ import DensitySmallIcon from "@mui/icons-material/DensitySmall";
 import { Modal } from "react-bootstrap";
 import "../../styling/theme.css";
 import "../../styling/adminInquiries.css";
+import "../../styling/muiCustomizations.css";
 
 const Inquires = () => {
   var [inquiryMap, setInquiryMap] = useState(new Map());
@@ -239,17 +240,19 @@ const Inquires = () => {
               },
             }}
             muiTableBodyRowProps={{
+              className: "custom-react-table-body-row",
               hover: false,
               sx: {
                 backgroundColor: "#2d383c",
               },
             }}
             muiTablePaperProps={{
-              sx: {
-                color: "#2d383c",
-                backgroundColor: "#2d383c",
-              },
+              className: "custom-react-table-paper",
             }}
+            muiTableBodyProps={{
+              className: "custom-react-table-body",
+            }
+            }
             muiTableBodyCellProps={{
               sx: {
                 color: "#DDE6ED",
@@ -269,10 +272,7 @@ const Inquires = () => {
               },
             }}
             muiBottomToolbarProps={{
-              sx: {
-                backgroundColor: "#414c50",
-                color: "#DDE6ED",
-              },
+              className: "custom-react-table-bottom-toolbar",
             }}
             muiTopToolbarProps={{
               sx: {
@@ -281,10 +281,7 @@ const Inquires = () => {
               },
             }}
             muiTablePaginationProps={{
-              sx: {
-                backgroundColor: "#414c50",
-                color: "#DDE6ED",
-              },
+              className: "custom-react-table-pagination",
             }}
             renderRowActions={({ row }) => [
               <IconButton key={0} sx={{ m: 0 }}>
