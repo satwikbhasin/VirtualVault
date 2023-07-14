@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import { deleteProduct, updateProduct } from "../services/inventoryAPIs";
-import { Form, Modal } from "react-bootstrap";
+import { Form, Modal, Button } from "react-bootstrap";
 import productMapInstance from "../services/productCacher";
 import { MaterialReactTable } from "material-react-table";
-import { IconButton, Box, Button } from "@mui/material";
+import { IconButton, Box } from "@mui/material";
 import DensityLargeIcon from "@mui/icons-material/DensityLarge.js";
 import DensityMediumIcon from "@mui/icons-material/DensityMedium";
 import DensitySmallIcon from "@mui/icons-material/DensitySmall";
@@ -121,7 +121,7 @@ const AllProducts = () => {
         style={{
           textAlign: "center",
         }}
-        className="ternary-bg full-screen-bg"
+        className="primary-bg full-screen-bg"
       >
         <h5 className="text-light fw-bold p-1">
           Product Count: {totalProductCount}
@@ -167,12 +167,6 @@ const AllProducts = () => {
             },
           }}
           muiTableHeadCellFilterTextFieldProps={{
-            sx: {
-              backgroundColor: "#DDE6ED",
-              color: "#DDE6ED",
-            },
-          }}
-          muiTableHeadProps={{
             sx: {
               backgroundColor: "#DDE6ED",
               color: "#DDE6ED",

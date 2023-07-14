@@ -118,7 +118,6 @@ const Inquires = () => {
             value={activeTab}
             onChange={handleChange}
             textColor="inherit"
-            // indicatorColor="#c9510c"
             className="status-tabs"
           >
             <Tab
@@ -251,8 +250,7 @@ const Inquires = () => {
             }}
             muiTableBodyProps={{
               className: "custom-react-table-body",
-            }
-            }
+            }}
             muiTableBodyCellProps={{
               sx: {
                 color: "#DDE6ED",
@@ -284,7 +282,7 @@ const Inquires = () => {
               className: "custom-react-table-pagination",
             }}
             renderRowActions={({ row }) => [
-              <IconButton key={0} sx={{ m: 0 }}>
+              <IconButton key={0} sx={{ m: 0 }} className="button-hover">
                 <a
                   href={`mailto:${row.original.email}?subject=Regrding your inquiry for ${row.original.productName} at Healthkare&body=Hello ${row.original.name}, Thank you for your inquiry stated as:%0D%0A%0D%0A"${row.original.message}" %0D%0A%0D%0AThankyou,%0D%0AHealthkare`}
                   rel="noopener noreferrer"
@@ -298,6 +296,7 @@ const Inquires = () => {
                 </a>
               </IconButton>,
               <IconButton
+                className="button-hover"
                 key={0}
                 sx={{ m: 0 }}
                 onClick={() => {
@@ -311,6 +310,7 @@ const Inquires = () => {
                 </div>
               </IconButton>,
               <IconButton
+                className="button-hover"
                 key={0}
                 sx={{ m: 0 }}
                 onClick={() => {

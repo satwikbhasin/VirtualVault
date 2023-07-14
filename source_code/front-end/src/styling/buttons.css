@@ -1,5 +1,12 @@
 /* ALL BUTTONS */
 
+/* General */
+
+.button-hover:hover {
+  transform: scale(1.1);
+  transition: ease-out 0.3s;
+}
+
 /* Admin Inventory Page */
 
 .edit-button {
@@ -15,13 +22,14 @@
 .save-button:disabled {
   background-color: transparent;
   border: #192428;
-  color: #dc1d1d;
+  color: #a7a7a7;
 }
 
 .save-button:hover {
   transform: scale(1.1);
   transition: ease-out 0.3s;
   color: #59c177;
+  background-color: #192428;
 }
 
 .add-product-button {
@@ -57,6 +65,7 @@
 .utility-button:hover {
   background-color: #414c50;
   transform: scale(1.05);
+  transition: ease-out 0.3s;
 }
 
 .inquire-button {
@@ -68,6 +77,8 @@
 .inquire-button:hover {
   background-color: #414c50;
   border-radius: 10px;
+  transform: scale(1.05);
+  transition: ease-out 0.3s;
 }
 
 .all-products-button {
@@ -118,7 +129,6 @@
 
 .cancel-button {
   margin-left: 30px;
-  margin-top: 30px;
   background-color: #192428;
   border: #192428;
   color: white;
@@ -158,4 +168,16 @@
   color: #59c177;
   background-color: #192428;
   border: #192428;
+}
+
+/* Admin Contact Page */
+
+.contact-save-button {
+  background-color: transparent;
+  color: #ffffff;
+}
+
+.contact-save-button:hover {
+  background-color: transparent;
+  color: #a1de6f;
 }

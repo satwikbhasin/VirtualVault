@@ -40,7 +40,7 @@ const Inventory = () => {
               justifyContent: "center",
               textAlign: "center",
             }}
-            className="ternary-bg"
+            className="primary-bg"
           >
             <Col>
               {!showAddProduct && (

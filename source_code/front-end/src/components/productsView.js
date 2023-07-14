@@ -54,7 +54,7 @@ const ProductsView = () => {
     <div className="primary-bg full-screen-bg">
       {showProductDetails ? (
         <ProductDetailsView productId={productId}></ProductDetailsView>
-      ) : (
+      ) : totalProductSize > 0 ? (
         <div className="primary-bg">
           <div className="justify-content-center">
             <div className="pagination-container">
@@ -98,6 +98,8 @@ const ProductsView = () => {
             ))}
           </Row>
         </div>
+      ) : (
+        <div className="primary-bg no-products-found-text">No Products</div>
       )}
     </div>
   );

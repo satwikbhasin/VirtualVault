@@ -5,6 +5,7 @@ import { getContact } from "../services/contactAPIs.js";
 import ContactCard from "../components/contactCard.js";
 import "../styling/contactCard.css";
 import "../styling/adminContact.css";
+import "../styling/buttons.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { FormGroup, Switch, FormControlLabel } from "@mui/material";
 import { updateContact } from "../services/contactAPIs.js";
@@ -62,7 +63,7 @@ const Contact = () => {
         </Form>
       </div>
       {isEditMode ? (
-        <Table className="mt-4 text-center">
+        <Table className="text-center">
           <thead>
             <tr>
               <th
@@ -149,7 +150,7 @@ const Contact = () => {
                       handleUpdateContact();
                     }}
                   >
-                    <span className="text-light">Save</span>
+                    <span className="contact-save-button">Save</span>
                   </Button>
                 ) : (
                   <Button
@@ -191,7 +192,7 @@ const Contact = () => {
                       handleUpdateContact();
                     }}
                   >
-                    <span className="text-light">Save</span>
+                    <span className="contact-save-button">Save</span>
                   </Button>
                 ) : (
                   <Button
@@ -238,7 +239,7 @@ const Contact = () => {
                       handleUpdateContact();
                     }}
                   >
-                    <span className="text-light">Save</span>
+                    <span className="contact-save-button">Save</span>
                   </Button>
                 ) : (
                   <Button
@@ -280,7 +281,7 @@ const Contact = () => {
                       handleUpdateContact();
                     }}
                   >
-                    <span className="text-light">Save</span>
+                    <span className="contact-save-button">Save</span>
                   </Button>
                 ) : (
                   <Button

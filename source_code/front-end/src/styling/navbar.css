@@ -24,8 +24,8 @@
 }
 
 .inactive-link {
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-left: 7px;
+  margin-right: 7px;
   color: #dde6ed;
   text-decoration: none;
   align-items: center;
@@ -37,8 +37,8 @@
 }
 
 .active-link {
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-left: 7px;
+  margin-right: 7px;
   color: #ffffff;
   text-decoration: none;
   background-color: #192428;
@@ -52,10 +52,12 @@
 
 .inactive-link:hover {
   background-color: #414c5038;
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
 }
 
-.logout-holder {
-  color: #c9510c;
+.logout-link {
+  color: #ffffff;
   margin-right: 10px;
   align-items: center;
   justify-content: center;
@@ -64,7 +66,7 @@
   padding-right: 5px;
 }
 
-.logout-holder:hover {
+.logout-link:hover {
   background-color: #414c5030;
   border-radius: 5px;
   transform: scale(1.06);

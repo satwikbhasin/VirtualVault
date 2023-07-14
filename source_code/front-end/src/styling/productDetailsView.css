@@ -16,7 +16,8 @@
 .product-image {
   margin-left: 35px;
   border-radius: 10px;
-}
+  object-fit: cover;
+  }
 
 .product-image:hover {
   transform: scale(1.05);
