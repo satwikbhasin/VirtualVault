@@ -67,21 +67,6 @@ const AddProduct = () => {
                 className="mb-4"
               />
             </Form.Group>
-            <Form.Group>
-              <Form.Label className="fw-bold">
-                <h4>Description</h4>
-              </Form.Label>
-              <Form.Control
-                type="text"
-                onChange={(event) =>
-                  setProduct((prevProduct) => ({
-                    ...prevProduct,
-                    description: event.target.value,
-                  }))
-                }
-                className=""
-              />
-            </Form.Group>
           </Col>
           <Col className="m-4">
             <Form.Group>
@@ -101,6 +86,22 @@ const AddProduct = () => {
               ></Form.Control>
             </Form.Group>
           </Col>
+        </Row>
+        <Row>
+          <Form.Group>
+            <Form.Label className="fw-bold">
+              <h4>Description</h4>
+            </Form.Label>
+            <textarea
+              class="form-control"
+              onChange={(event) =>
+                setProduct((prevProduct) => ({
+                  ...prevProduct,
+                  description: event.target.value,
+                }))
+              }
+            />
+          </Form.Group>
         </Row>
         <Row className="mb-2">
           {addProductAlert && (

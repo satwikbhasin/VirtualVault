@@ -76,8 +76,8 @@ const AdminNavbar = () => {
         </Nav>
 
         <Nav>
-          <NavItem className="logout-holder">
-            <NavLink className="text-light no-underline">
+          <NavItem>
+            <NavLink className="logout-link no-underline">
               <div className="d-flex align-items-center justify-content-center">
                 <i class="bi bi-door-open fs-4 me-1"></i>
                 <span className="mt-2">

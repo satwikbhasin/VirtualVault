@@ -270,7 +270,7 @@ const ProductDetailsView = ({ productId }) => {
                 }}
               />
             </div>
-            <div className="">
+            <div>
               <label for="company" className="form-label fw-bold">
                 Company (optional)
               </label>

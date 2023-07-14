@@ -35,11 +35,18 @@
 }
 
 .pagination .css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
-  color: rgb(255, 255, 255);
+  color: #ffffff;
   background-color: #0784b5;
 }
 
 .products-container {
   margin: 50px;
   margin-top: 0px;
+}
+
+.no-products-found-text {
+  color: #ffffff;
+  text-align: center;
+  margin-top: 50px;
+  font-size: 20px;
 }
