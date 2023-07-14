@@ -34,9 +34,25 @@
   align-items: center;
 }
 
-.pagination .css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
-  color: #ffffff;
-  background-color: #0784b5;
+.pagination {
+  .css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+    color: #ffffff;
+    background-color: #0784b5;
+  }
+  .css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected:hover {
+    color: #ffffff;
+    background-color: #006188;
+  }
+
+  .css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root {
+    color: #000000;
+    background-color: #8f8f8f;
+  }
+
+  .css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root:hover {
+    color: #ffffff;
+    background-color: #006188;
+  }
 }
 
 .products-container {
