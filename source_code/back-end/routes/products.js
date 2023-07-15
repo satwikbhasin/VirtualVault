@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 
 const ProductModel = require("../models/Product.js");
+const CategoryModel = require("../models/Category.js");
 
 router.get("/getProductsCount", async (req, res) => {
   try {
@@ -96,6 +97,15 @@ router.delete("/delete/:id", async (req, res) => {
     });
   } catch (error) {
     res.status(500).send(error);
+  }
+});
+
+router.get("/getCategories", async (req, res) => {
+  try {
+    const categories = await CategoryModel.find({});
+    res.send(categories);
+  } catch (err) {
+    console.log(err);
   }
 });
 

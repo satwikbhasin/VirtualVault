@@ -89,3 +89,14 @@ export const updateProductImage = (mongoProductId, imageLink) => {
     console.log(error);
   }
 };
+
+export const getCategories = async () => {
+  try {
+    const response = await Axios.get(
+      "http://localhost:3001/products/getCategories"
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};

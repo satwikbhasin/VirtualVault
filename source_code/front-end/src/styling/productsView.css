@@ -35,6 +35,7 @@
 }
 
 .pagination {
+  margin-left: 560px;
   .css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
     color: #ffffff;
     background-color: #0784b5;
@@ -45,8 +46,8 @@
   }
 
   .css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root {
-    color: #000000;
-    background-color: #8f8f8f;
+    color: #ffffff;
+    background-color: #2d383c;
   }
 
   .css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root:hover {
@@ -65,4 +66,22 @@
   text-align: center;
   margin-top: 50px;
   font-size: 20px;
+}
+
+.category-filter-container {
+  margin-left: 430px;
+}
+
+.category-filter {
+  color: #ffffff;
+  background-color: #2d383c;
+  border: #2d383c;
+}
+
+.category-filter:hover {
+  background-color: #006188;
+}
+
+.category-filter:focus {
+  background-color: #006188;
 }
