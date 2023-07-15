@@ -87,13 +87,13 @@ const ProductsView = () => {
               onChange={handleChangePage}
               className="p-4 pagination"
             />
-            <Dropdown className="category-filter-container ">
+            <Dropdown className="category-filter-container">
               <Dropdown.Toggle
                 variant="secondary"
                 id="dropdown-basic"
                 className="category-filter"
               >
-                Category
+                {selectedCategory}
               </Dropdown.Toggle>
               <Dropdown.Menu>
                 <Dropdown.Item onClick={() => handleCategorySelect("All")}>

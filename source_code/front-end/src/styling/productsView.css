@@ -32,9 +32,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: transparent;
 }
 
 .pagination {
+  margin-top: 0px;
   margin-left: 560px;
   .css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
     color: #ffffff;
@@ -59,6 +61,7 @@
 .products-container {
   margin: 50px;
   margin-top: 0px;
+  min-height: 600px;
 }
 
 .no-products-found-text {
@@ -70,6 +73,15 @@
 
 .category-filter-container {
   margin-left: 430px;
+  .dropdown-menu.show {
+    background-color: #414c50;
+  }
+  .dropdown-item {
+    color: #ffffff;
+  }
+  .dropdown-item:hover {
+    background-color: #006188;
+  }
 }
 
 .category-filter {
