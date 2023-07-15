@@ -17,6 +17,12 @@ const Contact = () => {
     whatsapp: "",
     phone: "",
   });
+  const [updatedContact, setUpdatedContact] = useState({
+    name: "",
+    email: "",
+    whatsapp: "",
+    phone: "",
+  });
   const [isEditMode, setIsEditMode] = useState(false);
   const [editName, setEditName] = useState(false);
   const [editEmail, setEditEmail] = useState(false);
@@ -28,6 +34,7 @@ const Contact = () => {
       try {
         const contactDetails = await getContact();
         setContact(contactDetails.data[0]);
+        setUpdatedContact(contactDetails.data[0]);
       } catch (error) {
         console.log(error);
       }
@@ -37,7 +44,18 @@ const Contact = () => {
 
   const handleUpdateContact = async () => {
     try {
-      await updateContact(contact);
+      if (
+        updatedContact.name === contact.name &&
+        updatedContact.email === contact.email &&
+        updatedContact.whatsapp === contact.whatsapp &&
+        updatedContact.phone === contact.phone
+      ) {
+        alert("No Changes Made");
+        return;
+      } else {
+        setContact(updatedContact);
+        await updateContact(updatedContact);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -117,10 +135,13 @@ const Contact = () => {
                   <Form.Control
                     type="text"
                     className="contact-edit-input"
-                    placeholder="Name"
-                    value={contact.name}
+                    placeholder={contact.name}
+                    value={updatedContact.name}
                     onChange={(event) =>
-                      setContact({ ...contact, name: event.target.value })
+                      setUpdatedContact({
+                        ...updatedContact,
+                        name: event.target.value,
+                      })
                     }
                   />
                 </td>
@@ -171,10 +192,13 @@ const Contact = () => {
                   <Form.Control
                     type="text"
                     className="contact-edit-input"
-                    placeholder="Email"
-                    value={contact.email}
+                    placeholder={contact.email}
+                    value={updatedContact.email}
                     onChange={(event) =>
-                      setContact({ ...contact, email: event.target.value })
+                      setUpdatedContact({
+                        ...updatedContact,
+                        email: event.target.value,
+                      })
                     }
                   />
                 </td>
@@ -215,11 +239,11 @@ const Contact = () => {
                   <Form.Control
                     type="text"
                     className="contact-edit-input"
-                    placeholder="Whatsapp Number"
-                    value={contact.whatsapp}
+                    placeholder={contact.whatsapp}
+                    value={updatedContact.whatsapp}
                     onChange={(event) =>
-                      setContact({
-                        ...contact,
+                      setUpdatedContact({
+                        ...updatedContact,
                         whatsapp: event.target.value,
                       })
                     }
@@ -260,10 +284,13 @@ const Contact = () => {
                   <Form.Control
                     type="text"
                     className="contact-edit-input"
-                    placeholder="Phone Number"
-                    value={contact.phone}
+                    placeholder={contact.phone}
+                    value={updatedContact.phone}
                     onChange={(event) =>
-                      setContact({ ...contact, phone: event.target.value })
+                      setUpdatedContact({
+                        ...updatedContact,
+                        phone: event.target.value,
+                      })
                     }
                   />
                 </td>

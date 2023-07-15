@@ -1,10 +1,11 @@
 import React from "react";
-import { Card, Button, Row } from "react-bootstrap";
+import { Card, Button, Row, Dropdown } from "react-bootstrap";
 import "../styling/productsView.css";
 import { useState, useEffect } from "react";
 import productMapInstance from "../services/productCacher";
 import Pagination from "@mui/material/Pagination";
 import ProductDetailsView from "./productDetailsView/productDetailsView.js";
+import { getCategories } from "../services/inventoryAPIs";
 
 const ProductsView = () => {
   const [hoveredCardIndex, setHoveredCardIndex] = useState(null);
@@ -14,6 +15,8 @@ const ProductsView = () => {
   const [productsPerPage] = useState(9);
   const [showProductDetails, setShowProductDetails] = useState(false);
   const [productId, setProductId] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [categories, setCategories] = useState([]);
 
   const handleMouseEnter = (index) => {
     setHoveredCardIndex(index);
@@ -28,14 +31,30 @@ const ProductsView = () => {
       try {
         const totalProducts = await productMapInstance.initialize();
         setTotalProducts(totalProducts.count);
-        setProductsMap(await productMapInstance.getAllProductsFromMap());
+
+        const allProducts = await productMapInstance.getAllProductsFromMap();
+
+        const filteredProducts =
+          selectedCategory === "All"
+            ? allProducts
+            : Array.from(allProducts.values()).filter(
+                (item) => item.category === selectedCategory
+              );
+
+        setProductsMap(filteredProducts);
       } catch (error) {
         console.log(error);
       }
     };
 
+    const fetchCategories = async () => {
+      const categories = await getCategories();
+      setCategories(categories);
+    };
+
+    fetchCategories();
     fetchProducts();
-  }, []);
+  }, [selectedCategory]);
 
   // Calculate indexes of the products to display on the current page
   const indexOfLastProduct = currentPage * productsPerPage;
@@ -50,22 +69,46 @@ const ProductsView = () => {
     setCurrentPage(pageNumber);
   };
 
+  const handleCategorySelect = (category) => {
+    setSelectedCategory(category);
+  };
+
   return (
     <div className="primary-bg full-screen-bg">
       {showProductDetails ? (
         <ProductDetailsView productId={productId}></ProductDetailsView>
       ) : totalProductSize > 0 ? (
         <div className="primary-bg">
-          <div className="justify-content-center">
-            <div className="pagination-container">
-              <Pagination
-                color="primary"
-                count={Math.ceil(totalProductSize / productsPerPage)}
-                page={currentPage}
-                onChange={handleChangePage}
-                className="p-4 pagination"
-              />
-            </div>
+          <div className="pagination-container">
+            <Pagination
+              color="primary"
+              count={Math.ceil(totalProductSize / productsPerPage)}
+              page={currentPage}
+              onChange={handleChangePage}
+              className="p-4 pagination"
+            />
+            <Dropdown className="category-filter-container ">
+              <Dropdown.Toggle
+                variant="secondary"
+                id="dropdown-basic"
+                className="category-filter"
+              >
+                Category
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item onClick={() => handleCategorySelect("All")}>
+                  All
+                </Dropdown.Item>
+                {categories.map((category) => (
+                  <Dropdown.Item
+                    key={category.id}
+                    onClick={() => handleCategorySelect(category.categoryName)}
+                  >
+                    {category.categoryName}
+                  </Dropdown.Item>
+                ))}
+              </Dropdown.Menu>
+            </Dropdown>
           </div>
 
           <Row className="products-container">
