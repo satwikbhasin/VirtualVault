@@ -3,6 +3,7 @@ var router = express.Router();
 
 const ProductModel = require("../models/Product.js");
 const CategoryModel = require("../models/Category.js");
+const { CONNREFUSED } = require("dns");
 
 router.get("/getProductsCount", async (req, res) => {
   try {
@@ -36,15 +37,16 @@ router.post("/insert/", async (req, res) => {
   const productName = req.body.productName;
   const productImage = req.body.productImage;
   const productDescription = req.body.productDescription;
-
+  const productCategory = req.body.productCategory;
   const product = new ProductModel({
     name: productName,
     image: productImage,
     description: productDescription,
+    category: productCategory,
   });
   try {
     await product.save().then((result) => {
-      res.send(result);
+      res.status(200).send(result);
     });
   } catch (error) {
     res.send(error);

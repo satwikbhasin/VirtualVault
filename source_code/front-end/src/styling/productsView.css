@@ -36,8 +36,6 @@
 }
 
 .pagination {
-  margin-top: 0px;
-  margin-left: 560px;
   .css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
     color: #ffffff;
     background-color: #0784b5;
@@ -58,21 +56,12 @@
   }
 }
 
-.products-container {
-  margin: 50px;
-  margin-top: 0px;
-  min-height: 600px;
-}
-
-.no-products-found-text {
-  color: #ffffff;
-  text-align: center;
-  margin-top: 50px;
-  font-size: 20px;
-}
-
 .category-filter-container {
-  margin-left: 430px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  margin-bottom: 20px;
   .dropdown-menu.show {
     background-color: #414c50;
   }
@@ -96,4 +85,17 @@
 
 .category-filter:focus {
   background-color: #006188;
+}
+
+.products-container {
+  margin: 50px;
+  margin-top: 0px;
+  min-height: 600px;
+}
+
+.no-products-found-text {
+  color: #ffffff;
+  text-align: center;
+  margin-top: 50px;
+  font-size: 20px;
 }

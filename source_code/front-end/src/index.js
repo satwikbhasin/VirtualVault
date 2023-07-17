@@ -3,10 +3,10 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import UserHome from "./userPages/userHome.js";
-import Products from "./userPages/products.js";
-import Contact from "./userPages/contact.js";
+import Products from "./userPages/userProducts.js";
+import Contact from "./userPages/userContact.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ProductDetails from "./userPages/productDetails.js";
+import ProductDetails from "./userPages/userProductDetails.js";
 import RouteProtection from "./services/routeProtection.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
