@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap";
-import { Row, Col, Button, Modal } from "react-bootstrap";
+import { Row, Col, Button, Modal, Card, Accordion } from "react-bootstrap";
 import productMapInstance from "../../services/productCacher";
 import "../.././styling/productDetailsView.css";
 import { useState, useEffect } from "react";
@@ -16,7 +16,7 @@ import { addInquiry } from "../../services/inquiryAPIs";
 import "../.././styling/buttons.css";
 import ReactImageMagnify from "react-image-magnify";
 
-const ProductDetailsView = ({ productId }) => {
+const ProductDetails = ({ productId }) => {
   const [product, setProduct] = useState(new Map());
   const [showCopied, setShowCopied] = useState(false);
   const [showInquiryForm, setShowInquiryForm] = useState(false);
@@ -28,6 +28,7 @@ const ProductDetailsView = ({ productId }) => {
     message: "",
   });
   const [showImageModal, setShowImageModal] = useState(false);
+  const [similarProducts, setSimilarProducts] = useState([]);
 
   const resetForm = () => {
     setInquiryForm({
@@ -46,14 +47,33 @@ const ProductDetailsView = ({ productId }) => {
         const fetchedProduct = await productMapInstance.getProductByIdFromMap(
           productId
         );
+
         setProduct(fetchedProduct);
       } catch (error) {
         console.log(error);
       }
     };
 
+    const fetchSimilarProducts = async () => {
+      try {
+        await productMapInstance.fetchAllProducts();
+        var similarProducts = productMapInstance.getProductsFromMapByCategory(
+          product.category
+        );
+
+        similarProducts = similarProducts.filter(
+          (product) => product._id !== productId
+        );
+
+        setSimilarProducts(similarProducts);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchSimilarProducts();
     fetchProduct();
-  }, [productId]);
+  }, [productId, product.category]);
 
   const handleSendInquiry = async () => {
     try {
@@ -110,7 +130,13 @@ const ProductDetailsView = ({ productId }) => {
           </Col>
           <Col className="col-7">
             <p>{product.description}</p>
-            <Row className="mb-3">
+            <Row>
+              <div className="d-flex">
+                <h6>Category:</h6>
+                <h6 className="category-name ms-1">{product.category}</h6>
+              </div>
+            </Row>
+            <Row className="mb-3 mt-3">
               <Col>
                 <Button
                   className="inquire-button"
@@ -201,7 +227,44 @@ const ProductDetailsView = ({ productId }) => {
                 </Row>
               </Col>
             </Row>
-            <Row></Row>
+            <Accordion
+              className="similar-products-accordion mt-4"
+              defaultActiveKey={1}
+            >
+              <Accordion.Item key={2}>
+                <Accordion.Header>
+                  More from {product.category}
+                </Accordion.Header>
+                <Accordion.Body>
+                  {similarProducts.length === 0 ? (
+                    "No Products"
+                  ) : (
+                    <Row className="similar-products-row">
+                      {similarProducts.map((product) => (
+                        <Col key={product._id}>
+                          <Card className="similar-products-card">
+                            <Row>
+                              <Col>
+                                <img
+                                  src={product.image}
+                                  height="50px"
+                                  width="50px"
+                                  alt={product.name}
+                                  className="product-image"
+                                />
+                              </Col>
+                              <Col className="d-flex align-items-center">
+                                <span>{product.name}</span>
+                              </Col>
+                            </Row>
+                          </Card>
+                        </Col>
+                      ))}
+                    </Row>
+                  )}
+                </Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
           </Col>
         </div>
       </div>
@@ -355,4 +418,4 @@ const ProductDetailsView = ({ productId }) => {
   );
 };
 
-export default ProductDetailsView;
+export default ProductDetails;

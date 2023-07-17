@@ -52,6 +52,12 @@ class ProductCache {
   getProductByIdFromMap = (product_id) => {
     return this.map.get(product_id);
   };
+
+  getProductsFromMapByCategory = (category) => {
+    return Array.from(this.map.values()).filter(
+      (product) => product.category === category
+    );
+  };
 }
 
 const productCacheInstance = new ProductCache();

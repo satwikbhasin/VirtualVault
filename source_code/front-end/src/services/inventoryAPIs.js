@@ -29,10 +29,15 @@ export const addProduct = async (product) => {
       productPrice: product.price,
       productImage: "no-link",
       productDescription: product.description,
+      productCategory: product.category,
     }).then((response) => {
-      uploadImage(response.data._id, product.imageFile).then(() => {
-        window.location.reload();
-      });
+      if (response.status === 200) {
+        uploadImage(response.data._id, product.imageFile).then(() => {
+          window.location.reload();
+        });
+      } else {
+        alert("Product Upload Failed");
+      }
     });
   } catch (error) {
     alert("Product upload failed: " + error);

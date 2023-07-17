@@ -39,12 +39,14 @@ const AllProducts = () => {
       name: "",
       description: "",
       imageFile: null,
+      category: "",
     });
     setUpdatedProduct({
       id: "",
       name: "",
       description: "",
       imageFile: null,
+      category: "",
     });
   };
 
@@ -110,6 +112,11 @@ const AllProducts = () => {
         accessorKey: "description",
         header: "Description",
         size: 400,
+      },
+      {
+        accessorKey: "category",
+        header: "Category",
+        size: 100,
       },
     ],
     []
@@ -234,7 +241,13 @@ const AllProducts = () => {
             },
           }}
           initialState={{
-            columnOrder: ["name", "img", "description", "mrt-row-actions"],
+            columnOrder: [
+              "name",
+              "img",
+              "description",
+              "category",
+              "mrt-row-actions",
+            ],
           }}
           renderRowActions={({ row }) => [
             <IconButton

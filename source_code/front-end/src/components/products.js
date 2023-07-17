@@ -4,13 +4,13 @@ import "../styling/productsView.css";
 import { useState, useEffect } from "react";
 import productMapInstance from "../services/productCacher";
 import Pagination from "@mui/material/Pagination";
-import ProductDetailsView from "./productDetailsView/productDetailsView.js";
+import ProductDetailsView from "./productDetails/productDetails.js";
 import { getCategories } from "../services/inventoryAPIs";
 
-const ProductsView = () => {
+const Products = () => {
   const [hoveredCardIndex, setHoveredCardIndex] = useState(null);
   const [productsMap, setProductsMap] = useState(new Map());
-  const [totalProductSize, setTotalProducts] = useState(0);
+  const [totalProductSize, setTotalProductSize] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(9);
   const [showProductDetails, setShowProductDetails] = useState(false);
@@ -30,7 +30,7 @@ const ProductsView = () => {
     const fetchProducts = async () => {
       try {
         const totalProducts = await productMapInstance.initialize();
-        setTotalProducts(totalProducts.count);
+        setTotalProductSize(totalProducts.count);
 
         const allProducts = await productMapInstance.getAllProductsFromMap();
 
@@ -87,7 +87,9 @@ const ProductsView = () => {
               onChange={handleChangePage}
               className="p-4 pagination"
             />
-            <Dropdown className="category-filter-container">
+          </div>
+          <div className="category-filter-container">
+            <Dropdown>
               <Dropdown.Toggle
                 variant="secondary"
                 id="dropdown-basic"
@@ -148,4 +150,4 @@ const ProductsView = () => {
   );
 };
 
-export default ProductsView;
+export default Products;

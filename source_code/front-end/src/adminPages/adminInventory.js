@@ -6,7 +6,7 @@ import AllProducts from "./inventoryAllProducts.js";
 import "../styling/addProduct.css";
 import "../styling/theme.css";
 import "../styling/buttons.css";
-import ProductsView from "../components/productsView";
+import ProductsView from "../components/products";
 import { FormGroup, Switch, FormControlLabel } from "@mui/material";
 
 const Inventory = () => {
