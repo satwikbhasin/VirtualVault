@@ -1,10 +1,9 @@
 import React from "react";
-import { Card, Button, Row, Dropdown } from "react-bootstrap";
+import { Card, Row, Dropdown } from "react-bootstrap";
 import "../styling/productsView.css";
 import { useState, useEffect } from "react";
 import productMapInstance from "../services/productCacher";
 import Pagination from "@mui/material/Pagination";
-import ProductDetailsView from "./productDetails/productDetails.js";
 import { getCategories } from "../services/inventoryAPIs";
 
 const Products = () => {
@@ -13,8 +12,6 @@ const Products = () => {
   const [totalProductSize, setTotalProductSize] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(9);
-  const [showProductDetails, setShowProductDetails] = useState(false);
-  const [productId, setProductId] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [categories, setCategories] = useState([]);
 
@@ -75,9 +72,7 @@ const Products = () => {
 
   return (
     <div className="primary-bg full-screen-bg">
-      {showProductDetails ? (
-        <ProductDetailsView productId={productId}></ProductDetailsView>
-      ) : totalProductSize > 0 ? (
+      {totalProductSize > 0 ? (
         <div className="primary-bg">
           <div className="pagination-container">
             <Pagination
@@ -116,14 +111,7 @@ const Products = () => {
           <Row className="products-container">
             {currentProducts.map((item) => (
               <div className="col-md-4 col-lg-4 col-xl-4 mb-3" key={item._id}>
-                <Button
-                  variant=""
-                  onClick={() => {
-                    setShowProductDetails(true);
-                    setProductId(item._id);
-                  }}
-                  class="card-name"
-                >
+                <a href={"/user/product/" + item._id} class="card-name">
                   <Card
                     className={`card ${
                       hoveredCardIndex === item._id ? "enlarged" : ""
@@ -138,7 +126,7 @@ const Products = () => {
                       </Card.Title>
                     </Card.Body>
                   </Card>
-                </Button>
+                </a>
               </div>
             ))}
           </Row>
