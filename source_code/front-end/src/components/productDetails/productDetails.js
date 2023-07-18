@@ -41,39 +41,28 @@ const ProductDetails = ({ productId }) => {
   };
 
   useEffect(() => {
-    const fetchProduct = async () => {
+    const fetchProductAndSimilarProducts = async () => {
       try {
         await productMapInstance.fetchAllProducts();
         const fetchedProduct = await productMapInstance.getProductByIdFromMap(
           productId
         );
-
         setProduct(fetchedProduct);
-      } catch (error) {
-        console.log(error);
-      }
-    };
 
-    const fetchSimilarProducts = async () => {
-      try {
-        await productMapInstance.fetchAllProducts();
-        var similarProducts = productMapInstance.getProductsFromMapByCategory(
-          product.category
+        const similarProducts = productMapInstance.getProductsFromMapByCategory(
+          fetchedProduct.category
         );
-
-        similarProducts = similarProducts.filter(
+        const filteredSimilarProducts = similarProducts.filter(
           (product) => product._id !== productId
         );
-
-        setSimilarProducts(similarProducts);
+        setSimilarProducts(filteredSimilarProducts);
       } catch (error) {
         console.log(error);
       }
     };
 
-    fetchSimilarProducts();
-    fetchProduct();
-  }, [productId, product.category]);
+    fetchProductAndSimilarProducts();
+  }, [productId]);
 
   const handleSendInquiry = async () => {
     try {
@@ -236,28 +225,33 @@ const ProductDetails = ({ productId }) => {
                   More from {product.category}
                 </Accordion.Header>
                 <Accordion.Body>
-                  {similarProducts.length === 0 ? (
+                  {product.category && similarProducts.length === 0 ? (
                     "No Products"
                   ) : (
                     <Row className="similar-products-row">
                       {similarProducts.map((product) => (
                         <Col key={product._id}>
-                          <Card className="similar-products-card">
-                            <Row>
-                              <Col>
-                                <img
-                                  src={product.image}
-                                  height="50px"
-                                  width="50px"
-                                  alt={product.name}
-                                  className="product-image"
-                                />
-                              </Col>
-                              <Col className="d-flex align-items-center">
-                                <span>{product.name}</span>
-                              </Col>
-                            </Row>
-                          </Card>
+                          <a
+                            href={"/user/product/" + product._id}
+                            class="card-name bg-dark"
+                          >
+                            <Card className="similar-products-card">
+                              <Row>
+                                <Col className="col-1">
+                                  <img
+                                    src={product.image}
+                                    height="120px"
+                                    width="300px"
+                                    alt={product.name}
+                                    className="similar-products-image"
+                                  />
+                                </Col>
+                                <Col className="col-6 similar-products-details">
+                                  <span>{product.name}</span>
+                                </Col>
+                              </Row>
+                            </Card>
+                          </a>
                         </Col>
                       ))}
                     </Row>
