@@ -73,64 +73,68 @@ const Products = () => {
   return (
     <div className="primary-bg full-screen-bg">
       {totalProductSize > 0 ? (
-        <div className="primary-bg">
+        <>
+          <div className="primary-bg">
+            <div className="category-filter-container">
+              <Dropdown>
+                <Dropdown.Toggle
+                  variant="secondary"
+                  id="dropdown-basic"
+                  className="category-filter"
+                >
+                  {selectedCategory}
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item onClick={() => handleCategorySelect("All")}>
+                    All
+                  </Dropdown.Item>
+                  {categories.map((category) => (
+                    <Dropdown.Item
+                      key={category.id}
+                      onClick={() =>
+                        handleCategorySelect(category.categoryName)
+                      }
+                    >
+                      {category.categoryName}
+                    </Dropdown.Item>
+                  ))}
+                </Dropdown.Menu>
+              </Dropdown>
+            </div>
+
+            <Row className="products-container">
+              {currentProducts.map((item) => (
+                <div className="col-md-4 col-lg-4 col-xl-4 mb-3" key={item._id}>
+                  <a href={"/user/product/" + item._id} class="card-name">
+                    <Card
+                      className={`card ${
+                        hoveredCardIndex === item._id ? "enlarged" : ""
+                      }`}
+                      onMouseEnter={() => handleMouseEnter(item._id)}
+                      onMouseLeave={handleMouseLeave}
+                    >
+                      <Card.Body>
+                        <Card.Img src={item.image} className="card-image" />
+                        <Card.Title className="pt-2 font-product-name">
+                          {item.name}
+                        </Card.Title>
+                      </Card.Body>
+                    </Card>
+                  </a>
+                </div>
+              ))}
+            </Row>
+          </div>
           <div className="pagination-container">
             <Pagination
               color="primary"
               count={Math.ceil(totalProductSize / productsPerPage)}
               page={currentPage}
               onChange={handleChangePage}
-              className="p-4 pagination"
+              className="pagination"
             />
           </div>
-          <div className="category-filter-container">
-            <Dropdown>
-              <Dropdown.Toggle
-                variant="secondary"
-                id="dropdown-basic"
-                className="category-filter"
-              >
-                {selectedCategory}
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item onClick={() => handleCategorySelect("All")}>
-                  All
-                </Dropdown.Item>
-                {categories.map((category) => (
-                  <Dropdown.Item
-                    key={category.id}
-                    onClick={() => handleCategorySelect(category.categoryName)}
-                  >
-                    {category.categoryName}
-                  </Dropdown.Item>
-                ))}
-              </Dropdown.Menu>
-            </Dropdown>
-          </div>
-
-          <Row className="products-container">
-            {currentProducts.map((item) => (
-              <div className="col-md-4 col-lg-4 col-xl-4 mb-3" key={item._id}>
-                <a href={"/user/product/" + item._id} class="card-name">
-                  <Card
-                    className={`card ${
-                      hoveredCardIndex === item._id ? "enlarged" : ""
-                    }`}
-                    onMouseEnter={() => handleMouseEnter(item._id)}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    <Card.Body>
-                      <Card.Img src={item.image} className="card-image" />
-                      <Card.Title className="pt-2 font-product-name">
-                        {item.name}
-                      </Card.Title>
-                    </Card.Body>
-                  </Card>
-                </a>
-              </div>
-            ))}
-          </Row>
-        </div>
+        </>
       ) : (
         <div className="primary-bg no-products-found-text">No Products</div>
       )}
