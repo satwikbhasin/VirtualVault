@@ -14,6 +14,7 @@ const Products = () => {
   const [productsPerPage] = useState(9);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [categories, setCategories] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleMouseEnter = (index) => {
     setHoveredCardIndex(index);
@@ -27,8 +28,7 @@ const Products = () => {
     const fetchProducts = async () => {
       try {
         const totalProducts = await productMapInstance.initialize();
-        setTotalProductSize(totalProducts.count);
-
+        setTotalProductSize(totalProducts);
         const allProducts = await productMapInstance.getAllProductsFromMap();
 
         const filteredProducts =
@@ -38,9 +38,16 @@ const Products = () => {
                 (item) => item.category === selectedCategory
               );
 
+        if (selectedCategory === "All") {
+          setTotalProductSize(allProducts.size);
+        } else {
+          setTotalProductSize(filteredProducts.length);
+        }
         setProductsMap(filteredProducts);
+        setIsLoading(false);
       } catch (error) {
         console.log(error);
+        setIsLoading(false);
       }
     };
 
@@ -53,7 +60,6 @@ const Products = () => {
     fetchProducts();
   }, [selectedCategory]);
 
-  // Calculate indexes of the products to display on the current page
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = Array.from(productsMap.values()).slice(
@@ -61,7 +67,6 @@ const Products = () => {
     indexOfLastProduct
   );
 
-  // Change page
   const handleChangePage = (event, pageNumber) => {
     setCurrentPage(pageNumber);
   };
@@ -72,7 +77,13 @@ const Products = () => {
 
   return (
     <div className="primary-bg full-screen-bg">
-      {totalProductSize > 0 ? (
+      {isLoading ? (
+        <div className="d-flex justify-content-center align-items-center mt-5">
+          <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      ) : totalProductSize > 0 ? (
         <>
           <div className="primary-bg">
             <div className="category-filter-container">
