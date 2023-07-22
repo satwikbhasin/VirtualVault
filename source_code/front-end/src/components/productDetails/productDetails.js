@@ -216,50 +216,48 @@ const ProductDetails = ({ productId }) => {
                 </Row>
               </Col>
             </Row>
-            <Accordion
-              className="similar-products-accordion mt-4"
-              defaultActiveKey={1}
-            >
-              <Accordion.Item key={2}>
-                <Accordion.Header>
-                  More from {product.category}
-                </Accordion.Header>
-                <Accordion.Body>
-                  {product.category && similarProducts.length === 0 ? (
-                    "No Products"
-                  ) : (
-                    <Row className="similar-products-row">
-                      {similarProducts.map((product) => (
-                        <Col key={product._id}>
+          </Col>
+        </div>
+        <div className="similar-products-holder">
+          <Accordion
+            className="similar-products-accordion mt-4"
+            defaultActiveKey={1}
+          >
+            <Accordion.Item eventKey={1}>
+              <Accordion.Header>More from {product.category}</Accordion.Header>
+              <Accordion.Body>
+                {product.category && similarProducts.length === 0 ? (
+                  "No Products"
+                ) : (
+                  <Row className="similar-products-row">
+                    {similarProducts.map((product) => (
+                      <div key={product._id} className="similar-products-card">
+                        <Card>
                           <a
                             href={"/user/product/" + product._id}
-                            class="card-name bg-dark"
+                            class="bg-dark no-underline"
                           >
-                            <Card className="similar-products-card">
-                              <Row>
-                                <Col className="col-1">
-                                  <img
-                                    src={product.image}
-                                    height="120px"
-                                    width="300px"
-                                    alt={product.name}
-                                    className="similar-products-image"
-                                  />
-                                </Col>
-                                <Col className="col-6 similar-products-details">
-                                  <span>{product.name}</span>
-                                </Col>
-                              </Row>
-                            </Card>
+                            <Row>
+                              <img
+                                src={product.image}
+                                height="120px"
+                                width="450px"
+                                alt={product.name}
+                                className="similar-products-image"
+                              />
+                            </Row>
+                            <Row className="similar-products-details">
+                              <span>{product.name}</span>
+                            </Row>
                           </a>
-                        </Col>
-                      ))}
-                    </Row>
-                  )}
-                </Accordion.Body>
-              </Accordion.Item>
-            </Accordion>
-          </Col>
+                        </Card>
+                      </div>
+                    ))}
+                  </Row>
+                )}
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
         </div>
       </div>
 

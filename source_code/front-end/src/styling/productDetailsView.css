@@ -45,15 +45,15 @@
   color: #0784b5;
 }
 
-.similar-products-card {
-  background-color: #2d383c;
-  width: 700px;
-  margin: 20px;
-  padding: 20px;
-  transition: transform 0.3s ease;
-  background: #37464d;
+.similar-products-holder {
+  display: flex;
   justify-content: center;
-  color: white;
+  align-items: center;
+  flex-direction: column;
+}
+
+.similar-products-card {
+  width: 440px;
 }
 
 .similar-products-card:hover {
@@ -62,19 +62,18 @@
 }
 
 .similar-products-accordion {
+  width: 93vw;
+  margin-bottom: 50px;
   .accordion-button {
     background-color: #2d383c;
     color: #ffffff;
-  }
-  .accordion {
-    --bs-accordion-border-color: #f50e0e;
   }
   .accordion-button::after {
     visibility: hidden;
   }
   .accordion-body {
-    overflow: auto;
-    max-height: 300px;
+    max-height: 400px;
+    background: #2d383c;
   }
   .accordion-collapse {
     background-color: #2d383c;
@@ -83,24 +82,23 @@
 }
 
 .similar-products-row {
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-left: 0px;
-  padding: 10px;
+  display: flex;
+  justify-content: flex-start;
+  padding: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  flex-wrap: nowrap;
+  overflow: auto;
+  height: 240px;
 }
 
 .similar-products-image {
-  border-radius: 10px;
   object-fit: cover;
-  display: flex;
-  align-content: center;
 }
 
 .similar-products-details {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  margin-left: 270px;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  height: 70px;
 }
