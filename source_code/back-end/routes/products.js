@@ -111,4 +111,18 @@ router.get("/getCategories", async (req, res) => {
   }
 });
 
+router.post("/insertCategory/", async (req, res) => {
+  const categoryName = req.body.categoryName;
+  const category = new CategoryModel({
+    categoryName: categoryName,
+  });
+  try {
+    await category.save().then((result) => {
+      res.status(200).send(result);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 module.exports = router;

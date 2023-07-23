@@ -115,7 +115,7 @@ const Products = () => {
 
             <Row className="products-container">
               {currentProducts.map((item) => (
-                <div className="col-md-4 col-lg-4 col-xl-4 mb-3" key={item._id}>
+                <div className="col-md-4 col-lg-4 col-xl-4 mb-5" key={item._id}>
                   <a href={"/user/product/" + item._id} class="card-name">
                     <Card
                       className={`card ${

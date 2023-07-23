@@ -33,6 +33,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  /* margin-top: 30px; */
   margin-bottom: 60px;
   background-color: transparent;
 }
@@ -80,6 +81,10 @@
   .dropdown-item:focus {
     background-color: #006188;
   }
+  .dropdown-menu.show {
+    background-color: #414c50;
+    width: 100%;
+  }
 }
 
 .category-filter {
@@ -104,8 +109,6 @@
 .products-container {
   margin-left: 50px;
   margin-right: 50px;
-  margin-bottom: 20px;
-  margin-top: 0px;
 }
 
 .no-products-found-text {
