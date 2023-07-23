@@ -105,3 +105,19 @@ export const getCategories = async () => {
     console.log(error);
   }
 };
+
+export const addCategory = async (category) => {
+  try {
+    await Axios.post("http://localhost:3001/products/insertCategory/", {
+      categoryName: category.name,
+    }).then((response) => {
+      if (response.status === 200) {
+        window.location.reload();
+      } else {
+        alert("Category Upload Failed");
+      }
+    });
+  } catch (error) {
+    alert("Category upload failed: " + error);
+  }
+};

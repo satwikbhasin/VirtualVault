@@ -53,7 +53,8 @@
 }
 
 .similar-products-card {
-  width: 440px;
+  width: 400px;
+  margin: 20px;
 }
 
 .similar-products-card:hover {
@@ -72,8 +73,10 @@
     visibility: hidden;
   }
   .accordion-body {
-    max-height: 400px;
+    height: 300px;
     background: #2d383c;
+    border-radius: 10px;
+    padding: 0%;
   }
   .accordion-collapse {
     background-color: #2d383c;
@@ -89,16 +92,21 @@
   margin-right: 10px;
   flex-wrap: nowrap;
   overflow: auto;
-  height: 240px;
+  height: 300px;
 }
 
 .similar-products-image {
+  height: 130px;
   object-fit: cover;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
 }
 
-.similar-products-details {
+.similar-product-name {
+  display: flex;
   align-items: center;
-  text-align: center;
+  justify-content: center;
   color: #ffffff;
   height: 70px;
+  width: 400px;
 }

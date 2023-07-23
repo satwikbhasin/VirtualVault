@@ -150,7 +150,7 @@ const AddProduct = () => {
               textAlign: "center",
             }}
           >
-            <Button className="add-button" type="submit">
+            <Button className="add-button mt-3" type="submit">
               <div className="d-flex align-items-center">
                 <i class="bi bi-plus-circle-fill fs-6"></i>
                 <span className="ms-1">Add</span>

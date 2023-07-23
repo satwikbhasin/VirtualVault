@@ -229,31 +229,27 @@ const ProductDetails = ({ productId }) => {
                 {product.category && similarProducts.length === 0 ? (
                   "No Products"
                 ) : (
-                  <Row className="similar-products-row">
+                  <div className="similar-products-row">
                     {similarProducts.map((product) => (
-                      <div key={product._id} className="similar-products-card">
-                        <Card>
+                      <div key={product._id}>
+                        <Card className="similar-products-card">
                           <a
                             href={"/user/product/" + product._id}
-                            class="bg-dark no-underline"
+                            class="no-underline"
                           >
-                            <Row>
-                              <img
-                                src={product.image}
-                                height="120px"
-                                width="450px"
-                                alt={product.name}
-                                className="similar-products-image"
-                              />
-                            </Row>
-                            <Row className="similar-products-details">
+                            <Card.Img
+                              src={product.image}
+                              alt={product.name}
+                              className="similar-products-image"
+                            ></Card.Img>
+                            <Card.Title className="similar-product-name">
                               <span>{product.name}</span>
-                            </Row>
+                            </Card.Title>
                           </a>
                         </Card>
                       </div>
                     ))}
-                  </Row>
+                  </div>
                 )}
               </Accordion.Body>
             </Accordion.Item>
