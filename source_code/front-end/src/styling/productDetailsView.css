@@ -19,11 +19,6 @@
   object-fit: cover;
 }
 
-.product-image:hover {
-  transform: scale(1.05);
-  transition: transform 0.5s ease;
-}
-
 .layover-product-image {
   margin-left: 35px;
   border-radius: 10px;

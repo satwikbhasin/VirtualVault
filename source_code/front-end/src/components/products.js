@@ -112,7 +112,6 @@ const Products = () => {
                 </Dropdown.Menu>
               </Dropdown>
             </div>
-
             <Row className="products-container">
               {currentProducts.map((item) => (
                 <div className="col-md-4 col-lg-4 col-xl-4 mb-5" key={item._id}>
@@ -147,7 +146,33 @@ const Products = () => {
           </div>
         </>
       ) : (
-        <div className="primary-bg no-products-found-text">No Products</div>
+        <>
+          <div className="category-filter-container">
+            <Dropdown>
+              <Dropdown.Toggle
+                variant="secondary"
+                id="dropdown-basic"
+                className="category-filter"
+              >
+                {selectedCategory}
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item onClick={() => handleCategorySelect("All")}>
+                  All
+                </Dropdown.Item>
+                {categories.map((category) => (
+                  <Dropdown.Item
+                    key={category.id}
+                    onClick={() => handleCategorySelect(category.categoryName)}
+                  >
+                    {category.categoryName}
+                  </Dropdown.Item>
+                ))}
+              </Dropdown.Menu>
+            </Dropdown>
+          </div>
+          <div className="primary-bg no-products-found-text">No Products</div>
+        </>
       )}
     </div>
   );
