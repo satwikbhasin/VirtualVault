@@ -90,7 +90,7 @@
 .category-filter {
   width: 200px;
   color: #ffffff;
-  background-color: #2d383c;
+  background-color: #006188;
   border: #2d383c;
   .dropdown-menu {
     background-color: #414c50;
@@ -114,6 +114,5 @@
 .no-products-found-text {
   color: #ffffff;
   text-align: center;
-  /* margin-top: 50px; */
   font-size: 20px;
 }

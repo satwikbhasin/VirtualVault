@@ -4,6 +4,11 @@ import { Row, Col, Button, Modal, Card, Accordion } from "react-bootstrap";
 import productMapInstance from "../../services/productCacher";
 import "../.././styling/productDetailsView.css";
 import { useState, useEffect } from "react";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import Slide from "@mui/material/Slide";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import {
   handleGoBack,
@@ -15,6 +20,10 @@ import {
 import { addInquiry } from "../../services/inquiryAPIs";
 import "../.././styling/buttons.css";
 import ReactImageMagnify from "react-image-magnify";
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 const ProductDetails = ({ productId }) => {
   const [product, setProduct] = useState(new Map());
@@ -29,6 +38,7 @@ const ProductDetails = ({ productId }) => {
   });
   const [showImageModal, setShowImageModal] = useState(false);
   const [similarProducts, setSimilarProducts] = useState([]);
+  const [openEmptyWarning, setOpenEmptyWarning] = useState(false);
 
   const resetForm = () => {
     setInquiryForm({
@@ -64,13 +74,32 @@ const ProductDetails = ({ productId }) => {
     fetchProductAndSimilarProducts();
   }, [productId]);
 
-  const handleSendInquiry = async () => {
-    try {
-      await addInquiry(inquiryForm, product);
-      setShowInquiryForm(false);
-      resetForm();
-    } catch (error) {
-      console.log(error);
+  const checkFormEmpty = () => {
+    if (
+      inquiryForm.name === "" ||
+      inquiryForm.email === "" ||
+      inquiryForm.phone === "" ||
+      inquiryForm.message === ""
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const handleSendInquiry = async (event) => {
+    event.preventDefault(); // Prevent default form submission behavior
+
+    if (checkFormEmpty()) {
+      setOpenEmptyWarning(true);
+    } else {
+      try {
+        await addInquiry(inquiryForm, product);
+        setShowInquiryForm(false);
+        resetForm();
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -264,12 +293,12 @@ const ProductDetails = ({ productId }) => {
           setShowInquiryForm(false);
         }}
       >
-        <Modal.Header closeButton>
-          <Modal.Title>Inquiry Form</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <h4 className="fw-bold">About You</h4>
-          <form>
+        <form onSubmit={handleSendInquiry}>
+          <Modal.Header closeButton>
+            <Modal.Title>Inquiry Form</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <h4 className="fw-bold">About You</h4>
             <div className="fw-bold mb-3">
               <label for="name" className="form-label">
                 Name
@@ -354,28 +383,28 @@ const ProductDetails = ({ productId }) => {
                 }}
               />
             </div>
-          </form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button
-            variant=""
-            onClick={() => {
-              setShowInquiryForm(false);
-              resetForm();
-            }}
-          >
-            <div className="d-flex align-items-center text-light">
-              <i class="bi bi-x-circle-fill fs-6"></i>
-              <span className="ms-1">Cancel</span>
-            </div>
-          </Button>
-          <Button variant="" className="text-light" onClick={handleSendInquiry}>
-            <div className="d-flex align-items-center">
-              <i class="bi bi-send-fill fs-6"></i>
-              <span className="ms-1">Send</span>
-            </div>
-          </Button>
-        </Modal.Footer>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button
+              variant=""
+              onClick={() => {
+                setShowInquiryForm(false);
+                resetForm();
+              }}
+            >
+              <div className="d-flex align-items-center text-light">
+                <i class="bi bi-x-circle-fill fs-6"></i>
+                <span className="ms-1">Cancel</span>
+              </div>
+            </Button>
+            <Button variant="" className="text-light" type="submit">
+              <div className="d-flex align-items-center">
+                <i class="bi bi-send-fill fs-6"></i>
+                <span className="ms-1">Send</span>
+              </div>
+            </Button>
+          </Modal.Footer>
+        </form>
       </Modal>
 
       <Modal
@@ -402,6 +431,32 @@ const ProductDetails = ({ productId }) => {
           enlargedImagePosition="over"
         />
       </Modal>
+      <Dialog
+        open={openEmptyWarning}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={() => {
+          setOpenEmptyWarning(false);
+        }}
+        aria-describedby="alert-dialog-slide-description"
+        className="empty-form-dialog"
+      >
+        <DialogContent>
+          <DialogContentText id="alert-dialog-slide-description">
+            Please fill in all the fields.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            className="discard-button"
+            onClick={() => {
+              setOpenEmptyWarning(false);
+            }}
+          >
+            Okay
+          </Button>
+        </DialogActions>
+      </Dialog>
     </>
   );
 };

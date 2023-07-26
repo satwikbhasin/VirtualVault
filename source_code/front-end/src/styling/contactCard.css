@@ -15,10 +15,9 @@
   font-family: Gill Sans, sans-serif;
 }
 
-.card-enlarged:hover {
-  transition: transform 0.5s ease;
-  transform: scale(1.2);
-  color: #132372bb;
+.card-item:hover {
+  transform: scale(1.15);
+  transition: transform 0.3s ease-in-out;
 }
 
 .contact-card {
@@ -27,9 +26,6 @@
   border-radius: 20px;
   text-align: center;
   margin: 60px;
-}
-
-.contact-card:hover {
-  transition: ease-out 0.5s;
-  transform: scale(1.06);
+  height: 250px;
+  width: 1315px;
 }

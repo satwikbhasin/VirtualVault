@@ -323,12 +323,12 @@ const Inquires = () => {
               >
                 {row.original.read ? (
                   <div className="d-flex align-items-center justify-content-center text-light contact-small-font">
-                    <i class="bi bi-book-half fs-5 me-1"></i>
+                    <i class="bi bi-book fs-5 me-1"></i>
                     <span>Mark as Unread</span>
                   </div>
                 ) : (
                   <div className="d-flex align-items-center justify-content-center text-light contact-small-font">
-                    <i class="bi bi-book fs-5 me-1"></i>
+                    <i class="bi bi-book-half fs-5 me-1"></i>
                     <span>Mark as Read</span>
                   </div>
                 )}
