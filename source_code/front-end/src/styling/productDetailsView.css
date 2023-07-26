@@ -105,3 +105,39 @@
   height: 70px;
   width: 400px;
 }
+
+.empty-form-dialog {
+  .css-1t1j96h-MuiPaper-root-MuiDialog-paper {
+    border-radius: 10px;
+    width: 300px;
+  }
+  .css-qfso29-MuiTypography-root-MuiDialogContentText-root {
+    color: #ffffff;
+  }
+  .css-bdhsul-MuiTypography-root-MuiDialogTitle-root {
+    background-color: #2d383c;
+    color: #ffffff;
+  }
+  .MuiDialogTitle-root + .css-ypiqx9-MuiDialogContent-root {
+    padding-top: 15px;
+  }
+  .css-ypiqx9-MuiDialogContent-root {
+    background-color: #2d383c;
+    text-align: center;
+    color: #ffffff;
+    height: 50px;
+  }
+  .css-hlj6pa-MuiDialogActions-root {
+    background-color: #2d383c;
+    color: #ffffff;
+  }
+}
+
+.discard-button {
+  background-color: #0784b5;
+  border: #0784b5;
+}
+
+.discard-button:hover {
+  background-color: #007bab8a;
+}
