@@ -1,7 +1,7 @@
 import { saveAs } from "file-saver";
 import { Document, Packer, Paragraph, TextRun } from "docx";
 import jsPDF from "jspdf";
-import Backend from "../assets/backendLink";
+import Backend from "../../assets/BackendLink.js";
 
 export const handleGoBack = () => {
   if (window.location.pathname === "/admin/inventory") {
