@@ -34,7 +34,7 @@ class ProductCache {
     } else {
       try {
         const response = await Axios.get(
-          "http://localhost:3001/products/getAllProducts"
+          {Backend} + "/products/getAllProducts"
         );
         response.data.forEach((item) => {
           this.map.set(item._id, item);

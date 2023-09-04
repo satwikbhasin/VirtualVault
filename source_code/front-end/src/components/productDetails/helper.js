@@ -1,6 +1,7 @@
 import { saveAs } from "file-saver";
 import { Document, Packer, Paragraph, TextRun } from "docx";
 import jsPDF from "jspdf";
+import Backend from "../assets/backendLink";
 
 export const handleGoBack = () => {
   if (window.location.pathname === "/admin/inventory") {
@@ -12,7 +13,7 @@ export const handleGoBack = () => {
 
 export const copyPageLinkToClipboard = (productId) => {
   navigator.clipboard.writeText(
-    "http://localhost:3000/user/product/" + productId
+    {Backend} + "/user/product/" + productId
   );
 };
 

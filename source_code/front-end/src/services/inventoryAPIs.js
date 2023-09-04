@@ -108,7 +108,7 @@ export const getCategories = async () => {
 
 export const addCategory = async (category) => {
   try {
-    await Axios.post("http://localhost:3001/products/insertCategory/", {
+    await Axios.post({Backend} + "/products/insertCategory/", {
       categoryName: category.name,
     }).then((response) => {
       if (response.status === 200) {
