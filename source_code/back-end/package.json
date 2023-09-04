@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "install-server": "npm install",
+    "start-server": "node ./bin/www",
     "start": "node ./bin/www",
     "nodemon": "nodemon ./bin/www"
   },
