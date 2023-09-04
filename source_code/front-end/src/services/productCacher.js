@@ -20,7 +20,7 @@ class ProductCache {
     if (this.productsCount > 0) return this.productsCount;
     try {
       const response = await Axios.get(
-        "http://localhost:3001/products/getProductsCount"
+        {Backend} + "/products/getProductsCount"
       );
       return response.data;
     } catch (error) {
