@@ -21,7 +21,7 @@ class ProductCache {
     if (this.productsCount > 0) return this.productsCount;
     try {
       const response = await Axios.get(
-        {Backend} + "/products/getProductsCount"
+        Backend + "/products/getProductsCount"
       );
       return response.data;
     } catch (error) {
@@ -35,7 +35,7 @@ class ProductCache {
     } else {
       try {
         const response = await Axios.get(
-          {Backend} + "/products/getAllProducts"
+          Backend + "/products/getAllProducts"
         );
         response.data.forEach((item) => {
           this.map.set(item._id, item);

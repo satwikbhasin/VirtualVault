@@ -13,7 +13,7 @@ export const handleGoBack = () => {
 
 export const copyPageLinkToClipboard = (productId) => {
   navigator.clipboard.writeText(
-    {Backend} + "/user/product/" + productId
+    Backend + "/user/product/" + productId
   );
 };
 
