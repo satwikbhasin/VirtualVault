@@ -4,11 +4,11 @@ import Backend from "../assets/BackendLink.js";
 export const deleteProduct = async (productId) => {
   try {
     await Axios.delete(
-      {Backend} + "/products/delete/" + productId
+      Backend + "/products/delete/" + productId
     ).then((response) => {
       if (response.status === 200) {
         Axios.delete(
-          {Backend} + "/s3Methods/deleteImage/" + productId
+          Backend + "/s3Methods/deleteImage/" + productId
         ).then((response) => {
           if (response.data.message === "Delete Successful") {
             window.location.reload();
@@ -25,7 +25,7 @@ export const deleteProduct = async (productId) => {
 
 export const addProduct = async (product) => {
   try {
-    Axios.post({Backend} + "/products/insert/", {
+    Axios.post(Backend + "/products/insert/", {
       productName: product.name,
       productPrice: product.price,
       productImage: "no-link",
@@ -51,7 +51,7 @@ export const updateProduct = async (updatedProduct) => {
   }
 
   try {
-    Axios.put({Backend} + "/products/update/", {
+    Axios.put(Backend + "/products/update/", {
       id: updatedProduct.id,
       updatedName: updatedProduct.name,
       updatedPrice: updatedProduct.price,
@@ -69,7 +69,7 @@ export const uploadImage = async (mongoProductId, imageFile) => {
     const imageData = new FormData();
     imageData.append("image", imageFile);
     await Axios.post(
-      {Backend} + "/s3Methods/uploadImage/" + mongoProductId,
+      Backend + "/s3Methods/uploadImage/" + mongoProductId,
       imageData
     )
       .then((response) => {
@@ -85,7 +85,7 @@ export const uploadImage = async (mongoProductId, imageFile) => {
 
 export const updateProductImage = (mongoProductId, imageLink) => {
   try {
-    Axios.put({Backend} + "/products/updateImage/", {
+    Axios.put(Backend + "/products/updateImage/", {
       id: mongoProductId,
       image: imageLink,
     }).then((response) => {
@@ -99,7 +99,7 @@ export const updateProductImage = (mongoProductId, imageLink) => {
 export const getCategories = async () => {
   try {
     const response = await Axios.get(
-      {Backend} + "/products/getCategories"
+      Backend + "/products/getCategories"
     );
     return response.data;
   } catch (error) {
@@ -109,7 +109,7 @@ export const getCategories = async () => {
 
 export const addCategory = async (category) => {
   try {
-    await Axios.post({Backend} + "/products/insertCategory/", {
+    await Axios.post(Backend + "/products/insertCategory/", {
       categoryName: category.name,
     }).then((response) => {
       if (response.status === 200) {
