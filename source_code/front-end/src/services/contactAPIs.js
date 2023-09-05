@@ -1,5 +1,5 @@
 import Axios from "axios";
-import Backend from "../assets/BackendLink.js";
+import Backend from "../assets/backendLink.js";
 
 export const getContact = () => {
   return Axios.get(Backend + "/contactDetails/getContactDetails");
