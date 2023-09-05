@@ -34,9 +34,8 @@ export const addProduct = async (product) => {
     });
 
     if (response.status === 200) {
-      await uploadImage(response.data._id, product.imageFile).then(() => {
+      await uploadImage(response.data._id, product.imageFile)
         window.location.reload();
-      });
     } else {
       alert("Product Upload Failed");
     }
@@ -50,7 +49,7 @@ export const updateProduct = async (updatedProduct) => {
     await uploadImage(updatedProduct.id, updatedProduct.imageFile);
   }
   try {
-    Axios.put(Backend + "/products/update/", {
+    await Axios.put(Backend + "/products/update/", {
       id: updatedProduct.id,
       updatedName: updatedProduct.name,
       updatedPrice: updatedProduct.price,
