@@ -48,8 +48,8 @@
   },
   "scripts": {
     "install-client": "npm install",
-    "build-client": "react-scripts build",
-    "start-client": "react-scripts start",
+    "build-client": "npm run build",
+    "start-client": "npm run start",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
