@@ -1,5 +1,5 @@
 import axios from "axios";
-import Backend from "../assets/BackendLink.js";
+import Backend from "../assets/backendLink.js";
 
 export const getInquiries = async () => {
   return axios.get(Backend + "/inquiry/getInquiries");
