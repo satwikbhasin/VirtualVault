@@ -12,9 +12,7 @@ export const handleGoBack = () => {
 };
 
 export const copyPageLinkToClipboard = (productId) => {
-  navigator.clipboard.writeText(
-    Backend + "/user/product/" + productId
-  );
+  navigator.clipboard.writeText(Backend + "/user/product/" + productId);
 };
 
 export const downloadImage = (image) => {
@@ -34,9 +32,6 @@ export const downloadProductInfoWord = async (product) => {
     .spacing({ after: 300 })
     .center();
 
-  const response = await fetch(product.image);
-  const blob = await response.blob();
-
   const name = new TextRun(product.name).size(24).font("Arial").bold();
   const nameParagraph = new Paragraph()
     .addRun(name)
@@ -47,7 +42,6 @@ export const downloadProductInfoWord = async (product) => {
     .spacing({ after: 100 });
 
   doc.addParagraph(titleParagraph);
-  doc.createImage(blob, 200, 200).Paragraph.center();
   doc.addParagraph(nameParagraph);
   doc.addParagraph(descriptionParagraph);
 
@@ -70,26 +64,16 @@ export const downloadProductInfoPDF = async (product) => {
     align: "center",
   });
 
-  const response = await fetch(product.image);
-  const blob = await response.blob();
+  pdfDoc.setTextColor("black");
 
-  const reader = new FileReader();
-  reader.onloadend = function () {
-    const base64String = reader.result.split(",")[1];
-    pdfDoc.addImage(base64String, "JPEG", 62, 30, 80, 80);
+  pdfDoc.setFont("Arial", "bold");
+  pdfDoc.setFontSize(16);
+  pdfDoc.text(product.name, 35, 125);
 
-    pdfDoc.setTextColor("black");
+  pdfDoc.setFont("Arial", "normal");
+  pdfDoc.setFontSize(12);
+  const descriptionLines = pdfDoc.splitTextToSize(product.description, 135);
+  pdfDoc.text(descriptionLines, 35, 135);
 
-    pdfDoc.setFont("Arial", "bold");
-    pdfDoc.setFontSize(16);
-    pdfDoc.text(product.name, 35, 125);
-
-    pdfDoc.setFont("Arial", "normal");
-    pdfDoc.setFontSize(12);
-    const descriptionLines = pdfDoc.splitTextToSize(product.description, 135);
-    pdfDoc.text(descriptionLines, 35, 135);
-
-    pdfDoc.save(`${product.name}.pdf`);
-  };
-  reader.readAsDataURL(blob);
+  pdfDoc.save(`${product.name}.pdf`);
 };
