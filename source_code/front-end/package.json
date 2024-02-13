@@ -44,9 +44,12 @@
     "redocx": "^1.1.4",
     "stream-browserify": "^3.0.0",
     "web-vitals": "^2.1.4",
-    "yup": "^1.2.0"
+    "yup": "^1.2.0"  
   },
   "scripts": {
+    "install-client": "npm install",
+    "build-client": "npm run build",
+    "start-client": "npm run start",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

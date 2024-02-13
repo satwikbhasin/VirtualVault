@@ -1,4 +1,5 @@
 import Axios from "axios";
+import Backend from "../assets/backendLink.js";
 
 class ProductCache {
   constructor() {
@@ -20,7 +21,7 @@ class ProductCache {
     if (this.productsCount > 0) return this.productsCount;
     try {
       const response = await Axios.get(
-        "http://localhost:3001/products/getProductsCount"
+        Backend + "/products/getProductsCount"
       );
       return response.data;
     } catch (error) {
@@ -34,7 +35,7 @@ class ProductCache {
     } else {
       try {
         const response = await Axios.get(
-          "http://localhost:3001/products/getAllProducts"
+          Backend + "/products/getAllProducts"
         );
         response.data.forEach((item) => {
           this.map.set(item._id, item);
