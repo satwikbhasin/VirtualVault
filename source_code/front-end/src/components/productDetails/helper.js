@@ -12,7 +12,9 @@ export const handleGoBack = () => {
 };
 
 export const copyPageLinkToClipboard = (productId) => {
-  navigator.clipboard.writeText(Backend + "/user/product/" + productId);
+  navigator.clipboard.writeText(
+    "https://digital-catalog-frontend.onrender.com/user/product/" + productId
+  );
 };
 
 export const downloadImage = (image) => {
