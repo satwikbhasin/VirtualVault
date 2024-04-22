@@ -12,7 +12,7 @@ export const handleGoBack = () => {
 
 export const copyPageLinkToClipboard = (productId) => {
   navigator.clipboard.writeText(
-    "https://digital-catalog-frontend.onrender.com/user/product/" + productId
+    "https://virtualvault.tech/user/product/" + productId
   );
 };
 
