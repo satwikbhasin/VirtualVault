@@ -6,6 +6,7 @@ var logger = require("morgan");
 var cors = require("cors");
 var mongoose = require("mongoose");
 const bodyParser = require('body-parser');
+require('dotenv').config();
 
 var productsRouter = require("./routes/products");
 var s3MethodsRouter = require("./routes/s3Methods");
@@ -15,7 +16,7 @@ var inquiryRouter = require("./routes/inquiry");
 
 mongoose
   .connect(
-    "mongodb+srv://healthkare:Thumbsup10@healthkare.mlizocs.mongodb.net/Healthkare",
+    process.env.MONGODB_URL,
     {
       useNewUrlParser: true,
     }

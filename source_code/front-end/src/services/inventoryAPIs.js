@@ -35,7 +35,7 @@ export const addProduct = async (product) => {
 
     if (response.status === 200) {
       await uploadImage(response.data._id, product.imageFile)
-        window.location.reload();
+      window.location.reload();
     } else {
       alert("Product Upload Failed");
     }
@@ -71,10 +71,14 @@ export const uploadImage = async (mongoProductId, imageFile) => {
       imageData
     )
       .then((response) => {
-        updateProductImage(mongoProductId, response.data);
+        if (response.data === "failed") {
+          alert("Image upload not supported right now");
+        } else {
+          updateProductImage(mongoProductId, response.data);
+        }
       })
       .catch((error) => {
-        alert("Image upload failed: " + error);
+        alert("Image Upload Failed: " + error);
       });
   } catch (error) {
     console.log(error);
