@@ -1,7 +1,6 @@
 import { saveAs } from "file-saver";
 import { Document, Packer, Paragraph, TextRun } from "docx";
 import jsPDF from "jspdf";
-import Backend from "../../assets/backendLink.js";
 
 export const handleGoBack = () => {
   if (window.location.pathname === "/admin/inventory") {
@@ -12,7 +11,9 @@ export const handleGoBack = () => {
 };
 
 export const copyPageLinkToClipboard = (productId) => {
-  navigator.clipboard.writeText(Backend + "/user/product/" + productId);
+  navigator.clipboard.writeText(
+    "https://virtualvault.tech/user/product/" + productId
+  );
 };
 
 export const downloadImage = (image) => {

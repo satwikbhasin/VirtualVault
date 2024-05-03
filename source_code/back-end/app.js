@@ -6,6 +6,7 @@ var logger = require("morgan");
 var cors = require("cors");
 var mongoose = require("mongoose");
 const bodyParser = require('body-parser');
+require('dotenv').config();
 
 var productsRouter = require("./routes/products");
 var s3MethodsRouter = require("./routes/s3Methods");
