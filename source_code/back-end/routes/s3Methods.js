@@ -57,7 +57,7 @@ router.delete("/deleteImage/:mongoProductId", async (req, res) => {
       res.send({ message: "Delete Successful" });
     })
     .catch((error) => {
-      res.send(error);
+      res.send("failed");
     });
 });
 
