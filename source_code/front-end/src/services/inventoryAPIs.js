@@ -5,10 +5,13 @@ export const deleteProduct = async (productId) => {
   try {
     await Axios.delete(Backend + "/products/delete/" + productId).then(
       (response) => {
+        console.log(response);
         if (response.status === 200) {
           Axios.delete(Backend + "/s3Methods/deleteImage/" + productId).then(
             (response) => {
               if (response.data.message === "Delete Successful") {
+                window.location.reload();
+              } else {
                 window.location.reload();
               }
             }
