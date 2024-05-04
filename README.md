@@ -1,11 +1,26 @@
-# About Virtual Vault
+<div align="center">
+  <h1>About Virtual Vault</h1>
+</div>
 
-Virtual Vault is a Digital Portfolio Management System, a comprehensive web application designed to streamline the management of 
-product catalogs and product owner contact information. This system empowers both users and administrators to efficiently interact with product listings and contact details 
+Virtual Vault is a Digital Portfolio Management System, powered by cutting-edge technologies to ensure seamless performance and robust functionality:
 
-<br></br>
+### Backend:
+- Utilizes Express.js to handle API calls and manage database interactions
 
-## Working Demo
+### Frontend:
+- Built with React.js, offering a dynamic and intuitive user interface
+- Utilizes state-of-the-art libraries for enhanced user experience and real-time updates
+
+### Database:
+- MongoDB used for data storage and retrieval
+- Integrates AWS S3 for secure and scalable image storage
+
+### Deployment:
+- Hosted on Render for continuous deployment and scalability
+
+***Note: I stopped the S3-bucket and am using static links for product images to prevent idle charges but the code has logic for s3-bucket insertion & retrieval***
+
+## Try it out
 
 https://virtualvault.tech
 
