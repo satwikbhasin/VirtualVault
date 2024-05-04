@@ -2,7 +2,7 @@ import React from "react";
 import "bootstrap";
 import { Row, Col, Button, Modal, Card, Accordion } from "react-bootstrap";
 import productMapInstance from "../../services/productCacher";
-import "../.././styling/productDetailsView.css";
+import "../../styling/productDetailsView.css";
 import { useState, useEffect } from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -18,7 +18,7 @@ import {
   downloadProductInfoPDF,
 } from "./helper";
 import { addInquiry } from "../../services/inquiryAPIs";
-import "../.././styling/buttons.css";
+import "../../styling/buttons.css";
 import ReactImageMagnify from "react-image-magnify";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
