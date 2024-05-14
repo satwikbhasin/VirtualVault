@@ -9,7 +9,7 @@ const userNavbar = () => {
     <>
       <Navbar className="navbar-dark navbar-first-user primary-bg">
         <NavLink className="navbar-brand text-center ms-3" to="/user/">
-          <h1 className="navbar-first-heading">HEALTHKARE</h1>
+          <h1 className="navbar-first-heading">VirtualVault</h1>
         </NavLink>
       </Navbar>
       <Navbar className="navbar-second-user justify-content-left secondary-bg">

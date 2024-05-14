@@ -11,7 +11,7 @@ const AdminNavbar = () => {
     <div>
       <Navbar className="navbar-dark navbar-first-admin primary-bg">
         <NavLink className="navbar-brand ms-3" to="/admin/">
-          <h1 className="navbar-first-heading">HEALTHKARE</h1>
+          <h1 className="navbar-first-heading">VirtualVault</h1>
         </NavLink>
       </Navbar>
       <Navbar
