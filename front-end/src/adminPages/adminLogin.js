@@ -42,7 +42,7 @@ const AdminLogin = ({ route }) => {
     <>
       <Navbar className="navbar-dark navbar-first-admin fixed-top primary-bg">
         <NavLink className="navbar-brand text-center ms-3" to="/admin/">
-          <h1 className="navbar-first-heading">HEALTHKARE</h1>
+          <h1 className="navbar-first-heading">VirtualVault</h1>
         </NavLink>
       </Navbar>
       <div className="login-form-bg-holder">
